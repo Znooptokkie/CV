@@ -1,6 +1,7 @@
 venv/
 *.pyc
 __pycache__/
-static/css/main.css
+static/css/
+static/js/
 .env
 node_modules/
