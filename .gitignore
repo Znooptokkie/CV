@@ -1,0 +1,6 @@
+venv/
+*.pyc
+__pycache__/
+static/css/main.css
+.env
+node_modules/

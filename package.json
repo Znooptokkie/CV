@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "sass": "^1.97.2"
+  },
+  "name": "porto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "build:ts": "tsc",
+    "watch:ts": "tsc --watch",
+    "watch:sass": "sass --watch sass/main.scss:static/css/main.css",
+    "watch:dev": "npm-run-all --parallel watch:ts watch:sass"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

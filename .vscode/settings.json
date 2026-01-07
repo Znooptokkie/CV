@@ -1,0 +1,8 @@
+{
+    // Tell VS Code what Root is
+    "python.analysis.extraPaths": [
+        "."
+    ],
+    // Default location for venv
+    "python.defaultInterpreterPath": "./venv/bin/python"
+}
