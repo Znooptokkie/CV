@@ -14,24 +14,35 @@
 # Migrations
 
 Maak migratie aan
-```
+```bash
 python manage.py makemigration
 ```
 
 Migrate daadwerkelijk
-```
+```bash
 python manage.py migrate
 ```
-# SASS
 
-Compilen voor productie
-```
-python manage.py collectstatic --noinput
+# Static scripts
+
+Compile TS eenmalig
+```bash
+npm run build:ts
 ```
 
-Watchen voor development
+Development watch mode
+```bash
+npm run watch:ts
 ```
-sass --watch sass/main.scss:static/css/main.css
+
+SASS watch
+```bash
+npm run watch:sass
+```
+
+Watch alles
+```bash
+npm run watch:dev
 ```
 
 # Productie
@@ -47,3 +58,5 @@ SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 CSRF_COOKIE_SECURE = True # Voor HTTPS
 ```
+
+3. Zet correcte .env bestand

@@ -1,8 +1,6 @@
-# settings/base.py
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
-# settings/prod.py
 from .base import *
 
 DEBUG = False

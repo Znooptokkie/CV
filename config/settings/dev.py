@@ -3,7 +3,7 @@ from .base import *
 DEBUG = True
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
-# Log errors naar de console
+# Log errors to console
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
