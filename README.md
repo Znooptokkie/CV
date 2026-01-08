@@ -1,7 +1,6 @@
 # Wishlist
 
     - Aparte .env voor development (.env.dev) EN productie (.env.prod)
-    - CI/CD Pipeline
     - Cors header voor API endpoints
     - Unit tests
 
@@ -11,17 +10,21 @@
     - Database back-up
     - Logging
 
+---
+
 # Migrations
 
 Maak migratie aan
 ```bash
-python manage.py makemigration
+python manage.py makemigrations
 ```
 
 Migrate daadwerkelijk
 ```bash
 python manage.py migrate
 ```
+
+---
 
 # Static scripts
 
@@ -45,18 +48,20 @@ Watch alles
 npm run watch:dev
 ```
 
+---
+
 # CI Pipeline
 
 ## Flow
 
-1. Maak een nieuwe feature/ branch aan
+1. Maak een nieuwe ``feature/`` branch aan
 ```bash
 git checkout -b feature/*
 ```
 
 2. Zorg dat de code clean is met ``ruff``
 ```bash
-ruff check . --fix
+ruff check . --fix # --fix is voor local
 ```
 
 3. Push naar Github
@@ -68,7 +73,6 @@ git push -u origin feature/*
 
 4. Maak een Pull Request aan van ``feature/*`` naar ``develop``
 
-
 5. Maak een Pull Request aan van ``develop`` naar ``master``
 
 6. Checkout naar ``master``
@@ -76,15 +80,18 @@ git push -u origin feature/*
 git checkout master
 ```
 
-7. Delete de ``feature/*`` branch
+7. Delete de ``feature/*`` branch ``local`` en ``remote``
 ```bash
-git branch -d feature/*
+git branch -d feature/* # local
+git push origin --delete feature/* # remote
 ```
 
 8. Pull code voor ``master`` branch
 ```bash
 git pull
 ```
+
+---
 
 # Productie
 
