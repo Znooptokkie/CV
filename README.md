@@ -1,7 +1,6 @@
 # Wishlist
 
     - Aparte .env voor development (.env.dev) EN productie (.env.prod)
-    - CI/CD Pipeline
     - Cors header voor API endpoints
     - Unit tests
 
@@ -10,6 +9,8 @@
     - Shell script -> CI/CD
     - Database back-up
     - Logging
+
+---
 
 # Migrations
 
@@ -22,6 +23,8 @@ Migrate daadwerkelijk
 ```bash
 python manage.py migrate
 ```
+
+---
 
 # Static scripts
 
@@ -44,6 +47,8 @@ Watch alles
 ```bash
 npm run watch:dev
 ```
+
+---
 
 # CI Pipeline
 
@@ -68,7 +73,6 @@ git push -u origin feature/*
 
 4. Maak een Pull Request aan van ``feature/*`` naar ``develop``
 
-
 5. Maak een Pull Request aan van ``develop`` naar ``master``
 
 6. Checkout naar ``master``
@@ -86,6 +90,8 @@ git push origin --delete feature/* # remote
 ```bash
 git pull
 ```
+
+---
 
 # Productie
 
