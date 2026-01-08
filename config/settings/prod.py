@@ -1,11 +1,17 @@
-from .base import BASE_DIR
-
-STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
+import config.settings.base as base
 
 DEBUG = False
 ALLOWED_HOSTS = ["atillaoomen.nl"]
 
+SECRET_KEY = base.SECRET_KEY
+DATABASES = base.DATABASES
+INSTALLED_APPS = base.INSTALLED_APPS
+MIDDLEWARE = base.MIDDLEWARE
+TEMPLATES = base.TEMPLATES
+ROOT_URLCONF = base.ROOT_URLCONF
+
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [base.BASE_DIR / "static"]
 # Cache busting
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
