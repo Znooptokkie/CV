@@ -45,6 +45,47 @@ Watch alles
 npm run watch:dev
 ```
 
+# CI Pipeline
+
+## Flow
+
+1. Maak een nieuwe feature/ branch aan
+```bash
+git checkout -b feature/*
+```
+
+2. Zorg dat de code clean is met ``ruff``
+```bash
+ruff check . --fix
+```
+
+3. Push naar Github
+```bash
+git add .
+git commit -m "Github Commit"
+git push -u origin feature/*
+```
+
+4. Maak een Pull Request aan van ``feature/*`` naar ``develop``
+
+
+5. Maak een Pull Request aan van ``develop`` naar ``master``
+
+6. Checkout naar ``master``
+```bash
+git checkout master
+```
+
+7. Delete de ``feature/*`` branch
+```bash
+git branch -d feature/*
+```
+
+8. Pull code voor ``master`` branch
+```bash
+git pull
+```
+
 # Productie
 
 1. Static file hashing / cahche-busting
@@ -60,8 +101,3 @@ CSRF_COOKIE_SECURE = True # Voor HTTPS
 ```
 
 3. Zet correcte .env bestand
-
-
-
-
-from .base import BASE_DIR, INSTALLED_APPS, MIDDLEWARE, TEMPLATES, DATABASES, ROOT_URLCONF, SECRET_KEY
