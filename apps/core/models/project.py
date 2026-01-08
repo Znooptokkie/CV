@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Project(models.Model):
     title = models.CharField(max_length=120)
     subtitle = models.CharField(max_length=255, blank=True, null=True)
