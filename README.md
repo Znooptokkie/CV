@@ -60,3 +60,8 @@ CSRF_COOKIE_SECURE = True # Voor HTTPS
 ```
 
 3. Zet correcte .env bestand
+
+
+
+
+from .base import BASE_DIR, INSTALLED_APPS, MIDDLEWARE, TEMPLATES, DATABASES, ROOT_URLCONF, SECRET_KEY
