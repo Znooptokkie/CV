@@ -16,7 +16,7 @@ jobs:
         run: |
           echo "Only develop may merge into master"
           exit 1
-          
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -40,3 +40,6 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_HOST: ${{ secrets.DB_HOST }}
+
+      - name: Run lint
+        run: ruff check .
