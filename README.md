@@ -16,7 +16,7 @@
 
 Maak migratie aan
 ```bash
-python manage.py makemigrations
+python manage.py makemigrations core --name init_migration
 ```
 
 Migrate daadwerkelijk

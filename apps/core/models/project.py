@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Project(models.Model):
+    project_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=120)
     subtitle = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
