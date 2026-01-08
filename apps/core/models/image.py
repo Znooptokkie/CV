@@ -4,10 +4,11 @@ from .project import Project
 
 
 class Image(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="images")
     image_url = models.CharField(max_length=255)
     alt_text = models.TextField(blank=True, null=True)
     is_main_image = models.BooleanField(default=False)
+    
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="images")
 
     class Meta:
         db_table = "image"
