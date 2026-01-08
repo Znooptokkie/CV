@@ -33,3 +33,4 @@ jobs:
         env:
           DJANGO_SETTINGS_MODULE: config.settings.dev
           PYTHONPATH: .
+          SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
