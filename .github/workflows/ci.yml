@@ -11,6 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Block feature branches from merging into master
+        if: github.base_ref == 'master' && github.head_ref != 'develop'
+        run: |
+          echo "Only develop may merge into master"
+          exit 1
+          
       - name: Checkout code
         uses: actions/checkout@v4
 
