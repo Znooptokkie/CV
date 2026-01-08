@@ -15,7 +15,7 @@
 
 Maak migratie aan
 ```bash
-python manage.py makemigration
+python manage.py makemigrations
 ```
 
 Migrate daadwerkelijk
@@ -49,14 +49,14 @@ npm run watch:dev
 
 ## Flow
 
-1. Maak een nieuwe feature/ branch aan
+1. Maak een nieuwe ``feature/`` branch aan
 ```bash
 git checkout -b feature/*
 ```
 
 2. Zorg dat de code clean is met ``ruff``
 ```bash
-ruff check . --fix
+ruff check . --fix # --fix is voor local
 ```
 
 3. Push naar Github
@@ -76,9 +76,10 @@ git push -u origin feature/*
 git checkout master
 ```
 
-7. Delete de ``feature/*`` branch
+7. Delete de ``feature/*`` branch ``local`` en ``remote``
 ```bash
-git branch -d feature/*
+git branch -d feature/* # local
+git push origin --delete feature/* # remote
 ```
 
 8. Pull code voor ``master`` branch
