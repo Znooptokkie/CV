@@ -1,7 +1,7 @@
+from .base import BASE_DIR
+
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
-
-from .base import *
 
 DEBUG = False
 ALLOWED_HOSTS = ["atillaoomen.nl"]
