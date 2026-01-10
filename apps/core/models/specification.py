@@ -6,6 +6,7 @@ class SpecificationEnumCategory(models.TextChoices):
     HARDWARE = "hardware", "Hardware"
     BACKEND = "backend", "Backend"
     FRONTEND = "frontend", "Frontend"
+    PROTOCOL = "protocol", "Protocol"
     OTHER = "other", "Other"
 
 

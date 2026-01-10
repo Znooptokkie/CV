@@ -14,17 +14,35 @@
 
 # Migrations
 
-Maak migratie aan
+## Aanmaken
+
+Maak nieuw migratiebestand aan
 ```bash
-python manage.py makemigrations core --name init_migration
+python manage.py makemigrations core --name next_migration # Optional --empty for empty migration
 ```
 
-Migrate daadwerkelijk
+Pas migrations toe
 ```bash
 python manage.py migrate
 ```
 
+## Rollback
+
+Rollback naar specifieke migration
+```bash
+python manage.py migrate core 0001_init_build
+```
 ---
+
+Volledige rollback van app
+```bash
+python manage.py migrate core zero
+```
+
+Daarna opnieuw migreren
+```bash
+python manage.py migrate core
+```
 
 # Static scripts
 
