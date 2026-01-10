@@ -1,11 +1,13 @@
 from django.core.management.base import BaseCommand
-from apps.core.models.project import Project
+
 from apps.core.models.framework import Framework
-from apps.core.models.language import Language
 from apps.core.models.image import Image
+from apps.core.models.language import Language
 from apps.core.models.paragraph import Paragraph
-from apps.core.models.sub_paragraph import SubParagraph
+from apps.core.models.project import Project
 from apps.core.models.specification import Specification
+from apps.core.models.sub_paragraph import SubParagraph
+
 
 class Command(BaseCommand):
     help = "Reset and Seed core data"
