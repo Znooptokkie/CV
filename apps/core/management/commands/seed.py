@@ -31,23 +31,32 @@ class Command(BaseCommand):
             # =================
             # FRAMEWORKS
             # =================
+            framework_objs = {}
             frameworks = [
                 "Django",
                 "Flask",
                 "React Native",
-                "Android Studio",
                 "Electron",
             ]
             for name in frameworks:
-                Framework.objects.get_or_create(name=name)
+                framework_objs[name], _ = Framework.objects.get_or_create(name=name)
 
             # =================
             # LANGUAGES
             # =================
             language_objs = {}
             languages = [
-                "Python", "MicroPython", "JavaScript", "TypeScript",
-                "PHP", "Java", "HTML", "CSS", "SASS", "Bash", "SQL"
+                "Python", 
+                "MicroPython", 
+                "JavaScript", 
+                "TypeScript",
+                "PHP", 
+                "Java", 
+                "HTML", 
+                "CSS", 
+                "SASS", 
+                "Bash", 
+                "SQL"
             ]
             for name in languages:
                 language_objs[name], _ = Language.objects.get_or_create(name=name)
@@ -56,6 +65,9 @@ class Command(BaseCommand):
             # PROJECTS DATA
             # =================
             projects_data = [
+                # ====================
+                # SMARTGARDEN MOBILE
+                # ====================
                 {
                     "link": "battlebot",
                     "title": "Battlebot",
@@ -214,7 +226,202 @@ class Command(BaseCommand):
                         {"spec": "Crontab", "category": "SOFTWARE"},
                         {"spec": "PWM (Pulse-width modulation)", "category": "OTHER"},
                     ]
-                }
+                },
+                # ====================
+                # PORTFOLIO
+                # ====================
+                {
+                    "link": "portfolio",
+                    "title": "Portfolio",
+                    "description": "Mijn portfolio website gemaakt in Django.",
+                    "year": 2026,
+                    "github": "https://github.com/Znooptokkie/CV",
+                    "featured": True,
+                    "in_progress": True,
+                    "framework": ["Django"],
+                    "languages": ["Python", "TypeScript", "SASS", "SQL"],
+                    "images": [
+                        {"image_url": "projects/portfolio/portfolio-logo.png", "alt_text": "Logo van Portfolio website", "is_main_image": False, "is_logo": True},
+                        {"image_url": "projects/portfolio/portfolio-website-homepage.png", "alt_text": "Screenshot van Homepage", "is_main_image": True,  "is_logo": False},
+                    ],
+                    "paragraphs": [
+                        {
+                            "order": 1,
+                            "title": "Introductie",
+                            "subparagraphs": [
+                                "Uiteraard kan een Portfolio website niet ontbreken bij een Software Ontwikkelaar. Het afgelopen half jaar ben ik dan ook bezig geweest om deze website te maken. Vooral met de intentie om er wat van te leren. Dat is ook een van de voornaamste redenen waarom ik 'plain' TypeScript code gebruik en geen frontend framework. Een backend framework, tja, die acht ik wel nodig."
+                                "Initieel werkte ik met Flask en SQLAlchemy om de database verbinding en pages te tonen, dit omdat ik eerst van plan was om een non-relationail database te gebruiken zoals JSON."
+                                "Naarmate het project vorderde, kwam ik er toch achter dat het wel handig kan zijn om al mijn data in een database te hebben."
+                            ],
+                        },
+                        {
+                            "order": 2,
+                            "title": "Visie en Doelstelling",
+                            "subparagraphs": [
+                                "Ik had al enigzins ervaring met Flask en Django. Omdat ik dus niet van plan was een relationele database te gebruiken, besloot ik voor het lichtgewicht framework te gaan Flask.",
+                                "Als eerste ging ik wat onderzoek doen naar bestaande portfolio websites, kijken hoe anderen die van hun hebben gemaakt."
+                            ]
+                        }
+                    ],
+                    "specifications": [
+                        {"spec": "CI/CD", "category": "SOFTWARE"},
+                        {"spec": "SVG", "category": "SOFTWARE"},
+                        {"spec": "API", "category": "SOFTWARE"},
+                        {"spec": "JSON", "category": "SOFTWARE"}
+                    ],
+                },
+                # ====================
+                # BRAM
+                # ====================
+                {
+                    "link": "bram",
+                    "title": "BRAM",
+                    "description": "BRAM was een project waar wij de opdracht kregen om een mobiele applicatie te ontwikkelen met het oog op gebruikersgemak.",
+                    "year": 2024,
+                    "github": "https://github.com/bdiker61/BRAM",
+                    "featured": False,
+                    "in_progress": False,
+                    "languages": ["Java"],
+                    "images": [
+                        {"image_url": "projects/bram/bram-logo.png", "alt_text": "Logo van het project BRAM", "is_main_image": False, "is_logo": True},
+                        {"image_url": "projects/bram_loadingscreen.webp", "alt_text": "Een screenshot van het laadscherm van de mobiele applicatie", "is_main_image": True, "is_logo": False}
+                    ],
+                    "paragraphs": [
+                        {
+                            "order": 1,
+                            "title": "Introductie",
+                            "subparagraphs": [
+                                "Mijn eerste project speciaal gemaakt voor mobiel. Deze applicatie moet het gemakkelijker maken voor ouderen om overweg te kunnen met de mobiel."
+                            ],
+                        }
+                    ],
+                    "specifications": [
+                        {"spec": "Android SDK", "category": "SOFTWARE"},
+                        {"spec": "Gradle", "category": "SOFTWARE"},
+                        {"spec": "XML", "category": "SOFTWARE"}
+                    ],
+                },
+                # ====================
+                # SMARTGARDEN DESKTOP
+                # ====================
+                {
+                    "link": "smartgarden-desktop",
+                    "title": "Smart Garden (desktop)",
+                    "description": "Dit project was een samenwerking tussen meerdere partijen. Het voornaamste doel was om een verticale tuin automatisch van water te voorzien.",
+                    "year": 2024,
+                    "github": "https://github.com/Znooptokkie/GoodGarden",
+                    "featured": False,
+                    "in_progress": False,
+                    "framework": ["Electron", "Flask"],
+                    "languages": ["Python", "JavaScript", "CSS", "HTML"],
+                    "images": [
+                        {"image_url": "projects/smart_garden_desktop/GG-logo.png", "alt_text": "Het logo van GoodGarden", "is_main_image": False, "is_logo": True},
+                        {"image_url": "projects/smartgarden_desktop/smartgarden_desktop_add_plant.webp", "alt_text": "Het formulier waar je een plant kan toevoegen aan de applicatie", "is_main_image": True, "is_logo": False}
+                    ],
+                    "paragraphs": [
+                        {
+                            "order": 1,
+                            "title": "Introductie",
+                            "subparagraphs": [
+                                "Lorem"
+                                ""
+                                ""
+                            ],
+                        },
+                        {
+                            "order": 2,
+                            "title": "Vervolg Smart Garden Desktop",
+                            "subparagraphs": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ],
+                    "specifications": [
+                        {"spec": "API", "category": "SOFTWARE"},
+                    ],
+                },
+                # ====================
+                # SMARTGARDEN MOBILE
+                # ====================
+                {
+                    "link": "smartgarden-mobiel",
+                    "title": "Smart Garden (mobiel)",
+                    "description": "Voor mijn eindexamen Mobile Development heb ik besloten om het project Smart Garden (desktop) om te zetten naar een mobiele applicatie gemaakt in React Native.",
+                    "year": 2025,
+                    "github": "https://github.com/6028968/GG_MAD",
+                    "featured": True,
+                    "in_progress": True,
+                    "framework": ["React Native"],
+                    "languages": ["TypeScript"],
+                    "images": [
+                        {"image_url": "projects/smart_garden_mobile/GG-logo-mobiel.png", "alt_text": "Het logo van GoodGarden (mobiel)", "is_main_image": False, "is_logo": True},
+                        {"image_url": "projects/smartgarden_mobile/smartgarden_desktop_add_plant.webp", "alt_text": "Het formulier waar je een plant kan toevoegen aan de applicatie", "is_main_image": True, "is_logo": False}
+                    ],
+                    "paragraphs": [
+                        {
+                            "order": 1,
+                            "title": "Introductie",
+                            "subparagraphs": [
+                                "Smartgarden mobiel lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                                ""
+                                ""
+                            ],
+                        },
+                        {
+                            "order": 2,
+                            "title": "Vervolg Smart Garden Mobiel",
+                            "subparagraphs": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ],
+                    "specifications": [
+                        {"spec": "SSH (Secure Shell)", "category": "PROTOCOL"},
+                        {"spec": "SCP (Secure Copy Protocol)", "category": "PROTOCOL"},
+                        {"spec": "API", "category": "SOFTWARE"},
+                    ],
+                },
+                # ====================
+                # ZINRA
+                # ====================
+                {
+                    "link": "zinra",
+                    "title": "Zinra",
+                    "description": "Vanuit het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties (BZK) kregen we een opdracht om de enorme hoeveelheid aan documenten wat beter te organiseren.",
+                    "year": 2023,
+                    "github": "",
+                    "featured": True,
+                    "in_progress": True,
+                    "languages": ["PHP", "HTML"],
+                    "images": [
+                        {"image_url": "projects/zinra/zinra-logo.png", "alt_text": "Het logo van Zinra", "is_main_image": False, "is_logo": True},
+                        {"image_url": "projects/zinra/zinra_app.webp", "alt_text": "Een screenshot van de beslissingsboom", "is_main_image": True, "is_logo": False}
+                    ],
+                    "paragraphs": [
+                        {
+                            "order": 1,
+                            "title": "Introductie",
+                            "subparagraphs": [
+                                ""
+                                ""
+                                ""
+                            ],
+                        },
+                        {
+                            "order": 2,
+                            "title": "Vervolg Zinra",
+                            "subparagraphs": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ],
+                    "specifications": [
+                        {"spec": "SMTP (Simple Mail Transfer Protocol)", "category": "PROTOCOL"},
+                    ],
+                },
             ]
 
             # =================
@@ -253,6 +460,10 @@ class Command(BaseCommand):
                 # Koppeltabel: languages
                 for lang_name in project_data.get("languages", []):
                     proj.projectlanguage_set.get_or_create(language=language_objs[lang_name])
+
+                # Koppetabel: framework
+                for frame_name in project_data.get("framework", []):
+                    proj.projectframework_set.get_or_create(framework=framework_objs[frame_name])
 
                 # Images
                 for img in project_data.get("images", []):
