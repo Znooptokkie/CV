@@ -6,7 +6,8 @@
     "esModuleInterop": true,
     "outDir": "./static/js",
     "rootDir": "./ts",
-    "sourceMap": true
+    "sourceMap": true,
+    "lib": ["ES2016", "DOM"]
   },
-  "include": ["ts/**/*.ts"]
+  "include": ["./ts"]
 }
