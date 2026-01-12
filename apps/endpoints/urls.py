@@ -1,4 +1,5 @@
 from django.urls import path
+
 from apps.endpoints.views.language_view import language_endpoint
 
 urlpatterns = [
