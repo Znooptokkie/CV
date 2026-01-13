@@ -9,7 +9,7 @@ class Image(models.Model):
     is_main_image = models.BooleanField(default=False)
     is_logo = models.BooleanField(default=False)
     
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="images")
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="images_relation")
 
     class Meta:
         db_table = "image"
