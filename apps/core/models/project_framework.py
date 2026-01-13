@@ -5,7 +5,7 @@ from apps.core.models.project import Project
 
 
 class ProjectFramework(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="frameworks_relation")
     framework = models.ForeignKey(Framework, on_delete=models.CASCADE)
 
     class Meta:

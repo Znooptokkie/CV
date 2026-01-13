@@ -5,7 +5,7 @@ from apps.core.models.project import Project
 
 
 class ProjectLanguage(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="languages_relation")
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
 
     class Meta:

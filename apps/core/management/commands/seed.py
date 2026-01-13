@@ -5,6 +5,9 @@ from apps.core.models.image import Image
 from apps.core.models.language import Language
 from apps.core.models.paragraph import Paragraph
 from apps.core.models.project import Project
+from apps.core.models.project_framework import ProjectFramework
+from apps.core.models.project_language import ProjectLanguage
+from apps.core.models.project_specification import ProjectSpecification
 from apps.core.models.specification import Specification
 from apps.core.models.sub_paragraph import SubParagraph
 
@@ -61,6 +64,42 @@ class Command(BaseCommand):
             for name in languages:
                 language_objs[name], _ = Language.objects.get_or_create(name=name)
 
+            specification_objs = {}
+            specifications = [
+                "UART (Universal asynchronous receiver-transmitter)",
+                "CAN (Controller area network)",
+                "SPI (Serial Peripheral Interface)",
+                "SSH (Secure Shell)",
+                "Raspberry Pi 5",
+                "Hailo-HAT",
+                "Raspberry Pi Pico 2",
+                "UBEC (Universal battery eliminator circuit)",
+                "ESC (Electronic Speed Controller)",
+                "MCP2515-module",
+                "DC-Converter",
+                "FC-03 IR Optical Encoder",
+                "CSI (Camera Serial Interface)",
+                "HC-SR04",
+                "Bitwise Operators",
+                "Thonny",
+                "YOLOv11",
+                # "Y0L0v11"
+                "Crontab",
+                "PWM (Pulse-width modulation)",
+                "SMTP (Simple Mail Transfer Protocol)",
+                "CI/CD",
+                "SVG",
+                "API",
+                "JSON",
+                "Android SDK",
+                "Gradle",
+                "XML",
+                "SCP (Secure Copy Protocol)",
+                "I-Bus"
+            ]
+
+            for spec in specifications:
+                specification_objs[spec], _ = Specification.objects.get_or_create(specification=spec)
             # =================
             # PROJECTS DATA
             # =================
@@ -425,7 +464,7 @@ class Command(BaseCommand):
             ]
 
             # =================
-            # HELPER FUNCTIES
+            # PARAGRAPHS 
             # =================
             def create_paragraphs(project, paragraphs):
                 for p in paragraphs:
@@ -459,11 +498,23 @@ class Command(BaseCommand):
 
                 # Koppeltabel: languages
                 for lang_name in project_data.get("languages", []):
-                    proj.projectlanguage_set.get_or_create(language=language_objs[lang_name])
-
-                # Koppetabel: framework
+                    ProjectLanguage.objects.get_or_create(
+                        project=proj,
+                        language=language_objs[lang_name]
+                    )
+                
+                # Koppeltabel: frameworks
                 for frame_name in project_data.get("framework", []):
-                    proj.projectframework_set.get_or_create(framework=framework_objs[frame_name])
+                    ProjectFramework.objects.get_or_create(
+                        project=proj,
+                        framework=framework_objs[frame_name]
+                    )
+
+                for spec in project_data.get("specifications", []):
+                    ProjectSpecification.objects.get_or_create(
+                        project=proj,
+                        specification=specification_objs[spec["spec"]],
+                    )
 
                 # Images
                 for img in project_data.get("images", []):
@@ -473,16 +524,7 @@ class Command(BaseCommand):
                         defaults={"alt_text": img["alt_text"], "is_main_image": img["is_main_image"], "is_logo": img["is_logo"]},
                     )
 
-                # Paragraphs & subparagraphs
                 create_paragraphs(proj, project_data.get("paragraphs", []))
-
-                # Specifications
-                for spec in project_data.get("specifications", []):
-                    Specification.objects.update_or_create(
-                        project=proj,
-                        specification=spec["spec"],
-                        defaults={"category": spec["category"]}
-                    )
 
             self.stdout.write(self.style.SUCCESS("Seed core data succesvol uitgevoerd!"))
 
