@@ -64,42 +64,6 @@ class Command(BaseCommand):
             for name in languages:
                 language_objs[name], _ = Language.objects.get_or_create(name=name)
 
-            specification_objs = {}
-            specifications = [
-                "UART (Universal asynchronous receiver-transmitter)",
-                "CAN (Controller area network)",
-                "SPI (Serial Peripheral Interface)",
-                "SSH (Secure Shell)",
-                "Raspberry Pi 5",
-                "Hailo-HAT",
-                "Raspberry Pi Pico 2",
-                "UBEC (Universal battery eliminator circuit)",
-                "ESC (Electronic Speed Controller)",
-                "MCP2515-module",
-                "DC-Converter",
-                "FC-03 IR Optical Encoder",
-                "CSI (Camera Serial Interface)",
-                "HC-SR04",
-                "Bitwise Operators",
-                "Thonny",
-                "YOLOv11",
-                # "Y0L0v11"
-                "Crontab",
-                "PWM (Pulse-width modulation)",
-                "SMTP (Simple Mail Transfer Protocol)",
-                "CI/CD",
-                "SVG",
-                "API",
-                "JSON",
-                "Android SDK",
-                "Gradle",
-                "XML",
-                "SCP (Secure Copy Protocol)",
-                "I-Bus"
-            ]
-
-            for spec in specifications:
-                specification_objs[spec], _ = Specification.objects.get_or_create(specification=spec)
             # =================
             # PROJECTS DATA
             # =================
@@ -511,10 +475,15 @@ class Command(BaseCommand):
                     )
 
                 for spec in project_data.get("specifications", []):
+                    spec_obj, _ = Specification.objects.update_or_create(
+                        specification=spec["spec"],
+                        defaults={"category": spec["category"]}
+                    )
                     ProjectSpecification.objects.get_or_create(
                         project=proj,
-                        specification=specification_objs[spec["spec"]],
+                        specification=spec_obj
                     )
+
 
                 # Images
                 for img in project_data.get("images", []):
