@@ -8,7 +8,7 @@ class Paragraph(models.Model):
     order = models.IntegerField(default=0)
     title = models.CharField(max_length=255, blank=True, null=True)
 
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="paragraphs")
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="paragraphs_relation")
 
     class Meta:
         db_table = "paragraph"
