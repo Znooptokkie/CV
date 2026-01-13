@@ -8,7 +8,7 @@ from apps.endpoints.serializers.paragraph_serializer import ParagraphSerializer
 class ProjectSerializer(serializers.ModelSerializer):
     languages = serializers.SerializerMethodField() # Get the representation from "get_languages" method
     frameworks = serializers.SerializerMethodField() # Get the representation from "get_frameworks" method
-    specifications = serializers.SerializerMethodField() # Get the representation from "get_specifications" method
+    specifications = serializers.SerializerMethodField()# Get the representation from "get_specifications" method
     images = ImageSerializer(source="images_relation", many=True, read_only=True) # images_relatiom -> Image Model
     paragraphs = ParagraphSerializer(source="paragraphs_relation", many=True, read_only=True) # paragraphs_relation -> Paragraph Model
 
@@ -39,6 +39,12 @@ class ProjectSerializer(serializers.ModelSerializer):
 
     def get_frameworks(self, obj):
         return [frame.framework.name for frame in obj.frameworks_relation.all()]
-
+    
     def get_specifications(self, obj):
-        return [ spec.specification.specification for spec in obj.specifications_relation.all()]
+        return [
+            {
+                "specification": spec.specification.specification,
+                "category": spec.specification.category
+            }
+            for spec in obj.specifications_relation.all()
+        ]
