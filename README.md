@@ -89,22 +89,32 @@ git commit -m "Github Commit"
 git push -u origin feature/*
 ```
 
-4. Maak een Pull Request aan van ``feature/*`` naar ``develop``
+4. Rebase van `develop` branch
+```bash
+git fetch origin
+git rebase origin/develop
+# Bij conflicts oplossen, daarna:
+git rebase --continue
+# Force push na rebase
+git push --force-with-lease
+```
 
-5. Maak een Pull Request aan van ``develop`` naar ``master``
+5. Maak een Pull Request aan van ``feature/*`` naar ``develop``
 
-6. Checkout naar ``master``
+6. Maak een Pull Request aan van ``develop`` naar ``master``
+
+7. Checkout naar ``master``
 ```bash
 git checkout master
 ```
 
-7. Delete de ``feature/*`` branch ``local`` en ``remote``
+8. Delete de ``feature/*`` branch ``local`` en ``remote``
 ```bash
 git branch -d feature/* # local
 git push origin --delete feature/* # remote
 ```
 
-8. Pull code voor ``master`` branch
+9. Pull code voor ``master`` branch
 ```bash
 git pull
 ```
