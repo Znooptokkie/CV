@@ -1,7 +1,13 @@
 venv/
 *.pyc
+*.pyo
 __pycache__/
 static/css/
 static/js/
+*.map
 .env
+.env.*
 node_modules/
+.DS-STORE
+.idea/
+.vscode/
