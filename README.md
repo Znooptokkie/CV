@@ -119,6 +119,29 @@ git push origin --delete feature/* # remote
 git pull
 ```
 
+## Code geschreven op master branch
+
+1. Switch naar een nieuwe branch vanuit huidige punt
+```bash
+git switch -x feature/*
+```
+
+2. Ga terug naar `master` branch en reset hem
+```bash
+git switch master
+git reset --hard origin/master
+```
+
+3. Ga terug naar `feature/*` branch
+```bash
+git switch feature/*
+```
+
+4. Push de branch naar Github
+```bash
+git push -u origin/feature/*
+```
+
 ---
 
 # Productie
@@ -134,7 +157,6 @@ SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 CSRF_COOKIE_SECURE = True # Voor HTTPS
 ```
-
 3. Zet correcte .env bestand
 
 
