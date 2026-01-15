@@ -1,8 +1,25 @@
 @use "abstracts/variables" as *;
 @use "abstracts/mixins" as *;
 @use "base/base";
+
+// ======================
+//  LAYOUT
+// ======================
 @use "layout/header";
 @use "layout/footer";
 @use "layout/grids";
+
+// ======================
+//  COMPONENTS
+// ======================
 @use "components/buttons";
 @use "components/cards";
+@use "components/scrollbar";
+@use "components/section_title";
+
+// ======================
+//  UI
+// ======================
+@use "ui/selection";
+@use "ui/green_name";
+@use "ui/background";

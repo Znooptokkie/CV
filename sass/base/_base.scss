@@ -1,9 +1,30 @@
 @use "../abstracts/variables" as vars;
 
+*,
+*::before,
+*::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+}
+
+:root
+{
+  font-size: 16px;
+}
+
 body 
 {
-  font-family: vars.$font-stack;
+  font-family: vars.$font-main;
+  color: white;
   background-color: vars.$background-color;
-  margin: 0;
-  padding: 0;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+a
+{
+  color: white;
 }

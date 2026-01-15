@@ -1,0 +1,36 @@
+@use "../abstracts/variables" as vars;
+@use "sass:color"; // Zodat color.adjust() gebruikt kan worden voor helderheid
+
+/* Hele scrollbar */
+::-webkit-scrollbar 
+{
+    width: .75rem;
+    height: .75rem;
+}
+
+/* Scrollbar track (achtergrond) */
+::-webkit-scrollbar-track 
+{
+    background: rgba(6, 10, 18, 0.7);
+    border-radius: 10px;
+}
+
+/* Scrollbar thumb (het schuifje) */
+::-webkit-scrollbar-thumb 
+{
+    background: vars.$primary-color;
+    border-radius: 10px;
+    border: 3px solid rgba(6, 10, 18, 0.7);
+}
+
+/* Scrollbar thumb hover */
+::-webkit-scrollbar-thumb:hover 
+{
+    background: color.adjust(vars.$primary-color, $lightness: 15%);
+}
+
+::selection 
+{
+    background: vars.$primary-color;
+    color: vars.$background-color;
+}

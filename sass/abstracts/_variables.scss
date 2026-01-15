@@ -1,4 +1,12 @@
-$primary-color: #3498db;
-$secondary-color: #2ecc71;
-$background-color: #f4f4f4;
-$font-stack: "Arial", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Goldman:wght@400;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+$primary-color: #2ecc71;
+$secondary-color: rgba(10, 37, 92, 1);
+$background-color: rgb(6, 10, 18);
+
+$font-main: "Ubuntu", sans-serif;
+$font-banner-title: "Goldman", sans-serif;
+$font-courier: "Courier Prime", monospace;
+
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 480px;
