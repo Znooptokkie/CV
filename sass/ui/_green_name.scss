@@ -1,0 +1,6 @@
+@use "../abstracts/variables" as vars;
+
+.green-name
+{
+    color: vars.$primary-color;
+}

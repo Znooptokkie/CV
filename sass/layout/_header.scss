@@ -1,0 +1,163 @@
+@use "../abstracts/variables" as vars;
+@use "../abstracts//mixins" as mix;
+
+header 
+{
+    @include mix.flexbox($direction: row-reverse);
+    width: 100%;
+    padding: 1rem 5rem;
+
+    .desktop-header 
+    {
+        @include mix.flexbox($justify: space-between, $align: center);
+        width: 100%;
+
+        .desktop-logo 
+        {
+            img
+            {
+                max-height: 10vh;
+            }
+        }
+
+        .desktop-nav
+        {
+            ul 
+            {
+                @include mix.flexbox($gap: 2.5rem);
+                list-style: none;
+
+                li a 
+                {
+                    text-decoration: none;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+
+                    &.active,
+                    &:hover
+                    {
+                        color: vars.$primary-color !important;
+                    }
+
+                    &:visited
+                    {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }   
+}
+
+@media(min-width: vars.$breakpoint-tablet) // Breakpoint: 768px
+{
+    .mobile-dropdown-menu 
+    {
+        display: none !important; // important moet blijven staan ivm resize 
+    }
+}
+
+
+ @media(max-width: vars.$breakpoint-tablet) // Breakpoint: 768px
+{        
+    header
+    {
+        padding: 1rem 1rem;
+        
+        .desktop-nav
+        {
+            display: none;
+        }
+
+        .desktop-header 
+        {
+            .desktop-logo 
+            {
+                img
+                {
+                    max-height: 10vh;
+                }
+            }
+        }
+
+        .nav-toggle-button 
+        {
+            @include mix.flexbox();
+            font-size: 3.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin: .5rem;
+            color: white;
+            transition: transform 0.3s ease;
+            z-index: 9999;
+            position: fixed;
+
+            &::before 
+            {
+                content: "\2630";
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                width: 3rem;
+                height: 3rem;
+                border-radius: 50%;
+                color: rgba(white, 1);
+                font-size: 1.5rem;
+                background-color: rgba(34, 34, 34, 0.75);
+                border: solid 3px rgba(white, 1);
+                background: linear-gradient(135deg, rgba(34, 34, 34, 0.1), rgba(34, 34, 34, 0.2));
+            }
+        }
+
+        &.dropdown-active .nav-toggle-button::before 
+        {
+            content: "\00D7";
+            font-size: 2.5rem;
+            background-color: white;
+            color: vars.$background-color;
+            border: none;
+        }
+
+        .mobile-dropdown-menu 
+        {
+            display: none;
+            background-color: rgba(vars.$background-color, 1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+
+            &.active 
+            {
+                @include mix.flexbox($justify: center, $align: center);
+                text-align: center;
+            }
+
+            ul 
+            {
+                @include mix.flexbox($direction: column, $justify: center, $align: center, $gap: 2rem);
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+
+                li a 
+                {
+                    text-decoration: none;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 1.5rem;
+
+                    &.active 
+                    {
+                        color: vars.$primary-color;
+                    }
+                }
+            }
+        }
+    }
+}
