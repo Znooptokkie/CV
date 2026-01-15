@@ -11,12 +11,13 @@
     <script type="module" src="{% static 'js/main.js' %}" defer></script>
 </head>
 <body>
-    {% include "components/header.html" %}
+    <canvas id="stars"></canvas>
+    {% include "components/layout/header.html" %}
     <main>
         {% block content %}
         
         {% endblock %}
     </main>
-    {% include "components/footer.html" %}
+    {% include "components/layout/footer.html" %}
 </body>
 </html>

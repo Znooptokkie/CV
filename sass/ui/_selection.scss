@@ -1,0 +1,7 @@
+@use "../abstracts/variables" as vars;
+
+::selection 
+{
+    background: vars.$primary-color;
+    color: vars.$background-color;
+}

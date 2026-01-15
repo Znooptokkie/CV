@@ -1,0 +1,16 @@
+<nav class="mobile-dropdown-menu">
+    <ul class="nav-header-ul">
+        <li>
+            <a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">Home</a>
+        </li>
+        <li>
+            <a href="{% url 'opleidingen' %}" class="{% if request.resolver_match.url_name == 'opleidingen' %}active{% endif %}">Opleidingen</a>
+        </li>
+        <li>
+            <a href="{% url 'projecten' %}" class="{% if request.resolver_match.url_name == 'projecten' %}active{% endif %}">Projecten</a>
+        </li>
+        <li>
+            <a href="{% url 'over_mij' %}" class="{% if request.resolver_match.url_name == 'over_mij' %}active{% endif %}">Over Mij</a>
+        </li>
+    </ul>
+</nav>

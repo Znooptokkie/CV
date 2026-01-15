@@ -1,0 +1,27 @@
+<nav class="desktop-header">
+    <a href="/" class="desktop-logo">
+        <img src="../static/images/logo_cv.svg" alt="Logo for my website">
+    </a>
+    <div class="desktop-nav">
+        <ul>
+            <li>
+                <a href="{% url 'opleidingen' %}"
+                   class="{% if request.resolver_match.url_name == 'opleidingen' %}active{% endif %}">
+                    Opleidingen
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'projecten' %}"
+                   class="{% if request.resolver_match.url_name == 'projecten' %}active{% endif %}">
+                    Projecten
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'over_mij' %}"
+                   class="{% if request.resolver_match.url_name == 'over_mij' %}active{% endif %}">
+                    Over Mij
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

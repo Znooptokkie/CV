@@ -1,4 +1,4 @@
-import { LanguageInterface } from "../../interfaces/LanguageInterface";
+import { LanguageInterface } from "../../interfaces/api/LanguageInterface";
 import { Fetch } from "../utils/Fetch.js";
 
 export class LanguageService
