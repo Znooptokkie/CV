@@ -1,5 +1,5 @@
-import { FourSides, FourSidesInner } from "../../types/svg/path.properties.type.js"
-import { DeconstructPath } from "../components/DeconstructPath.js"
+import { FourSides, FourSidesInner } from "../../types/path.properties.type.js"
+import { DeconstructPath } from "./DeconstructPath.js"
 
 export class CreateSides
 {
@@ -101,7 +101,7 @@ export class CreateSides
             if (sides.top.length <= 1)
             {
                 const newPoints = {
-                    x: sides.top[0].x - offset * 2, // Compenseert horizontale inwaartse verschuiving
+                    x: sides.top[0].x - offset * 2, // Compenseert horizontale inwaartse verschuiving (2 = niet correct!@#$)
                     y: sides.top[0].y + offset // Schuift lijn naar beneden
                 }
                 innerTop.push(newPoints)

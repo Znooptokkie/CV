@@ -1,5 +1,5 @@
-import { CalcResizeContainer } from "../../education/CalcResizeContainer.js"
-import { Points } from "../../../types/svg/path.properties.type.js"
+import { CalcResizeContainer } from "./CalcResizeContainer.js"
+import { Points } from "../../../types/path.properties.type.js"
 
 /**
  * CalcPathProperties

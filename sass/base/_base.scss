@@ -1,4 +1,20 @@
 @use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as mix;
+
+*,
+*::before,
+*::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+}
+
+:root
+{
+  font-size: 16px;
+}
 
 *,
 *::before,
@@ -22,6 +38,15 @@ body
   background-color: vars.$background-color;
   min-height: 100%;
   min-width: 100%;
+}
+
+main
+{
+  @include mix.flexbox($direction: column, $gap: 7.5rem);
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 7.5rem auto 5%;
 }
 
 a

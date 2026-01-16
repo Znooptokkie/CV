@@ -1,6 +1,6 @@
 import { SVG } from "./SVG.js";
 
-import { SVGGlobalAttributes } from "../../../types/svg/attributes.global.type.js";
+import { SVGGlobalAttributes } from "../../../types/attributes.global.type.js";
 
 /**
  * CreateSVG
