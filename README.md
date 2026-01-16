@@ -158,3 +158,8 @@ X_FRAME_OPTIONS = 'DENY'
 CSRF_COOKIE_SECURE = True # Voor HTTPS
 ```
 3. Zet correcte .env bestand
+
+
+
+
+--- TEST ---
