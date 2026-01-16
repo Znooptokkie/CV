@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Wilkommen</h1>
-<ul id="language-list"></ul>
+    <section id="homepage-section-banner">
+    
+        {% include "components/homepage/banner_text.html" %}
+        
+        {% include "components/homepage/profile_pic.html" %}
+    
+    </section>
 {% endblock %}

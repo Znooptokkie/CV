@@ -1,4 +1,4 @@
-import { Points } from "../../types/svg/path.properties.type.js";
+import { Points } from "../../types/path.properties.type.js";
 import { CalcPathProperties } from "./calculations/CalcPathProperties.js";
 
 /**

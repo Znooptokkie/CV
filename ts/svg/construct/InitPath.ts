@@ -1,4 +1,4 @@
-import { SVGPathAttributes } from "../../types/svg/attributes";
+import { SVGPathAttributes } from "../../types/attributes";
 import { CreateSVG } from "./core/SVGCreate.js";
 import { SVGFactory } from "./core/SVGFactory.js";
 import { PathFigures } from "./PathFigures.js";

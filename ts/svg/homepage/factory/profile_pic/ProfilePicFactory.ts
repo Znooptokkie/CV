@@ -6,7 +6,7 @@ import { SVGFactory } from "../../../construct/core/SVGFactory.js";
 export class ProfilePicFactory
 {
     private SVGElement: CreateSVG | null = null;
-    private HTMLIDElement: string = "profile-pic-svg";
+    private HTMLIDElement: string = "homepage-banner-profile-pic-svg";
     private viewboxSize: string = "0 0 1200 1200";
     private preserveAspectRatio: string = "xMidYMid meet"
 

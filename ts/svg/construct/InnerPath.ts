@@ -1,4 +1,4 @@
-import { FourSides, FourSidesInner } from "../../types/svg/path.properties.type"
+import { FourSides, FourSidesInner } from "../../types/path.properties.type"
 import { DeconstructPath } from "./DeconstructPath.js"
 import { CreateSides } from "./CreateSides.js"
 
