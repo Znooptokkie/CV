@@ -3,26 +3,26 @@
 
 main
 {
-    .cv-banner-section
+    #homepage-section-banner
     {
         @include mix.flexbox($direction: row, $align: center);
         width: 100%;
         padding: 1rem;
         box-sizing: border-box;
 
-        .cv-main-banner 
+        .homepage-banner-profile-pic-container
         {
             @include mix.flexbox($justify: center, $gap: 2rem);
             width: 50%;
 
-            .profile-pic 
+            .homepage-banner-profile-pic
             {
                 @include mix.flexbox();
                 width: 100%;
                 height: 100%;
                 max-width: clamp(250px, 25vw, 500px);
 
-                #profile-pic-svg
+                #homepage-banner-profile-pic-svg
                 {
                     .thin-inner-border-group
                     {
@@ -50,7 +50,7 @@ main
             }
         }
 
-        .cv-banner-fancy-header 
+        .homepage-banner-text-container
         {
             @include mix.flexbox($direction: column, $justify: center);
             width: 50%;
@@ -58,7 +58,7 @@ main
             height: 100%;
             align-self: center;
 
-            .cv-banner-container 
+            .homepage-banner-fancy-text-container 
             {
                 @include mix.flexbox($justify: center, $align: center);
                 text-align: left;
@@ -66,7 +66,7 @@ main
                 overflow: hidden;
                 margin-top: 0;
 
-                .heading
+                .homepage-banner-fancy-text
                 {
                     font-size: clamp(1.5rem, 5vw, 2.5rem);
                     font-weight: lighter;
@@ -78,19 +78,19 @@ main
                 }
             }
 
-            .subheading-container 
+            .homepage-banner-subheading-container 
             {
                 @include mix.flexbox($justify: center, $align: center, $gap: 1rem);
                 margin: 1rem 0;
 
-                .subheading 
+                .homepage-banner-subheading 
                 {
                     color: grey;
                     font-size: clamp(1rem, 3vw, 1.25rem);
                     margin: 0;
                 }
 
-                .social-icons 
+                .homepage-banner-social-icons 
                 {
                     @include mix.flexbox($justify: flex-start, $align: center, $gap: .75rem);
 
@@ -116,7 +116,7 @@ main
                 }
             }
 
-            .my-description 
+            .homepage-banner-my-description 
             {
                 @include mix.flexbox($justify: center, $align: center);
 
@@ -137,15 +137,13 @@ main
 {
     main
     {
-        .cv-banner-section
+        #homepage-section-banner
         {
-            .cv-banner-fancy-header
+            .homepage-banner-text-container
             {
-                .cv-banner-container 
+                .homepage-banner-fancy-text-container
                 {
-                    min-height: 100px;
-
-                    .heading 
+                    .homepage-banner-fancy-text
                     {
                         font-size: clamp(1.75rem, 4vw, 2rem);
                         max-width: 100%;
@@ -153,16 +151,16 @@ main
                     }
                 }
 
-                .subheading-container 
+                .homepage-banner-subheading-container 
                 {
                     flex-direction: column;
 
-                    .subheading 
+                    .homepage-banner-subheading 
                     {
                         font-size: clamp(0.8rem, 3vw, 1rem);
                     }
 
-                    .social-icons 
+                    .homepage-banner-social-icons 
                     {
                         svg 
                         {
@@ -180,33 +178,38 @@ main
 {
     main
     {
-        .cv-banner-section 
+        #homepage-section-banner 
         {
-            @include mix.flexbox($direction: column, $align: center);
+            @include mix.flexbox($direction: column-reverse, $align: center);
 
-            .cv-main-banner 
+            .homepage-banner-profile-pic-container 
             {
                 @include mix.flexbox($direction: column, $justify: center, $align: center, $gap: 1rem);
                 width: 100%;
 
-                .profile-pic 
+                .homepage-banner-profile-pic 
                 {
                     max-width: clamp(300px, 20vw, 325px);
                     margin-bottom: 1rem;
                 }
             }
 
-            .cv-banner-fancy-header 
+            .homepage-banner-text-container
             {
                 margin-top: 0;
                 width: 100%;
-                
-                .cv-banner-container
+
+                .homepage-banner-subheading-container 
                 {
-                    .heading 
+                    margin: 0;
+                }
+                
+                .homepage-banner-fancy-text-container
+                {
+                    .homepage-banner-fancy-text
                     {
                         max-width: 100%;
-                        min-height: 100px;
+                        min-height: 80px;
                         text-align: center;
                     }
                 }
@@ -219,15 +222,16 @@ main
 {
     main
     {
-        .cv-banner-section 
+        #homepage-section-banner 
         {
-            // @include mix.flexbox($direction: row, $justify: center, $align: flex-start, $gap: 2rem);
-
-            .cv-banner-fancy-header
+            .homepage-banner-text-container
             {
-                .cv-banner-container
+                .homepage-banner-fancy-text-container
                 {
-                    min-height: 100px;
+                    .homepage-banner-fancy-text
+                    {
+                        min-height: 100px;
+                    }
                 }
             }
         }
