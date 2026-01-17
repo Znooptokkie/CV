@@ -72,50 +72,57 @@ npm run watch:dev
 
 ## Flow
 
-1. Maak een nieuwe ``feature/`` branch aan
+1. Maak een nieuwe ``feature`` branch aan vanaf ``develop``
 ```bash
-git checkout -b feature/*
+git checkout develop
+git pull
+git checkout -b feature/<naam>
 ```
 
-2. Zorg dat de code clean is met ``ruff``
+2. Ontwikkel je feature en check code clean
 ```bash
-ruff check . --fix # --fix is voor local
-```
-
-3. Push naar Github
-```bash
+ruff check . --fix
 git add .
-git commit -m "Github Commit"
-git push -u origin feature/*
+git commit -m "Omschrijving van feature"
 ```
 
-4. Rebase van `develop` branch
+3. Push feature branch naar GitHub
+```bash
+git push -u origin feature/<naam>
+```
+
+4. Werk feature branch bij met de laatste develop
 ```bash
 git fetch origin
-git rebase origin/develop
-# Bij conflicts oplossen, daarna:
-git rebase --continue
-# Force push na rebase
-git push --force-with-lease
-```z
+git merge origin/develop
+# Of optioneel: git rebase origin/develop
+# Conflicten oplossen in de feature branch
+git add <conflict-bestanden>
+git commit
+git push
+```
 
-5. Maak een Pull Request aan van ``feature/*`` naar ``develop``
+5. Open een Pull Request van feature/<naam> → develop
+```bash
+# Wacht tot review + CI groen is
+# Merge via PR naar develop
+```
 
-6. Maak een Pull Request aan van ``develop`` naar ``master``
+6. Open een Pull Request van develop → master
+```bash
+# Wacht tot review + CI groen is
+# Merge via PR naar develop
+```
 
-7. Checkout naar ``master``
+7. Feature branch verwijderen na merge
+```bash
+git branch -d feature/<naam>        # lokaal
+git push origin --delete feature/<naam>  # remote
+```
+
+8. Master updaten lokaal na merge
 ```bash
 git checkout master
-```
-
-8. Delete de ``feature/*`` branch ``local`` en ``remote``
-```bash
-git branch -d feature/* # local
-git push origin --delete feature/* # remote
-```
-
-9. Pull code voor ``master`` branch
-```bash
 git pull
 ```
 
