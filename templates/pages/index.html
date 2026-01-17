@@ -1,11 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
+
     <section id="homepage-section-banner">
     
-        {% include "components/homepage/banner_text.html" %}
+        {% include "components/homepage/first_section/banner_text.html" %}
         
-        {% include "components/homepage/profile_pic.html" %}
+        {% include "components/homepage/first_section/profile_pic.html" %}
     
     </section>
+
+    <section id="homepage-section-experience">
+
+        {% include "components/homepage/second_section/experience.html" %}
+
+    </section>
+    
 {% endblock %}

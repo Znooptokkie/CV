@@ -97,7 +97,7 @@ git rebase origin/develop
 git rebase --continue
 # Force push na rebase
 git push --force-with-lease
-```
+```z
 
 5. Maak een Pull Request aan van ``feature/*`` naar ``develop``
 
