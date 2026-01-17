@@ -1,7 +1,12 @@
 @use "abstracts/variables" as *;
 @use "abstracts/mixins" as *;
 @use "abstracts/keyframes" as *;
+
+// ======================
+//  BASE SETUP
+// ======================
 @use "base/base";
+@use "base/selection";
 
 // ======================
 //  LAYOUT
@@ -22,6 +27,5 @@
 // ======================
 //  UI
 // ======================
-@use "ui/selection";
 @use "ui/green_name";
 @use "ui/background";

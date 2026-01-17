@@ -16,21 +16,6 @@
   font-size: 16px;
 }
 
-*,
-*::before,
-*::after
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    border: 0;
-}
-
-:root
-{
-  font-size: 16px;
-}
-
 body 
 {
   font-family: vars.$font-main;
@@ -47,6 +32,14 @@ main
   width: 100%;
   max-width: 1200px;
   margin: 7.5rem auto 5%;
+}
+
+@media (max-width: vars.$breakpoint-tablet)
+{
+  main
+  {
+    gap: 1.5rem;
+  }
 }
 
 a
