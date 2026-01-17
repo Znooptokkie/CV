@@ -1,0 +1,84 @@
+@use "../../abstracts/variables" as vars;
+@use "../../abstracts/mixins" as  mix;
+
+#homepage-section-experience
+{
+    padding: 1.25rem;
+    color: white;
+    display: grid;
+    max-width: 1000px; 
+    margin: 0 auto;  
+
+    div 
+    {
+        text-align: center;
+
+        p 
+        {
+            font-family: vars.$font-banner-title;
+            color: vars.$primary-color;
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 0;
+        }
+
+        h3
+        {
+            @include mix.flexbox($direction: column, $align: center, $justify: center);
+            font-family: vars.$font-courier;
+            font-weight: 100;
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            margin: .5rem 0 0;
+        }
+    }
+}
+
+@media (max-width: vars.$breakpoint-mobile)
+{
+    #cv-experience-section
+    {
+        grid-template-columns: 1fr;
+    
+        div
+        {
+            h3
+            {
+                span
+                {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: vars.$breakpoint-tablet)
+{
+    #homepage-section-experience
+    {
+        grid-template-columns: repeat(2, 1fr); 
+        padding: 10px;
+        width: 100%; 
+        gap: 1rem;
+    
+        p 
+        {
+            font-size: 2.5rem;
+        }
+    
+        h3
+        {
+            font-size: .75rem;
+        }
+    }
+}
+
+@media (min-width: vars.$breakpoint-tablet)
+{
+    #homepage-section-experience
+    {
+        grid-template-columns: repeat(4, 1fr);  
+        gap: 7.5rem;
+    }
+}
