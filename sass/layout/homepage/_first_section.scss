@@ -6,7 +6,6 @@
 {
     @include mix.flexbox($direction: row, $align: center);
     width: 100%;
-    padding: 1rem;
     box-sizing: border-box;
 
     .homepage-banner-profile-pic-container
@@ -167,7 +166,6 @@
         }
     }
 }
-
 
 @media (max-width: vars.$breakpoint-tablet)
 {

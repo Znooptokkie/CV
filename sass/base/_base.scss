@@ -34,15 +34,17 @@ main
   margin: 7.5rem auto 5%;
 }
 
+a
+{
+  color: white;
+}
+
 @media (max-width: vars.$breakpoint-tablet)
 {
   main
   {
-    gap: 1.5rem;
+    margin-top: 2.5rem;
+    gap: 5rem;
+    padding: 0 2.5rem;
   }
-}
-
-a
-{
-  color: white;
 }

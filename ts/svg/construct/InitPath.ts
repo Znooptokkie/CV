@@ -25,17 +25,17 @@ export class InitPath
             id: "svgGlobalShadow",
             x: "-50%",
             y: "-50%",
-            width: "200%",
-            height: "200%",
+            width: "100%",
+            height: "100%",
             filterUnits: "objectBoundingBox"
         }).createSvgTag();
 
         new SVGFactory(shadowFilter, "feDropShadow", {
-            dx: "10",
-            dy: "10",
+            dx: "5",
+            dy: "5",
             stdDeviation: "4",
             "flood-color": "#000005",
-            "flood-opacity": "0.45"
+            "flood-opacity": "0.25"
         }).createSvgTag();
 
         // Schaduw achter de SVG, alleen op outer path
@@ -66,17 +66,17 @@ export class InitPath
             gradientUnits: "userSpaceOnUse"
         }).createSvgTag();
 
-        new SVGFactory(innerGrad, "stop", { offset: "0%", "stop-color": "#000110" }).createSvgTag();
-        new SVGFactory(innerGrad, "stop", { offset: "39.9%", "stop-color": "#000111" }).createSvgTag();
-        new SVGFactory(innerGrad, "stop", { offset: "40%", "stop-color": "#010213" }).createSvgTag();
-        new SVGFactory(innerGrad, "stop", { offset: "69.9%", "stop-color": "#010213" }).createSvgTag();
-        new SVGFactory(innerGrad, "stop", { offset: "70%", "stop-color": "#010111" }).createSvgTag();
-        new SVGFactory(innerGrad, "stop", { offset: "100%", "stop-color": "#000110" }).createSvgTag();
+        new SVGFactory(innerGrad, "stop", { offset: "0%", "stop-color": "#00010fff" }).createSvgTag();
+        new SVGFactory(innerGrad, "stop", { offset: "39.9%", "stop-color": "#00010fff" }).createSvgTag();
+        new SVGFactory(innerGrad, "stop", { offset: "40%", "stop-color": "#020313ff" }).createSvgTag();
+        new SVGFactory(innerGrad, "stop", { offset: "69.9%", "stop-color": "#020313ff" }).createSvgTag();
+        new SVGFactory(innerGrad, "stop", { offset: "70%", "stop-color": "#00010fff" }).createSvgTag();
+        new SVGFactory(innerGrad, "stop", { offset: "100%", "stop-color": "#00010fff" }).createSvgTag();  
 
         new SVGFactory(innerGroup, "path", {
             d: inner,
-            // fill: `url(#${innerGradId})`,
-            fill: "none",
+            fill: `url(#${innerGradId})`,
+            // fill: "none",
             stroke: "none"
         }).createSvgTag();
 
@@ -87,8 +87,9 @@ export class InitPath
 
         // Nu verplaats je alle border/figure styling naar een aparte functie
         InitPath.createBorderGradients(defs, figures, borderGroup);
-        console.log(inner);
-        console.log(figures);
+        // InitPath.createBorderParts(container, outer, inner, "language-small")
+        // console.log(inner);
+        // console.log(figures);
     }
 
     /**
@@ -107,10 +108,10 @@ export class InitPath
             gradientUnits: "userSpaceOnUse"
         }).createSvgTag();
 
-        new SVGFactory(globalGrad, "stop", { offset: "0%", "stop-color": "#010215" }).createSvgTag();
-        new SVGFactory(globalGrad, "stop", { offset: "40%", "stop-color": "#000217" }).createSvgTag();
-        new SVGFactory(globalGrad, "stop", { offset: "70%", "stop-color": "#000112" }).createSvgTag();
-        new SVGFactory(globalGrad, "stop", { offset: "100%", "stop-color": "#000010" }).createSvgTag();
+        // new SVGFactory(globalGrad, "stop", { offset: "0%", "stop-color": "#e6e6e6ff" }).createSvgTag();
+        // new SVGFactory(globalGrad, "stop", { offset: "40%", "stop-color": "#000217" }).createSvgTag();
+        // new SVGFactory(globalGrad, "stop", { offset: "70%", "stop-color": "#000112" }).createSvgTag();
+        // new SVGFactory(globalGrad, "stop", { offset: "100%", "stop-color": "#000010" }).createSvgTag();
 
         // Per-figure gradient (voorbeeld)
         figures.forEach((figure, idx) =>
@@ -119,18 +120,18 @@ export class InitPath
             const grad = new SVGFactory(defs, "linearGradient", {
                 id: gradId,
                 gradientUnits: "objectBoundingBox",
-                x1: "0", y1: "0",
+                x1: "1", y1: "0",
                 x2: "1", y2: "1"
             }).createSvgTag();
 
-            new SVGFactory(grad, "stop", { offset: "0%", "stop-color": "#000114" }).createSvgTag();
-            new SVGFactory(grad, "stop", { offset: "50%", "stop-color": "#010212" }).createSvgTag();
-            new SVGFactory(grad, "stop", { offset: "100%", "stop-color": "#010212" }).createSvgTag();
+            new SVGFactory(grad, "stop", { offset: "0%", "stop-color": "#020318ff" }).createSvgTag();
+            new SVGFactory(grad, "stop", { offset: "50%", "stop-color": "#02030eff" }).createSvgTag();
+            new SVGFactory(grad, "stop", { offset: "100%", "stop-color": "#00010fff" }).createSvgTag();
 
             new SVGFactory(borderGroup, "path", {
                 d: `${figure}Z`,
                 fill: `url(#${gradId})`,
-                stroke: "none"
+                stroke: "rgba(51, 81, 142, 0.2)"
             }).createSvgTag();
 
             // console.log(figure);
