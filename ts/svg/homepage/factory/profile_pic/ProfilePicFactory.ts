@@ -1,4 +1,5 @@
 import { SVGCircleAttributes, SVGClipPathAttributes, SVGGroupAttributes, SVGImageAttributes } from "../../../../types/attributes";
+
 import { CalcCircleProperties } from "../../../construct/calculations/CalcCircleProperties.js";
 import { CreateSVG } from "../../../construct/core/SVGCreate.js";
 import { SVGFactory } from "../../../construct/core/SVGFactory.js";

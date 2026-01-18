@@ -3,7 +3,6 @@
 
 #homepage-section-experience
 {
-    padding: 1.25rem;
     color: white;
     display: grid;
     max-width: 1000px; 
@@ -34,31 +33,11 @@
     }
 }
 
-@media (max-width: vars.$breakpoint-mobile)
-{
-    #cv-experience-section
-    {
-        grid-template-columns: 1fr;
-    
-        div
-        {
-            h3
-            {
-                span
-                {
-                    font-size: 1rem;
-                }
-            }
-        }
-    }
-}
-
 @media (max-width: vars.$breakpoint-tablet)
 {
     #homepage-section-experience
     {
         grid-template-columns: repeat(2, 1fr); 
-        padding: 10px;
         width: 100%; 
         gap: 1rem;
     

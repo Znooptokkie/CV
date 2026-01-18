@@ -13,6 +13,7 @@ class SpecificationEnumCategory(models.TextChoices):
 class Specification(models.Model):
     specification = models.CharField(max_length=255, blank=True, null=True)
     category = models.CharField(max_length=20, choices=SpecificationEnumCategory.choices, default=SpecificationEnumCategory.SOFTWARE)
+    svg_url = models.CharField(max_length=255, unique=False, null=True)
 
     class Meta:
         db_table = "specification"

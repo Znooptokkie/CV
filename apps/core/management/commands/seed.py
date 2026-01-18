@@ -36,33 +36,46 @@ class Command(BaseCommand):
             # =================
             framework_objs = {}
             frameworks = [
-                "Django",
-                "Flask",
-                "React Native",
-                "Electron",
+                {"name": "Django", "svg_url": "django"},
+                {"name": "Flask", "svg_url": "flask"},
+                {"name": "React Native", "svg_url": "react"},
+                {"name": "Electron", "svg_url": "electron"},
             ]
-            for name in frameworks:
-                framework_objs[name], _ = Framework.objects.get_or_create(name=name)
+
+            for fw in frameworks:
+                framework_objs[fw["name"]], _ = Framework.objects.update_or_create(
+                    name=fw["name"],
+                    defaults={
+                        "svg_url": fw["svg_url"],
+                    }
+                )
 
             # =================
             # LANGUAGES
             # =================
             language_objs = {}
             languages = [
-                "Python", 
-                "MicroPython", 
-                "JavaScript", 
-                "TypeScript",
-                "PHP", 
-                "Java", 
-                "HTML", 
-                "CSS", 
-                "SASS", 
-                "Bash", 
-                "SQL"
+                {"name": "Python", "svg_url": "python"},
+                {"name": "MicroPython", "svg_url": "python"},
+                {"name": "JavaScript", "svg_url": "javascript"},
+                {"name": "TypeScript", "svg_url": "typescript"},
+                {"name": "PHP", "svg_url": "php"},
+                {"name": "Java", "svg_url": "java"},
+                {"name": "HTML", "svg_url": "html5"},
+                {"name": "CSS", "svg_url": "css3"},
+                {"name": "SASS", "svg_url": "sass"},
+                {"name": "Bash", "svg_url": "bash"},
+                {"name": "SQL", "svg_url": "azuresqldatabase"},
             ]
-            for name in languages:
-                language_objs[name], _ = Language.objects.get_or_create(name=name)
+
+            for lang in languages:
+                language_objs[lang["name"]], _ = Language.objects.update_or_create(
+                    name=lang["name"],
+                    defaults={
+                        "svg_url": lang["svg_url"],
+                    }
+                )
+
 
             # =================
             # PROJECTS DATA
@@ -213,9 +226,9 @@ class Command(BaseCommand):
                         {"spec": "I-Bus", "category": "PROTOCOL"},
                         {"spec": "SPI (Serial Peripheral Interface)", "category": "PROTOCOL"},
                         {"spec": "SSH (Secure Shell)", "category": "PROTOCOL"},
-                        {"spec": "Raspberry Pi 5", "category": "HARDWARE"},
+                        {"spec": "Raspberry Pi 5", "category": "HARDWARE", "svg_url": "raspberrypi"},
                         {"spec": "Hailo-HAT", "category": "HARDWARE"},
-                        {"spec": "Raspberry Pi Pico 2", "category": "HARDWARE"},
+                        {"spec": "Raspberry Pi Pico 2", "category": "HARDWARE", "svg_url": "raspberrypi"},
                         {"spec": "UBEC (Universal battery eliminator circuit)", "category": "HARDWARE"},
                         {"spec": "ESC (Electronic Speed Controller)", "category": "HARDWARE"},
                         {"spec": "MCP2515-module", "category": "HARDWARE"},
@@ -270,7 +283,7 @@ class Command(BaseCommand):
                         {"spec": "CI/CD", "category": "SOFTWARE"},
                         {"spec": "SVG", "category": "SOFTWARE"},
                         {"spec": "API", "category": "SOFTWARE"},
-                        {"spec": "JSON", "category": "SOFTWARE"}
+                        {"spec": "JSON", "category": "SOFTWARE", "svg_url": "json"}
                     ],
                 },
                 # ====================
@@ -299,9 +312,9 @@ class Command(BaseCommand):
                         }
                     ],
                     "specifications": [
-                        {"spec": "Android SDK", "category": "SOFTWARE"},
-                        {"spec": "Gradle", "category": "SOFTWARE"},
-                        {"spec": "XML", "category": "SOFTWARE"}
+                        {"spec": "Android SDK", "category": "SOFTWARE", "svg_url": "androidstudio"},
+                        {"spec": "Gradle", "category": "SOFTWARE", "svg_url": "gradle"}, # Moet eigenlijk gradle-original zijn!@!$#%@$^
+                        {"spec": "XML", "category": "SOFTWARE", "svg_url": "xml"}
                     ],
                 },
                 # ====================
@@ -477,7 +490,10 @@ class Command(BaseCommand):
                 for spec in project_data.get("specifications", []):
                     spec_obj, _ = Specification.objects.update_or_create(
                         specification=spec["spec"],
-                        defaults={"category": spec["category"]}
+                        defaults={
+                            "category": spec["category"],
+                            "svg_url": spec.get("svg_url"),
+                        }
                     )
                     ProjectSpecification.objects.get_or_create(
                         project=proj,
