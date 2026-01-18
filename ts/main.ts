@@ -1,6 +1,8 @@
+import { initEndpoints } from "./endpoints/initEndpoints.js";
+
+import { TimelineAnimation } from "./utils/Timeline.js";
 import { Background } from "./utils/Background.js";
 import { Dropdown } from "./utils/NavDropdown.js";
-import { initEndpoints } from "./endpoints/initEndpoints.js";
 
 import { FancyText } from "./svg/views/homepage/FancyText.js";
 import { ProfilePicFactory } from "./svg/homepage/factory/profile_pic/ProfilePicFactory.js";
@@ -13,6 +15,8 @@ new Background("stars", 50);
 const navDropdown = new Dropdown();
 
 initEndpoints();
+
+new TimelineAnimation();
 
 document.addEventListener("DOMContentLoaded", () => 
 {
