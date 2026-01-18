@@ -12,3 +12,6 @@ def projecten(request):
 
 def over_mij(request):
     return render(request, "pages/about_me.html")
+
+def komt_binnenkort(request):
+    return render(request, "pages/coming_soon.html")

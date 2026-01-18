@@ -1,0 +1,39 @@
+@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as mix;
+
+
+.error-container
+{
+    @include mix.flexbox($justify: center, $align: center);
+    height: 100%;
+    text-align: center;
+
+    h1
+    {
+        // @include typography($font-weight: bold, $text-align: center, $font-size: 2.5rem);
+        margin-bottom: 2.5rem;
+
+        span.last-word
+        {
+            color: vars.$primary-color;
+        }
+    }
+
+    p
+    {
+        margin: 2.5rem 0;
+    }
+
+    a
+    {
+        // @include typography($color: $main-color, $font-size: 1.25rem);
+        padding: .25rem .5rem;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover
+        {
+            text-decoration: underline;
+        }
+    }
+}
