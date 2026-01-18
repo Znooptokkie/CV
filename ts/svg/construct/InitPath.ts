@@ -131,7 +131,7 @@ export class InitPath
             new SVGFactory(borderGroup, "path", {
                 d: `${figure}Z`,
                 fill: `url(#${gradId})`,
-                stroke: "rgba(51, 81, 142, 0.2)"
+                stroke: "rgba(51, 81, 142, 0.25)"
             }).createSvgTag();
 
             // console.log(figure);
