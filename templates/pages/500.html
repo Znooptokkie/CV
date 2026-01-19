@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block title %}Internal Server Error{% endblock %}
 
+{% block content %}
+    <section class="error-container">
+        <div>
+            <h1>Internal Server <span class="last-word">Error</span></h1>
+            <p>Er is een probleem met het ophalen van data.</p>
+            <a href="/">Home</a>
+        </div>
+    </section>
 {% endblock %}

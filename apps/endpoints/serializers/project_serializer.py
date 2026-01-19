@@ -33,12 +33,24 @@ class ProjectSerializer(serializers.ModelSerializer):
             "paragraphs"
         ]
 
-    # Get only the data. Not setting key in JSON!
     def get_languages(self, obj):
-        return [lang.language.name for lang in obj.languages_relation.all()]
-
+        return [
+            {
+                "name": lang.language.name,
+                "svg_url": lang.language.svg_url
+            }
+            for lang in obj.languages_relation.all()
+        ]
+    
     def get_frameworks(self, obj):
-        return [frame.framework.name for frame in obj.frameworks_relation.all()]
+        return [
+            {
+                "name": frame.framework.name,
+                "svg_url": frame.framework.svg_url
+            }
+            for frame in obj.frameworks_relation.all()
+        ]
+
     
     def get_specifications(self, obj):
         return [
