@@ -7,9 +7,8 @@ import { Dropdown } from "./utils/NavDropdown.js";
 import { FancyText } from "./svg/views/homepage/FancyText.js";
 import { ProfilePicFactory } from "./svg/homepage/factory/profile_pic/ProfilePicFactory.js";
 import { exportClass } from "./svg/homepage/factory/programming_languages/main/LanguagesFactory.js";
-
 import { LanguageSmallBorder } from "./svg/homepage/factory/programming_languages/small/LanguageSmallFactory.js";
-
+import { initProjects } from "./svg/projects/projectsInit.js"
 
 new Background("stars", 50);
 const navDropdown = new Dropdown();
@@ -35,5 +34,10 @@ document.addEventListener("DOMContentLoaded", () =>
 
         // Third section -- Programming Languages 8 smaller containers
         new LanguageSmallBorder().createInnerPath();
+    }
+
+    if (window.location.pathname === "/projecten/")
+    {
+        initProjects()
     }
 })

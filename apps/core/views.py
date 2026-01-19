@@ -15,3 +15,12 @@ def over_mij(request):
 
 def komt_binnenkort(request):
     return render(request, "pages/coming_soon.html")
+
+def internal_server_error(request):
+    return render(request, "pages/500.html")
+
+def page_not_found(request):
+    return render(request, "pages/404.html")
+
+def too_many_requests(request):
+    return render(request, "pages/429.html")
