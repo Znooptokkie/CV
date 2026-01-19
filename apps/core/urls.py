@@ -1,6 +1,15 @@
 from django.urls import path
 
-from .views import index, internal_server_error, komt_binnenkort, opleidingen, over_mij, page_not_found, projecten, too_many_requests
+from .views import (
+    index,
+    internal_server_error,
+    komt_binnenkort,
+    opleidingen,
+    over_mij,
+    page_not_found,
+    projecten,
+    too_many_requests,
+)
 
 urlpatterns = [
     path("", index, name="index"),
