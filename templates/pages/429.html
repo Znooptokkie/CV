@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block title %}Too Many Requests{% endblock %}
 
+{% block content %}
+    <section class="error-container">
+        <div>
+            <h1>Too Many <span class="last-word">Requests</span></h1>
+            <p>Veelste veel aanvragen!</p>
+            <a href="/">Home</a>
+        </div>
+    </section>
 {% endblock %}

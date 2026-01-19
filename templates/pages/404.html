@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block title %}Page Not Found{% endblock %}
 
+{% block content %}
+    <section class="error-container">
+        <div>
+            <h1>Page Not <span class="last-word">Found</span></h1>
+            <p>Helaas, de pagina die je zoekt lijkt niet te bestaan :(</p>
+            <a href="/">Home</a>
+        </div>
+    </section>
 {% endblock %}

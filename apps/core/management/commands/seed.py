@@ -97,7 +97,7 @@ class Command(BaseCommand):
                         {"image_url": "projects/battlebot/battlebot-logo.png", "alt_text": "Logo van Battlebot project", "is_main_image": False, "is_logo": True},
                         {"image_url": "projects/battlebot/battlebot_frontview.webp", "alt_text": "Vooraanzicht van de Battlebot", "is_main_image": False,  "is_logo": False},
                         {"image_url": "projects/battlebot/battlebot_huge_mess_topview.webp", "alt_text": "Bovenaanzicht van de Battlebot", "is_main_image": False, "is_logo": False},
-                        {"image_url": "projects/battlebot/battleobt_huge_mess.webp", "alt_text": "Enorme bende op de Battlebot", "is_main_image": True,  "is_logo": False},
+                        {"image_url": "projects/battlebot/battlebot_huge_mess.webp", "alt_text": "Enorme bende op de Battlebot", "is_main_image": True,  "is_logo": False},
                         {"image_url": "projects/battlebot/battlebot_mcp_connection.webp", "alt_text": "De MCP2515-module connectie tussen beide Pi's", "is_main_image": True, "is_logo": False},
                         {"image_url": "projects/battlebot/battlebot_myself.webp", "alt_text": "Selfie van mij met de Battlebot", "is_main_image": False, "is_logo": False},
                         {"image_url": "projects/battlebot/battlebot_screen_picture.webp", "alt_text": "Foto van de Battlebot met de camera van de robot", "is_main_image": False, "is_logo": False},
@@ -300,7 +300,7 @@ class Command(BaseCommand):
                     "languages": ["Java"],
                     "images": [
                         {"image_url": "projects/bram/bram-logo.png", "alt_text": "Logo van het project BRAM", "is_main_image": False, "is_logo": True},
-                        {"image_url": "projects/bram_loadingscreen.webp", "alt_text": "Een screenshot van het laadscherm van de mobiele applicatie", "is_main_image": True, "is_logo": False}
+                        {"image_url": "projects/bram/bram_loadingscreen.webp", "alt_text": "Een screenshot van het laadscherm van de mobiele applicatie", "is_main_image": True, "is_logo": False}
                     ],
                     "paragraphs": [
                         {
@@ -332,7 +332,7 @@ class Command(BaseCommand):
                     "languages": ["Python", "JavaScript", "CSS", "HTML"],
                     "images": [
                         {"image_url": "projects/smart_garden_desktop/GG-logo.png", "alt_text": "Het logo van GoodGarden", "is_main_image": False, "is_logo": True},
-                        {"image_url": "projects/smartgarden_desktop/smartgarden_desktop_add_plant.webp", "alt_text": "Het formulier waar je een plant kan toevoegen aan de applicatie", "is_main_image": True, "is_logo": False}
+                        {"image_url": "projects/smart_garden_desktop/smartgarden_desktop_add_plant.webp", "alt_text": "Het formulier waar je een plant kan toevoegen aan de applicatie", "is_main_image": True, "is_logo": False}
                     ],
                     "paragraphs": [
                         {
@@ -372,7 +372,7 @@ class Command(BaseCommand):
                     "languages": ["TypeScript"],
                     "images": [
                         {"image_url": "projects/smart_garden_mobile/GG-logo-mobiel.png", "alt_text": "Het logo van GoodGarden (mobiel)", "is_main_image": False, "is_logo": True},
-                        {"image_url": "projects/smartgarden_mobile/smartgarden_desktop_add_plant.webp", "alt_text": "Het formulier waar je een plant kan toevoegen aan de applicatie", "is_main_image": True, "is_logo": False}
+                        {"image_url": "projects/smart_garden_mobile/smartgarden_desktop_add_plant.webp", "alt_text": "Het formulier waar je een plant kan toevoegen aan de applicatie", "is_main_image": True, "is_logo": False}
                     ],
                     "paragraphs": [
                         {
