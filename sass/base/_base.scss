@@ -55,6 +55,16 @@ a
   {
     margin-top: 2.5rem;
     gap: 5rem;
-    padding: 0 2.5rem;
+    padding: 0 2.5rem 2rem;
+  }
+}
+
+@media (max-width: vars.$breakpoint-mobile)
+{
+  main
+  {
+    margin-top: 2.5rem;
+    gap: 5rem;
+    padding: 0 1rem 2rem;
   }
 }

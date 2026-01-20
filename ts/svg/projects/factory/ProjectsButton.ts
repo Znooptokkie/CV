@@ -18,7 +18,7 @@ export class ProjectsButton
             justify-content:center;
             text-decoration: none;
         `
-        wrapper.href = `http://127.0.0.1:5000/projecten/${projectName.toLowerCase()}`
+        // wrapper.href = `http://127.0.0.1:5000/projecten/${projectName.toLowerCase()}`
 
         const text = document.createElement("p")
         text.textContent = "GO"

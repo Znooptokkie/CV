@@ -1,5 +1,57 @@
 {% extends "base.html" %}
 
+{% block title %}Over Mij{% endblock %}
+
 {% block content %}
+<section id="about-me-section">
+  <article class="about-me-excerpt">
+    <h1 class="section-title">Meer Over <span class="green-name">Mij</span></h1>
+    <p> 
+      Met een flinke dosis enthousiasme en een enorme bak aan motivatie kijk ik vol vertrouwen naar de toekomst. Waar ik mij precies in wil gaan specialiseren, blijft nog een ontdekkingsreis, maar juist dat onderzoekende karakter maakt mij wie ik ben. Zodra ik iets nieuws tegenkom, wil ik weten hoe het werkt, waarom het zo werkt en vooral: hoe het beter kan. 
+    </p>
+    <p>
+      Die nieuwsgierigheid drijft mij om steeds dieper in de wereld van technologie te duiken. Zo wil ik mij binnenkort verdiepen in low-level talen om computers écht van binnenuit te begrijpen. Daarnaast leer ik via Hack The Box steeds meer over cybersecurity, een vakgebied waarin kennis van netwerken, poorten, protocollen, shells, servers en tools als <em>tmux</em> en <em>vim</em> onmisbaar is.
+    </p>
+    <p> 
+      Wat mij typeert? Een onderzoekende houding, een open blik voor elke uitdaging, en een gezonde dosis humor en plezier in alles wat ik doe. Dankzij mijn achtergrond in schilderen ben ik bovendien handig met gereedschap en het maken van fysieke dingen. Bovenal geloof ik dat een fijne, gezellige sfeer en een sterk team de basis vormen voor elk succesvol project. 
+    </p> 
+    <p> 
+      Kortom: ik ben klaar om te blijven leren, te blijven bouwen en met volle energie de volgende stap te zetten. 
+    </p>
+    <p>
+      Ik sta open voor nieuwe kansen en uitdagingen — neem gerust contact met me op!
+    </p>
+  </article>
+  
+  <article class="about-me-form-article">
+     <h2 class="section-title">Vragen of <span class="green-name">Contact</span></h2>
+    <form method="post" class="about-me-form">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <div>
+            {{ form.name }}
+            {{ form.name.errors }}
+        </div>
+
+        <div>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+
+        <div>
+            {{ form.message }}
+            {{ form.message.errors }}
+        </div>
+
+        {{ form.honeypot }}
+
+        <button type="submit">Verstuur</button>
+    </form>
+
+
+  </article>
+</section>
 
 {% endblock %}
