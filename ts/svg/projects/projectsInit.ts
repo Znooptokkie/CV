@@ -55,13 +55,13 @@ export async function initProjects()
         ProjectsContent.drawArrows(root, 8)
         const button = ProjectsButton.linkInstance(root!, project.link)
 
-        ProjectsRootElement.addClipPathToDefs(defs, projectName, HexagonPath)
+        ProjectsRootElement.addClipPathToDefs(defs, projects[i].link, HexagonPath)
         
-        ProjectsRootElement.createLogo(root, project.logo!.image_url, projectName)
+        ProjectsRootElement.createLogo(root, project.logo!.image_url, projects[i].link)
         ProjectsRootElement.createHexImages(
             root,
             project.mainImages.map((img: { image_url: string }) => img.image_url),
-            projectName
+            projects[i].link
         )
     }
 }

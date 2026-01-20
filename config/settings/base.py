@@ -109,3 +109,14 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",
     ),
 }
+
+# SMTP Settings
+DEFAULT_FROM_EMAIL = env("MAIL_ADRES")
+
+# GMAIL
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = env("MAIL_ADRES")
+EMAIL_HOST_PASSWORD = env("MAIL_PASSWORD")

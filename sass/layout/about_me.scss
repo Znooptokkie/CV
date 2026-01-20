@@ -1,0 +1,152 @@
+@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as mix;
+
+main
+{
+    #about-me-section
+    {
+        @include mix.flexbox($direction: column);
+        gap: 5rem;
+
+        .about-me-excerpt
+        {
+            @include mix.flexbox($direction: column);
+            gap: .75rem;
+
+            p
+            {
+                // @include typography($font-size: 1.2rem);
+                line-height: 1.75;
+                // padding: 0 2rem;
+                color: vars.$secondary-color;
+                line-height: 2rem;
+                text-align: center;
+            }
+
+             hr
+            {
+                border: none;
+                border-top: 2px dashed lightgrey;
+                opacity: 0.5;
+                margin: 1rem 0;
+            }
+        }
+        
+        .about-me-form-article
+        {
+            width: 100%;
+            
+            .about-me-form
+            {
+                @include mix.flexbox($direction: column);
+                gap: 1.5rem;
+                width: 100%;
+                max-width: 700px;
+                margin: 0 auto;
+
+                // .honeypot
+                // {
+                //     display: none;
+                // }
+
+                div
+                {
+                    label
+                    {
+                        font-size: 1.25rem;
+                    }
+
+                    input[type="text"],
+                    input[type="email"],
+                    textarea
+                    {
+                        width: 100%;
+                        max-width: max(90%, 800px);
+                        color: vars.$secondary-color;
+                        background: linear-gradient(135deg, rgba(50, 60, 80, 0.05), rgba(50, 60, 80, 0.05));
+                        border: solid 2px vars.$secondary-color;
+                        border-radius: 25px;
+                        padding: .75rem 1rem;
+                        font-size: 1rem;
+                        font-family: vars.$font-courier;
+                        outline: none;
+                        transition: box-shadow 0.2s ease, border-color 0.2s ease;
+                        backdrop-filter: blur(5px);
+
+                        &:focus
+                        {
+                            box-shadow: 0 0 15px rgba(25, 41, 71, 0.1);
+                            border: solid 2px vars.$secondary-color;
+                            outline: none;
+                        }
+
+                        &::placeholder
+                        {
+                            color: vars.$secondary-color;
+                        }
+                    }
+
+                    textarea
+                    {
+                        min-height: 150px;
+                        resize: both;
+
+                        &::-webkit-resizer 
+                        {
+                            color: red;
+                        }
+                    }
+                }
+
+                button
+                {
+                    cursor: pointer;
+                    max-width: min(90%, 200px);
+                    @include mix.glass-card();
+                    color: vars.$secondary-color;
+                    border-radius: 25px;
+                    padding: .75rem 1rem;
+                    font-size: 1rem;
+                    outline: none;
+                    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+                    border: solid 2px vars.$secondary-color;
+                
+                    &:hover::before,
+                    &:focus::before 
+                    {
+                        opacity: 1;
+                    }
+                
+                    &:hover::after,
+                    &:focus::after 
+                    {
+                        opacity: 1;
+                    }
+                
+                    &:hover,
+                    &:focus {
+                        outline: none;
+                        color: vars.$primary-color;
+                        text-shadow: none;
+                        border: solid 2px vars.$primary-color;
+                    }
+                
+                    &.active 
+                    {
+                        animation: animate 0.5s ease-in-out;
+                    }
+                
+                    &.active::before 
+                    {
+                        animation: scalingShadow 0.5s ease-in-out;
+                    }
+                }
+
+                .error
+                {
+                    color: red;
+                }
+            }
+        }
+    }
+}

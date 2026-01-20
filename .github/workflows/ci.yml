@@ -34,6 +34,8 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_HOST: ${{ secrets.DB_HOST }}
+          MAIL_ADRES: ${{ secrets.MAIL_ADRES }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
 
       - name: Run Django tests
         run: python manage.py test
@@ -45,6 +47,8 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_HOST: ${{ secrets.DB_HOST }}
-
+          MAIL_ADRES: ${{ secrets.MAIL_ADRES }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          
       - name: Run lint
         run: ruff check .

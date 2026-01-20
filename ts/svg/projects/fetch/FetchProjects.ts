@@ -23,7 +23,7 @@ export class FetchProjects
             frameworks: proj.frameworks,
         }));
 
-        console.log(this.projects);
+        // console.log(this.projects);
 
         return this.projects
     }
