@@ -1,9 +1,10 @@
+import logging
+
 from django.conf import settings
-from django.core.mail import send_mail
 from django.contrib import messages
+from django.core.mail import send_mail
 from django.shortcuts import redirect
 from django.utils.html import escape
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -34,7 +35,7 @@ class ContactFormProcessor:
             messages.success(request, "Je bericht is verzonden!")
             return redirect("over_mij")
 
-        except Exception as e:
+        except Exception:
             logger.exception("Contact mail failed")
             messages.error(
                 request,
