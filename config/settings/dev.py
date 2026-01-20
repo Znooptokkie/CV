@@ -49,3 +49,14 @@ LOGGING = {
     "handlers": {"console": {"class": "logging.StreamHandler"}},
     "root": {"handlers": ["console"], "level": "DEBUG"},
 }
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+DEFAULT_FROM_EMAIL = base.DEFAULT_FROM_EMAIL
+
+EMAIL_HOST = base.EMAIL_HOST
+EMAIL_PORT = base.EMAIL_PORT
+EMAIL_USE_TLS = base.EMAIL_USE_TLS
+
+EMAIL_HOST_USER = base.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = base.EMAIL_HOST_PASSWORD
