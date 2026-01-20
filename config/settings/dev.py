@@ -17,28 +17,28 @@ STATICFILES_DIRS = [base.BASE_DIR / "static"]
 # Database
 # ==============================
 # GitHub Actions / CI omgeving
-# if os.getenv("CI"):
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.sqlite3",
-#             "NAME": ":memory:",
-#         }
-#     }
-#     SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "test-secret-key")
-#     EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
-#     USE_EXTERNAL_API = False
-# else:
-    # Local development MySQL
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST", "localhost"),
-        "PORT": "3306",
+if os.getenv("CI"):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": ":memory:",
+        }
     }
-}
+    SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "test-secret-key")
+    EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
+    USE_EXTERNAL_API = False
+else:
+    # Local development MySQL
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.getenv("DB_NAME"),
+            "USER": os.getenv("DB_USER"),
+            "PASSWORD": os.getenv("DB_PASSWORD"),
+            "HOST": os.getenv("DB_HOST", "localhost"),
+            "PORT": "3306",
+        }
+    }
 
 # ==============================
 # Logging
