@@ -16,7 +16,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", base.SECRET_KEY)
 # ==============================
 DATABASES = {
     "default": {
-        "ENGINE": os.getenv("DB_ENGINE", "django.db.backends.mysql"),  # of postgres
+        "ENGINE": os.getenv("DB_ENGINE", "django.db.backends.mysql"),
         "NAME": os.getenv("DB_NAME", base.DATABASES["default"]["NAME"]),
         "USER": os.getenv("DB_USER", base.DATABASES["default"]["USER"]),
         "PASSWORD": os.getenv("DB_PASSWORD", base.DATABASES["default"]["PASSWORD"]),
@@ -37,7 +37,7 @@ ROOT_URLCONF = base.ROOT_URLCONF
 # Static files
 # ==============================
 STATIC_URL = "/static/"
-STATIC_ROOT = os.getenv("DJANGO_STATIC_ROOT", base.BASE_DIR / "staticfiles")
+STATIC_ROOT = os.getenv("DJANGO_STATIC_ROOT", base.BASE_DIR / "static")
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
 # ==============================
@@ -60,19 +60,3 @@ SECURE_HSTS_PRELOAD = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 USE_EXTERNAL_API = True  # Flag voor eigen API calls of queues
-
-# ==============================
-# Logging
-# ==============================
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "console": {"class": "logging.StreamHandler"},
-        "file": {
-            "class": "logging.FileHandler",
-            "filename": os.getenv("DJANGO_LOG_FILE", base.BASE_DIR / "logs/django.log"),
-        },
-    },
-    "root": {"handlers": ["console", "file"], "level": "INFO"},
-}
