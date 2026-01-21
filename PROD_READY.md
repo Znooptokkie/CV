@@ -179,6 +179,12 @@ pip update
 pip install gunicorn
 ```
 
+* VPS bestanden overschijven vanuit Github
+```bash
+git fetch origin
+git reset --hard origin/master # Zet code gelijk aan remote master
+```
+
 
 * Zorg dat Mariadb (MySQL) geinstalleerd is voor Debian/Ubuntu:
 ```bash

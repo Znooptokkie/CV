@@ -2,19 +2,17 @@ from pathlib import Path
 
 import environ
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# Read enviroment variables from correct directory
 env = environ.Env()
 environ.Env.read_env(BASE_DIR / ".env")
 
-# Set Secret key
-SECRET_KEY = env("SECRET_KEY")
 
-# In development DEBUG=True else False
+# # ==============================
+# # Basis settings
+# # ==============================
+SECRET_KEY = env("SECRET_KEY")
 DEBUG = env.bool("DEBUG", default=False)
-# Get correct host
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[])
 
 INSTALLED_APPS = [
@@ -46,7 +44,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"], # Location for templates
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -61,17 +59,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+
+# ==============================
+# Database
+# ==============================
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": env("DB_ENGINE", default="django.db.backends.mysql"),
         "NAME": env("DB_NAME"),
         "USER": env("DB_USER"),
         "PASSWORD": env("DB_PASSWORD"),
-        "HOST": env("DB_HOST"),
-        "PORT": "3306",
+        "HOST": env("DB_HOST", default="localhost"),
+        "PORT": env("DB_PORT", default="3306"),
     }
 }
 
+
+# ==============================
+# Password validation
+# ==============================
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -87,36 +93,31 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+# ==============================
+# Internationalization
+# ==============================
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
+
+# ==============================
+# Static / Media
+# ==============================
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"] # Real location for static map
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Voor API-endpoints met JWT als beveiliging
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ),
-    "DEFAULT_PERMISSION_CLASSES": (
-        "rest_framework.permissions.IsAuthenticated",
-    ),
-}
-
-# SMTP Settings
+# ==============================
+# Email / External services
+# ==============================
 DEFAULT_FROM_EMAIL = env("MAIL_ADRES")
-
-# GMAIL
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
 EMAIL_HOST_USER = env("MAIL_ADRES")
 EMAIL_HOST_PASSWORD = env("MAIL_PASSWORD")
