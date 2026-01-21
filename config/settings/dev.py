@@ -3,7 +3,7 @@ import os
 from config.settings import base
 
 DEBUG = True
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "www.atillaoomen.nl", "atillaoomen.nl"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 SECRET_KEY = base.SECRET_KEY
 INSTALLED_APPS = base.INSTALLED_APPS

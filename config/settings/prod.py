@@ -6,7 +6,7 @@ from config.settings import base
 # Basis settings
 # ==============================
 DEBUG = False
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "atillaoomen.nl").split(",")
+ALLOWED_HOSTS = ["atillaoomen.nl", "www.atillaoomen.nl"]
 
 # Secrets via environment variables
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", base.SECRET_KEY)
@@ -37,7 +37,12 @@ ROOT_URLCONF = base.ROOT_URLCONF
 # Static files
 # ==============================
 STATIC_URL = "/static/"
-STATIC_ROOT = os.getenv("DJANGO_STATIC_ROOT", base.BASE_DIR / "static")
+STATIC_ROOT = os.getenv("DJANGO_STATIC_ROOT", base.BASE_DIR / "staticfiles")
+STATICFILES_DIRS = [
+        base.BASE_DIR / "static",
+]
+# Mocht er een 500 server error zijn
+# verander onderstaande in ...storage.StaticFilesStorage
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
 # ==============================
