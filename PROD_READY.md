@@ -1,130 +1,135 @@
-# VPS
+# Website Set-up
 
-
-1. Maak een folder aan:
+1. Maak een folder aan op de VPS:
 ```bash
 mkdir /var/www/<project_naam>
+cd /var/www/<project_naam>
+``` 
+
+2. Haal de nieuwste versie op van Github:
+```bash
+git clone <repo_url>
 ```
 
-
-2. Maak een Virtual Enviroment en activeer hem:
+3. Activeer de Python virtual environment
 ```bash
-python3 -m venv <project_naam>_venv
 source venv/bin/activate
 ```
 
-
-3. Clone het project in deze folder:
-```bash
-git clone https://github.com/Znooptokkie/CV .
-```
-
-
-4. Installeer de Django dependencies:
+4. Installeer dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-
-5. Download Frontend dependencies:
+5. Download JavaScript packages:
 ```bash
 npm install
 ```
 
-
-6. Compileer de static code:
+6. Compileer de Frontend:
 ```bash
-npm run build # Komt uit de package.json
+npm run build # Command gemaakt in de package.json
 ```
 
-
-7. Verzamel alle static bestanden voor Nginx:
+7. Maak de `.env` aan en vul hem in
 ```bash
-python manage.py collectstatic --noinput
+nano .env
 ```
 
+8. Vul in Gunicorn/Systemd de Environment variables in
+```bash
+nano /etc/systemd/system/gunicorn.service
+```
 
-8. Migrate de database schemas
+9. Activeer ens tart gunciorn
+```bash
+systemctl daemon-reload
+systemctl enable gunicorn
+systemctl restart gunicorn
+```
+
+10. Configureer Nginx:
+```bash
+nano /etc/nginx/sites-available/<project_naam>
+```
+
+11. Activeer en test Nginx
+```bash
+ln -s /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/
+nginx -t
+systemctl restart nginx
+```
+
+12. Maak eventueel de `database` en een `user` aan
+
+13. Voer Django migrations uit
 ```bash
 python manage.py migrate
 ```
 
-8. Seed de database
-
-
-9. Gunicorn configureren:
+14. Seed de database:
 ```bash
-sudo nano /etc/systemd/system/<project_naam>.service
+python manage.py seed
 ```
 
-
-10. Reload en start services:
+15. Zorg dat de frontend werkt van Django
 ```bash
-sudo systemctl daemon-reload
-sudo systemctl enable <project_naam>
-sudo systemctl start <project_naam>
-sudo systemctl status <project_naam>
+python manage.py collectstatic --noinput
 ```
 
+---
 
-11. Nginx configureren:
+# Website Updaten
+
+1. Pull de laatse code
 ```bash
-sudo nano /etc/nginx/sites-available/<project_naam>
+cd /var/www/<project_naam>
+git pull
 ```
 
-
-12. Nginx herladen:
+2. python manage.py collectstatic --noinput
 ```bash
-sudo nginx -t
-sudo systemctl reload nginx
+source venv/bin/activate
 ```
 
-13. Verander in `manage.py`, `config/wsgi.py` & `config/wsgi.py` de omgeving naar `prod`
-```py
-'config.settings.dev' # Development
-
-'config.settings.prod' # Productie
-```
-
-
-## Settings instellen voor Productie
-
-
-
-
-## Gunicorn
-
-
-## Nginx
-
-
-# BUGS
-
-
-* Zorg dat `npm` gedownload is
+3. Installeer nieuwe Python dependencies (indien nodig)
 ```bash
-sudo apt install -y nodejs npm
+pip install -r requirements.txt
 ```
 
-
-* Zorg dat `pip` geupdated is:
+4. Installeer nieuwe Node.js packages (indien frontend updates)
 ```bash
-pip update
+npm install
 ```
 
-
-* Zorg dat gunicorn geinstalleerd is:
+5. Rebuild frontend
 ```bash
-pip install gunicorn
+npm run build
 ```
 
-
-* Zorg dat Mariadb (MySQL) geinstalleerd is voor Debian/Ubuntu:
+6. Voer migrations uit (indien database updates)
 ```bash
-sudo apt install -y python3-dev default-libmysqlclient-dev build-essential pkg-config
+python manage.py migrate
 ```
 
-## Database aanmaken
+7. Update static files
+```bash
+python manage.py collectstatic --noinput
+```
+
+8. Herstart Gunicorn
+```bash
+systemctl restart gunicorn
+```
+
+9. Herstart Nginx (indien config gewijzigd)
+```bash
+systemctl restart nginx
+```
+
+---
+
+# Database aanmaken
 
 1. Log in bij MariaDB (MySQL):
 ```
@@ -152,4 +157,30 @@ FLUSH PRIVILEGES; # Verversen
 mysql -u porto_user -p -h localhost porto_db
 ```
 
-pi install gunicorn
+---
+
+# BUGS
+
+
+* Zorg dat `npm` gedownload is
+```bash
+sudo apt install -y nodejs npm
+```
+
+
+* Zorg dat `pip` geupdated is:
+```bash
+pip update
+```
+
+
+* Zorg dat gunicorn geinstalleerd is:
+```bash
+pip install gunicorn
+```
+
+
+* Zorg dat Mariadb (MySQL) geinstalleerd is voor Debian/Ubuntu:
+```bash
+sudo apt install -y python3-dev default-libmysqlclient-dev build-essential pkg-config
+```
