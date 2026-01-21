@@ -6,7 +6,6 @@ static/css/
 static/js/
 *.map
 .env
-.env.*
 node_modules/
 .DS-STORE
 .idea/

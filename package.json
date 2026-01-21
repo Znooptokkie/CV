@@ -12,11 +12,13 @@
   },
   "scripts": {
     "build:ts": "tsc",
+    "build:sass": "sass sass/main.scss:static/css/main.css",
+    "build": "npm run build:ts && npm run build:sass",
     "watch:ts": "tsc --watch",
     "watch:sass": "sass --watch sass/main.scss:static/css/main.css",
     "watch:dev": "npm-run-all --parallel watch:ts watch:sass"
   },
   "keywords": [],
-  "author": "",
+  "author": "Znooptokkie",
   "license": "ISC"
 }
