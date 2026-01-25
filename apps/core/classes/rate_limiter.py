@@ -1,5 +1,6 @@
 from django.core.cache import cache
 
+
 class RateLimiter:
     def __init__(self, key, limit, period):
         self.key = f"rl:{key}"

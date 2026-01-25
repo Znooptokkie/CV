@@ -1,10 +1,8 @@
 from django.shortcuts import render
 
 from apps.core.classes.contact_form_processor import ContactFormProcessor
-from apps.core.forms import ContactForm
-
-from django.http import HttpResponse
 from apps.core.classes.rate_limiter import RateLimiter
+from apps.core.forms import ContactForm
 
 
 # PAGES
