@@ -7,34 +7,92 @@
 
 main
 {
-
-
-.education-school-section,
-.education-certifcates-section
-{
-    @include mix.flexbox($direction: column);
-
-    .education-child-articles
+    .education-school-section,
+    .education-certifcates-section
     {
         @include mix.flexbox($direction: column);
-        gap: 5rem;
-    }
 
-    .education-certificates-articles
-    {
-        @include mix.flexbox($direction: column);
-        gap: 5rem;
+        .education-child-articles
+        {
+            @include mix.flexbox($direction: column);
+            gap: 5rem;
+        }
+
+        .education-certificates-articles
+        {
+            @include mix.flexbox($direction: column);
+            gap: 5rem;
+
+            .education-article-context
+            {
+
+                .education-content,
+                .education-painter-svg-content
+                {
+                    padding: 1rem;
+
+                    .education-certificates
+                    {
+                        p
+                        {
+                            color: vars.$secondary-color;
+                            line-height: 1.5;
+                            font-size: 1.25rem;
+                        }
+                    }
+                }
+            }
+        }
 
         .education-article-context
         {
+            @include mix.flexbox($direction: column);
+            @include mix.glass-card();
+            padding: 3rem 2rem 4rem;
+            box-shadow: inset 0 0 15px rgba(51, 81, 142, 0.25);
+            height: auto;
+            border: solid 2px rgba(51, 81, 142, 0.5);
+
+            .education-title
+            {
+                @include mix.flexbox($direction: row, $justify: space-between, $align: center);
+                width: 100%;
+                border-bottom: solid 3px rgba(158, 190, 255, 0.05);
+                padding: 0 2rem 1rem;
+
+                .education-header-container
+                {
+                    h3
+                    {
+                        color: white;
+                        font-size: 2rem;
+                    }
+                }
+                .education-year-container
+                {
+                    @include mix.flexbox($justify: flex-end, $align: flex-end);
+                    p
+                    {
+                        font-size: 2rem;
+                        font-style: italic;
+                        color: vars.$secondary-color;
+                    }
+                }
+            }
 
             .education-content,
             .education-painter-svg-content
             {
+                @include mix.flexbox();
+                gap: 5rem;
                 padding: 1rem;
-                
-                .education-certificates
+
+                .education-excerpt
                 {
+                    @include mix.flexbox($direction: column);
+                    gap: 1rem;
+                    width: 45%;
+
                     p
                     {
                         color: vars.$secondary-color;
@@ -42,187 +100,125 @@ main
                         font-size: 1.25rem;
                     }
                 }
-            }
-        }
-    }
 
-    .education-article-context
-    {
-        @include mix.flexbox($direction: column);
-        @include mix.glass-card();
-        padding: 3rem 2rem 4rem;
-        box-shadow: inset 0 0 15px rgba(51, 81, 142, 0.25);
-        height: auto;
-        border: solid 2px rgba(51, 81, 142, 0.5);
-
-        .education-title
-        {
-            @include mix.flexbox($direction: row, $justify: space-between, $align: center);
-            width: 100%;
-            border-bottom: solid 3px rgba(158, 190, 255, 0.05);
-            padding: 0 2rem 1rem;
-
-            .education-header-container
-            {
-                h3
+                .separator 
                 {
-                    color: white;
-                    // opacity: 0.75;
-                    font-size: 2rem;
+                    width: 3px;
+                    align-self: stretch;
+                    background-color: rgba(158, 190, 255, 0.05);
                 }
-            }
-            .education-year-container
-            {
-                @include mix.flexbox($justify: flex-end, $align: flex-end);
-                p
-                {
-                    font-size: 2rem;
-                    font-style: italic;
-                    color: vars.$secondary-color;
-                }
-            }
-        }
-        
-        .education-content,
-        .education-painter-svg-content
-        {
-            @include mix.flexbox();
-            gap: 5rem;
-            padding: 1rem;
-            // padding: 2rem 2rem 0;
-            // min-height: 200px !important;
 
-            .education-excerpt
-            {
-                @include mix.flexbox($direction: column);
-                gap: 1rem;
-                width: 45%;
-                
-                p
+                .education-properties
                 {
-                    color: vars.$secondary-color;
-                    line-height: 1.5;
-                    font-size: 1.25rem;
-                }
-            }
-            
-            .separator 
-            {
-                width: 3px;
-                align-self: stretch;
-                background-color: rgba(158, 190, 255, 0.05);
-            }
+                    width: 45%;
 
-            .education-properties
-            {
-                width: 45%;
-
-                h4
-                {
-                    font-size: 1.5rem;
-                    color: vars.$secondary-color;
-                    margin-bottom: 1.5rem;
-                }
-                .education-ul
-                {
-                    @include mix.flexbox($direction: column);
-                    gap: 1rem;
-                    list-style: none;
-                    
-                    li
+                    h4
                     {
-                        p:not(.rijnland-properties-spec li p)
+                        font-size: 1.5rem;
+                        color: vars.$secondary-color;
+                        margin-bottom: 1.5rem;
+                    }
+                    .education-ul
+                    {
+                        @include mix.flexbox($direction: column);
+                        gap: 1rem;
+                        list-style: none;
+
+                        li
                         {
-                            color: vars.$secondary-color;
-                            font-size: 1.25rem;
-
-                            &:nth-child(1)
+                            p:not(.rijnland-properties-spec li p)
                             {
-                                font-weight: bold;
+                                color: vars.$secondary-color;
+                                font-size: 1.25rem;
+
+                                &:nth-child(1)
+                                {
+                                    font-weight: bold;
+                                }
+
+                                &:nth-child(2)
+                                {
+                                    font-style: italic;
+                                }
                             }
-
-                            &:nth-child(2)
+                            .completion-rating-container
                             {
+                                @include mix.flexbox();
+                                margin-top: .5rem;
+
+                                .green-rate
+                                {
+                                    background-color: vars.$primary-color;
+                                    background-image: linear-gradient(to bottom, color.adjust(vars.$primary-color, $lightness: 10%), color.adjust(vars.$primary-color, $lightness: -10%));
+                                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 1px 0 #97f29733;
+                                    border-radius: 4px;
+                                }
+
+                                .rate:not(.green-rate)
+                                {
+                                    background-color: rgba(158, 190, 255, 0.1);   
+                                }
+
+                                .rate
+                                {
+                                    width: 60px;
+                                    height: 13px; 
+                                    &:first-child
+                                    {
+                                        clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
+                                        border-top-left-radius: 10px;
+                                        border-bottom-left-radius: 10px;
+                                    }
+
+                                    &:nth-child(2),
+                                    &:nth-child(3),
+                                    &:nth-child(4)
+                                    {
+                                        clip-path: polygon(25% 0, 100% 0, 75% 100%, 0% 100%);
+                                    }
+
+                                    &:last-child
+                                    {
+                                        clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+                                        border-top-right-radius: 10px;
+                                        border-bottom-right-radius: 10px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    .rijnland-properties-spec,
+                    .certificates-properties
+                    {
+                        list-style:square;
+                        margin-left: 1rem;
+
+                        li
+                        {
+                            p
+                            {
+                                color: vars.$secondary-color;
+                                font-size: 1.25rem;
                                 font-style: italic;
                             }
-                        }
-                        .completion-rating-container
-                        {
-                            @include mix.flexbox();
-                            margin-top: .5rem;
 
-                            .green-rate
+                            &::marker
                             {
-                                background-color: vars.$primary-color;
-                                background-image: linear-gradient(to bottom, color.adjust(vars.$primary-color, $lightness: 10%), color.adjust(vars.$primary-color, $lightness: -10%));
-                                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 1px 0 #97f29733;
-                                border-radius: 4px;
-                            }
-                            
-                            .rate:not(.green-rate)
-                            {
-                                background-color: rgba(158, 190, 255, 0.1);   
-                            }
-
-                            .rate
-                            {
-                                width: 60px;
-                                height: 13px; 
-                                &:first-child
-                                {
-                                    clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
-                                    border-top-left-radius: 10px;
-                                    border-bottom-left-radius: 10px;
-                                }
-
-                                &:nth-child(2),
-                                &:nth-child(3),
-                                &:nth-child(4)
-                                {
-                                    clip-path: polygon(25% 0, 100% 0, 75% 100%, 0% 100%);
-                                }
-
-                                &:last-child
-                                {
-                                    clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
-                                    border-top-right-radius: 10px;
-                                    border-bottom-right-radius: 10px;
-                                }
+                                color: vars.$primary-color;
                             }
                         }
                     }
-                }
-                .rijnland-properties-spec,
-                .certificates-properties
-                {
-                    list-style:square;
-                    margin-left: 1rem;
 
-                    li
+                    .certificates-properties
                     {
-                        p
-                        {
-                            color: vars.$secondary-color;
-                            font-size: 1.25rem;
-                            font-style: italic;
-                        }
-
-                        &::marker
-                        {
-                            color: vars.$primary-color;
-                        }
+                        @include mix.flexbox($direction: column);
+                        gap: 1rem;
                     }
-                }
-
-                .certificates-properties
-                {
-                    @include mix.flexbox($direction: column);
-                    gap: 1rem;
                 }
             }
         }
     }
-}
 }
 
 @media (max-width: vars.$breakpoint-mobile)
@@ -274,56 +270,56 @@ main
         }
 
         .education-certifcates-section,
-    .education-school-section
-    {
-        .education-article-context
+        .education-school-section
         {
-           .education-title
+            .education-article-context
             {
-                padding: 0 0 1rem;
-
-                .education-header-container
+               .education-title
                 {
-                    h3
+                    padding: 0 0 1rem;
+
+                    .education-header-container
                     {
-                        color: vars.$secondary-color;
-                        opacity: 0.75;
-                        font-size: 1.5rem;
+                        h3
+                        {
+                            color: vars.$secondary-color;
+                            opacity: 0.75;
+                            font-size: 1.5rem;
+                        }
+                    }
+
+                    .education-year-container
+                    {
+                        p
+                        {
+                            font-size: 1.5rem;
+                        }
                     }
                 }
 
-                .education-year-container
+                .education-content,
+                .education-painter-svg-content
                 {
-                    p
+                    flex-direction: column;
+                    padding: .5rem;
+                    gap: 1rem;
+
+                    .education-excerpt
                     {
-                        font-size: 1.5rem;
+                        width: 100%;
                     }
-                }
-            }
 
-            .education-content,
-            .education-painter-svg-content
-            {
-                flex-direction: column;
-                padding: .5rem;
-                gap: 1rem;
+                    .separator
+                    {
+                        display: none;
+                    }
 
-                .education-excerpt
-                {
-                    width: 100%;
-                }
-
-                .separator
-                {
-                    display: none;
-                }
-
-                .education-properties
-                {
-                    width: 100% !important;
+                    .education-properties
+                    {
+                        width: 100% !important;
+                    }
                 }
             }
         }
-    }
     }
 }
