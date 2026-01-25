@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from apps.core.classes.contact_form_processor import ContactFormProcessor
+from apps.core.classes.rate_limiter import RateLimiter
 from apps.core.forms import ContactForm
 
 
@@ -15,8 +16,16 @@ def projecten(request):
     return render(request, "pages/projects.html")
 
 def over_mij(request):
-    form = ContactForm(request.POST or None)
+    limiter = RateLimiter(
+        key=request.META.get("REMOTE_ADDR"),
+        limit=5,
+        period=60,
+    )
 
+    if not limiter.hit():
+        return render(request, "pages/429.html", status=429)
+
+    form = ContactForm(request.POST or None)
     response = ContactFormProcessor.handle(request, form)
     if response:
         return response
@@ -29,11 +38,7 @@ def komt_binnenkort(request):
 
 # HTTP CODES
 def internal_server_error(request):
-    return render(request, "pages/500.html")
+    return render(request, "pages/500.html", status=500)
 
-def page_not_found(request):
-    return render(request, "pages/404.html")
-
-def too_many_requests(request):
-    return render(request, "pages/429.html")
-
+def page_not_found(request, exception):
+    return render(request, "pages/404.html", status=404)

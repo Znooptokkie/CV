@@ -12,6 +12,7 @@ TEMPLATES = base.TEMPLATES
 ROOT_URLCONF = base.ROOT_URLCONF
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [base.BASE_DIR / "static"]
+CACHES = base.CACHES
 
 # ==============================
 # Database

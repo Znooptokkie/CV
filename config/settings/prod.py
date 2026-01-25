@@ -7,6 +7,7 @@ from config.settings import base
 # ==============================
 DEBUG = False
 ALLOWED_HOSTS = ["atillaoomen.nl", "www.atillaoomen.nl"]
+CACHES = base.CACHES
 
 # Secrets via environment variables
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", base.SECRET_KEY)
