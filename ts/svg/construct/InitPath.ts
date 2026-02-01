@@ -20,28 +20,28 @@ export class InitPath
         // === DEFS ===
         const defs = new SVGFactory(container, "defs").createSvgTag();
 
-        // Globale schaduw filter
+        // Schaduw filter
         const shadowFilter = new SVGFactory(defs, "filter", {
             id: "svgGlobalShadow",
             x: "-50%",
             y: "-50%",
-            width: "100%",
-            height: "100%",
+            width: "200%",
+            height: "200%",
             filterUnits: "objectBoundingBox"
         }).createSvgTag();
 
         new SVGFactory(shadowFilter, "feDropShadow", {
-            dx: "5",
-            dy: "5",
-            stdDeviation: "4",
-            "flood-color": "#000005",
-            "flood-opacity": "0.25"
+            dx: "10",
+            dy: "10",
+            stdDeviation: "5",
+            "flood-color": "#121212ff",
+            "flood-opacity": "0.55"
         }).createSvgTag();
 
         // Schaduw achter de SVG, alleen op outer path
         new SVGFactory(container, "path", {
             d: outer,
-            fill: "#000020",
+            fill: "#000000ff",
             "fill-opacity": "0.4",
             filter: "url(#svgGlobalShadow)"
         }).createSvgTag();
@@ -85,7 +85,6 @@ export class InitPath
             class: `${category}-border`
         }).createSvgTag();
 
-        // Nu verplaats je alle border/figure styling naar een aparte functie
         InitPath.createBorderGradients(defs, figures, borderGroup);
         // InitPath.createBorderParts(container, outer, inner, "language-small")
         // console.log(inner);
@@ -131,7 +130,7 @@ export class InitPath
             new SVGFactory(borderGroup, "path", {
                 d: `${figure}Z`,
                 fill: `url(#${gradId})`,
-                stroke: "rgba(51, 81, 142, 0.25)"
+                stroke: "rgba(51, 81, 142, 0.1)"
             }).createSvgTag();
 
             // console.log(figure);

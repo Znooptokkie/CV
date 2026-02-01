@@ -28,17 +28,17 @@ export class PathFigures
             
             for (let i = 0; i < outerPathValues.length; i++) 
             {
-                const figureArray = []
-            
+                const figureArray: any[] = []              
+
                 const nextOuter = outerPathValues[i + 1] ?? outerPathValues[0]
                 const nextInner = innerPathValues[i + 1] ?? innerPathValues[0]
             
                 const currentOuter = outerPathValues[i]
                 const currentInner = innerPathValues[i]
             
-                if (!currentOuter || !currentInner || !nextOuter || !nextInner) 
+                if (!currentOuter || !currentInner || !nextOuter || !nextInner || i == outerPathValues.length - 1) 
                     continue
-            
+
                 figureArray.push(currentOuter, currentInner, nextInner, nextOuter)
             
                 firgurePositions.set(counter, figureArray)
