@@ -5,8 +5,8 @@ from .views import (
     komt_binnenkort,
     opleidingen,
     over_mij,
+    project_detail,
     projecten,
-    project_detail
 )
 
 urlpatterns = [
