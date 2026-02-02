@@ -42,17 +42,10 @@ export class ProjectsRootElement
         return new SVGFactory(container, "defs", {}).createSvgTag()
     }
 
-    // public static createInnerPathFirstHexa()
-    // {
-    //     const HexagonPath = "M250,0 L500,166.667 L500,433.333 L250,600 L0,433.333 L0,166.667 L250,0"
-    // }
-
     public static createInnerHexaPath(): string
     {
         const HexagonPath = "M250,0 L500,166.667 L500,433.333 L250,600 L0,433.333 L0,166.667 L250,0"
-        // const logoPath = InnerPath.buildOffsetPath(HexagonPath, 15)
         const logoPath = InnerPath.buildOffsetPathHexagon(HexagonPath, 25)
-        // console.log(logoPath);
         return logoPath
     }
 
@@ -136,11 +129,6 @@ export class ProjectsRootElement
         }
         else
         {
-            // const fourthTransformedPath = hashedPath.map(point => ({
-            //     ...point,
-            //     x: point.x + 740 + padding, // Waardes kloppen niet!
-            //     y: point.y + 433.333 + padding // Waardes kloppen niet!
-            // }))
             const HARDCODED_PATH = DeconstructPath.getPathParts("M1030,453.333 L1260,630 L1260,886.666 L1010,1053.333 L780,886.666 L780,620 L1030,453.333") // Bovenstaande code werkt om een of andere reden niet.
             return DeconstructPath.createNewSVGPathString(HARDCODED_PATH)
         }
@@ -148,20 +136,6 @@ export class ProjectsRootElement
 
     public static createLogo(container: CreateSVG | null, logoURL: string, projectName: string)
     {
-        // const HexagonPath = "M250,0 L500,166.667 L500,433.333 L250,600 L0,433.333 L0,166.667 L250,0"
-        // // new SVGFactory(container, "path", {
-        // //     d: "M250,0 L500,166.667 L500,433.333 L250,600 L0,433.333 L0,166.667 L250,0",
-        // //     fill: "rgba(10, 37, 92, 0.5)"
-        // // }).createSvgTag()
-
-        // // new SVGFactory(container, "path", {
-        // //     d: ProjectsRootElement.createInnerHexaPath(),
-        // //     fill: "rgba(10, 37, 92, 1)"
-        // // }).createSvgTag()
-        // const borderFigures = PathFigures.createFigurePathString(ProjectsRootElement.createInnerHexaPath(), HexagonPath)
-        // // const borderFigures = InitPath.createBorderParts(container!, HexagonPath, ProjectsRootElement.createInnerHexaPath(), "hexa")
-        // console.log(borderFigures);
-        
         new SVGFactory(container, "image", {
             href: `../static/images/${logoURL}`,
             x: 20,
@@ -173,39 +147,53 @@ export class ProjectsRootElement
         }).createSvgTag()
     }
 
-    public static createHexImages(container: CreateSVG | null, imageURL: string[], projectName: string)
+    public static createHexImages(
+        container: CreateSVG | null,
+        imageURL: string[],
+        projectName: string
+    )
     {
-        let counter = 2
-        let xValue = 520
-        let yValue = 0
+        let counter = 2;
+        let xValue = 520;
+        let yValue = 0;
 
         for (const url of imageURL)
         {
-            switch (counter) 
+            switch (counter)
             {
                 case 3:
-                    xValue = 270
-                    yValue = 450
+                    xValue = 270;
+                    yValue = 450;
                     break;
                 case 4:
-                    xValue = 770
-                    yValue = 450
-                default:
+                    xValue = 770;
+                    yValue = 450;
                     break;
             }
 
-            new SVGFactory(container, "image", {
+            const group = new SVGFactory(container, "g", {
+                "clip-path": `url(#hex-${counter}-${projectName})`
+            }).createSvgTag();
+
+            new SVGFactory(group, "image", {
                 href: `../static/images/${url}`,
                 x: xValue,
                 y: yValue,
-                opacity: 0.5,
                 width: 500,
                 height: 600,
-                "clip-path": `url(#hex-${counter}-${projectName})`,
                 preserveAspectRatio: "xMidYMid slice"
-            }).createSvgTag()
+            }).createSvgTag();
 
-            counter++
+            new SVGFactory(group, "rect", {
+                x: xValue - 5,
+                y: yValue - 5,
+                width: 510,
+                height: 610,
+                fill: "black",
+                opacity: 0.4
+            }).createSvgTag();
+
+            counter++;
         }
     }
 }
