@@ -36,7 +36,7 @@ export class PathFigures
                 const currentOuter = outerPathValues[i]
                 const currentInner = innerPathValues[i]
             
-                if (!currentOuter || !currentInner || !nextOuter || !nextInner) 
+                if (!currentOuter || !currentInner || !nextOuter || !nextInner || i == outerPathValues.length - 1) 
                     continue
             
                 figureArray.push(currentOuter, currentInner, nextInner, nextOuter)

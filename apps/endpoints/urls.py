@@ -8,5 +8,4 @@ urlpatterns = [
     path("languages/", language_endpoint, name="languages"),
     path("projects/", projects_endpoint, name="projects"),
     path("project/<str:project_link>/", project_endpoint, name="project")
-
 ]

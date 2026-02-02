@@ -15,6 +15,9 @@ def opleidingen(request):
 def projecten(request):
     return render(request, "pages/projects.html")
 
+def project_detail(request, name):
+    return render(request, "pages/project.html", { "project_name": name })
+
 def over_mij(request):
     limiter = RateLimiter(
         key=request.META.get("REMOTE_ADDR"),
