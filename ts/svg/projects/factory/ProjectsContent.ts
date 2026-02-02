@@ -11,10 +11,10 @@ export class ProjectsContent
     {
         const projectSecondSection = new SVGFactory(container, "path", {
             d: path,
-            stroke: "rgba(10, 37, 92, 1)",
+            stroke: "rgba(51, 81, 142, 1)",
             opacity: options?.opacity ?? 1,
             fill: "none",
-            "stroke-width": 2
+            "stroke-width": 3
         }).createSvgTag()
 
         ProjectsContent.drawCircles(container)
@@ -24,17 +24,17 @@ export class ProjectsContent
     private static drawCircles(container: CreateSVG | null)
     {
         const circlesData = [
-            { cx: 1910, stroke: "rgba(10, 37, 92, 1)", fill: "none" },
-            { cx: 1970, stroke: "rgba(10, 37, 92, 1)", fill: "none" },
-            { cx: 2030, stroke: "rgba(10, 37, 92, 1)", fill: "none" },
-            { cx: 2090, stroke: "none", fill: "rgba(10, 37, 92, 1)" },
-            { cx: 2150, stroke: "none", fill: "rgba(10, 37, 92, 1)" }
+            { cx: 1940, stroke: "rgba(51, 81, 142, 0.5)", fill: "none" },
+            { cx: 2000, stroke: "rgba(51, 81, 142, 0.5)", fill: "none" },
+            { cx: 2060, stroke: "rgba(51, 81, 142, 0.75)", fill: "none" },
+            { cx: 2120, stroke: "none", fill: "rgba(51, 81, 142, 0.5)" },
+            { cx: 2180, stroke: "none", fill: "rgba(51, 81, 142, 1)" }
         ]
 
         circlesData.forEach(data => {
             new SVGFactory(container, "circle", {
                 cx: data.cx,
-                cy: 1025,
+                cy: 1060,
                 r: 17,
                 stroke: data.stroke,
                 fill: data.fill,
@@ -47,8 +47,8 @@ export class ProjectsContent
     private static drawInitials(container: CreateSVG | null)
     {
         const textBorder = new SVGFactory(container, "text", {
-            x: 2200,
-            y: 1025,
+            x: 2225,
+            y: 1060,
             fill: "white",
             "font-size": "38",
             "font-family": "Courier Prime",
@@ -57,29 +57,5 @@ export class ProjectsContent
         }).createSvgTag()
 
         textBorder!.textContent = "PY.2025.003A"
-    }
-
-    public static drawArrows(container: CreateSVG | null, count = 0) // Wordt veranderd
-    {
-        if (!container) 
-            return null
-
-        const arrowWidth = 15
-        const arrowHeight = 10
-        const spacing = 2
-        const startX = 2500
-        const startY = 1025
-
-        for (let i = 0; i < count; i++)
-        {   
-            const x = startX + i * (arrowWidth + spacing)
-            
-            const points = `0,0 ${arrowWidth},${arrowHeight/2} 0,${arrowHeight}`;
-            const polygon = new SVGFactory(container, "polygon", {
-                points: points,
-                fill: "rgba(10, 37, 92, 1)",
-                transform: `translate(${x},${startY})`
-            }).createSvgTag()
-        }
     }
 }

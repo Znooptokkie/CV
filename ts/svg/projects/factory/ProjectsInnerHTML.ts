@@ -22,15 +22,15 @@ export class ProjectsInnerHTMLContent
         title.style.fontStyle = "italic"
         title.style.fontFamily = "Goldman", "sans-serif"
         title.style.color = "rgb(51, 81, 142)"
-        // title.textContent = "JAAAAAAAAA!!!!!"
+        title.style.textShadow = "24px 24px 0 rgba(6, 10, 18, 1)";
         title.textContent = projectTitle
 
         const content = document.createElement("p")
         content.style.fontSize = "54px"
         content.style.lineHeight = "2.5"
-        // content.textContent = "Battlebot was een project dat ik samen met een klasgenoot op school heb uitgevoerd. We hebben een technische robot geüpgraded zodat deze kan worden aangestuurd via een Raspberry Pi 5 en een tweede Pico-microcontroller."
         content.style.color = "rgb(51, 81, 142)"
         content.style.textAlign = "center"
+        content.style.textShadow = "15px 15px 0 rgba(6, 10, 18, 1)";
         content.textContent = projectText
 
         wrapper.append(title)
@@ -43,18 +43,10 @@ export class ProjectsInnerHTMLContent
         if (!container) 
             return null;
 
-        // if (!path)
-        // {
-        //     path = "M1450,-20 L1560,-20 L1560,90 L1505,125 L1450,90 L1450,-20" 
-        // }
-
-        // const offsetX = 175
-
         const pathElement = new SVGFactory(container, "path", {
             d: path!,
-            stroke: "rgb(0, 12, 35)",
-            fill: "rgba(10, 20, 35, 0.15)",
-            // transform: `translate(${offsetX},0)`
+            stroke: "rgba(51, 81, 142, 0.55)",
+            fill: "rgba(10, 20, 35, 0.25)",
         }).createSvgTag() as SVGPathElement
 
         return pathElement
@@ -76,7 +68,6 @@ export class ProjectsInnerHTMLContent
             height: 775
         }).createSvgTag()
 
-        // const wrapper = this.createXHTMLWrapper(language)
         const wrapper = ProjectsInnerHTMLContent.createWrapper(projectTitle, projectText)
         foreign?.appendChild(wrapper)
     }
