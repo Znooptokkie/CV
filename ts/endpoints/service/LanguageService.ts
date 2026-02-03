@@ -7,7 +7,7 @@ export class LanguageService
 
     public static async filterItems(): Promise<LanguageInterface[]>
     {
-        const languages = await Fetch.fetchJSON<LanguageInterface>("languages");
+        const languages = await Fetch.fetchList<LanguageInterface>("languages");
         return languages.filter(row => !this.filteredItems.includes(row.name))
     } 
 }

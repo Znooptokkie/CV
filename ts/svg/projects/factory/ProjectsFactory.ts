@@ -4,11 +4,11 @@ import { InnerPath } from "../../construct/InnerPath.js"
 import { DeconstructPath } from "../../construct/DeconstructPath.js"
 import { Project } from "../Project.js"
 
-import { ProjectData } from "../../../types/projects.type.js"
+import { ProjectsType } from "../../../types/projects.type.js"
 
 export class ProjectsRootElement
 {
-    public static createMany(projectsData: ProjectData[]): Project[] 
+    public static createMany(projectsData: ProjectsType): Project[] 
     {
         const mapData = projectsData.map(data => new Project(data))
 

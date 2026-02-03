@@ -1,13 +1,16 @@
-import { InitPath } from "../construct/InitPath.js"
-import { FetchProjects } from "./fetch/FetchProjects.js"
+import { FetchProjects } from "../../endpoints/service/FetchProjects.js"
+
+import { PathFigures } from "../construct/PathFigures.js"
+
 import { Project } from "./Project.js"
+
 import { ProjectsRootElement } from "./factory/ProjectsFactory.js"
 import { ProjectsButton } from "./factory/ProjectsButton.js"
 import { ProjectsContent } from "./factory/ProjectsContent.js"
 import { ProjectsInnerHTMLContent } from "./factory/ProjectsInnerHTML.js"
 import { ProjectsStackBanners } from "./factory/ProjectsStackBanners.js"
-import { PathFigures } from "../construct/PathFigures.js"
 import { ProjectsHexa } from "./factory/ProjectsHexa.js"
+
 
 export async function initProjects()
 {
@@ -23,25 +26,23 @@ export async function initProjects()
     const projectDataArray = await fetcher.getAPIData()
 
     const projects: Project[] = ProjectsRootElement.createMany(projectDataArray)
-
-    const rootElements = projects.map(projectName => ProjectsRootElement.createRootElement(projectName.project))
+    
+    const rootElements = projects.map(projectName => ProjectsRootElement.createRootElement(projectName.title))
 
     for (let i = 0; i < rootElements.length; i++)
     {
         const root = rootElements[i]
         const project = projects[i]
-        const projectName = projects[i].project.toLocaleLowerCase()
+        const projectName = projects[i].title.toLocaleLowerCase()
 
         const defs = ProjectsRootElement.createDefs(root)
         
         // CONTENT
-        const drawContentLine = ProjectsContent.drawBorder(rootElements[i], pathContent)
-        const drawInnerContentLine = ProjectsContent.drawBorder(rootElements[i], pathContentInner, {opacity: 0.5})
+        ProjectsContent.drawBorder(rootElements[i], pathContent)
+        ProjectsContent.drawBorder(rootElements[i], pathContentInner, {opacity: 0.5})
 
-        // InitPath.createBorderParts(root!, HexagonPath, ProjectsRootElement.createInnerHexaPath(), "hexa")
         const figures = PathFigures.createFigurePathString(HexagonPath, ProjectsRootElement.createInnerHexaPath());
-        // console.log(ProjectsRootElement.createInnerHexaPath());
-        const styleFigures = ProjectsHexa.styleLogo(root!, figures!)
+        ProjectsHexa.styleLogo(root!, figures!)
 
         const pathElement = ProjectsInnerHTMLContent.createLanguagePaths(root!, pathContentInner)
         ProjectsInnerHTMLContent.initContent(root!, pathElement, projectName, project.description!)
@@ -55,7 +56,7 @@ export async function initProjects()
             ProjectsStackBanners.getDevIcons(root, lf.svg_url, languagePath, index);
         }
 
-        const button = ProjectsButton.linkInstance(root!, project.link)
+        ProjectsButton.linkInstance(root!, project.link)
 
         ProjectsRootElement.addClipPathToDefs(defs, projects[i].link, HexagonPath)
         
