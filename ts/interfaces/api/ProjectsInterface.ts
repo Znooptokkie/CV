@@ -7,7 +7,6 @@ export interface ProjectsInterface
     link: string
     year: number
     datetime: string
-    excerpt: string | null
     github: string
     featured: boolean
     in_progress: boolean
