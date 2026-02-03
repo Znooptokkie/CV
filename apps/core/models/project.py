@@ -8,7 +8,6 @@ class Project(models.Model):
     link = models.CharField(max_length=255, blank=True, null=True)
     year = models.IntegerField(blank=True, null=True)
     datetime = models.DateTimeField(auto_now_add=True)
-    excerpt = models.TextField(blank=True, null=True)
     github = models.CharField(max_length=255, blank=True, null=True)
     featured = models.BooleanField(default=False)
     in_progress = models.BooleanField(default=False)

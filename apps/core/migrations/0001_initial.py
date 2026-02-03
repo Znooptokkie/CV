@@ -43,7 +43,6 @@ class Migration(migrations.Migration):
                 ('link', models.CharField(blank=True, max_length=255, null=True)),
                 ('year', models.IntegerField(blank=True, null=True)),
                 ('datetime', models.DateTimeField(auto_now_add=True)),
-                ('excerpt', models.TextField(blank=True, null=True)),
                 ('github', models.CharField(blank=True, max_length=255, null=True)),
                 ('featured', models.BooleanField(default=False)),
                 ('in_progress', models.BooleanField(default=False)),

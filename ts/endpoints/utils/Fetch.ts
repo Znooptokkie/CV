@@ -1,12 +1,22 @@
 export class Fetch
 {
-    static async fetchJSON<T>(apiEndpoint: string): Promise<T[]>
+    static async fetchList<T>(endpoint: string): Promise<T[]>
     {
-        const response = await fetch(`/api/${apiEndpoint}`);
-        if (!response.ok)
-        {
-            throw new Error(`Failed to fetch "${apiEndpoint}"`);
-        }
-        return await response.json() as T[];
+        const response = await fetch(`/api/${endpoint}`)
+        
+        if (!response.ok) 
+            throw new Error(endpoint)
+        
+        return response.json() as Promise<T[]>
+    }
+
+    static async fetchDetail<T>(endpoint: string): Promise<T>
+    {
+        const response= await fetch(`/api/${endpoint}`)
+        
+        if (!response.ok) 
+            throw new Error(endpoint)
+        
+        return response.json() as Promise<T>
     }
 }

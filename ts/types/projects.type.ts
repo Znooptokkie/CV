@@ -1,28 +1,40 @@
-export type ProjectImage = {
+import { ProjectParagraph, ProjectSpecification } from "../interfaces/api/ProjectsInterface"
+
+export type ProjectImageType = {
     image_url: string
     alt_text: string
     is_main_image: boolean
     is_logo: boolean
 }
 
-export type ProjectLanguage = {
+export type ProjectLanguageType = {
     name: string;
     svg_url: string;
 }
 
-export type ProjectFramework = {
+export type ProjectFrameworkType = {
     name: string;
     svg_url: string;
 }
 
-export type ProjectData = {
-    project: string
-    languages: ProjectLanguage[]
-    logo: ProjectImage | null
-    mainImages: ProjectImage[]
+export type ProjectType = {
+    title: string
+    subtitle: string | null
     description: string | null
     link: string
-    frameworks: ProjectFramework[]
+    year: number
+    datetime: string
+    github: string
+    featured: boolean
+    in_progress: boolean
+    languages: ProjectLanguageType[]
+    frameworks: ProjectFrameworkType[]
+    images: ProjectImageType[]
+    specifications: ProjectSpecification[]
+    paragraphs: ProjectParagraph[]
+
+    logo: ProjectImageType | null
+    mainImages: ProjectImageType[]
 }
 
-export type ProjectsData = ProjectData[]
+export type ProjectsType = ProjectType[]

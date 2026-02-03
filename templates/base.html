@@ -10,7 +10,7 @@
     <link rel="icon" href="{% static 'images/logo_cv.svg' %}" type="image/svg+xml">
     <script type="module" src="{% static 'js/main.js' %}" defer></script>
 </head>
-<body>
+<body data-page="{% block page %}{% endblock %}" data-project_name="{% block project_name %}{% endblock %}">
     <canvas id="stars"></canvas>
     {% include "components/layout/header.html" %}
     <main>
