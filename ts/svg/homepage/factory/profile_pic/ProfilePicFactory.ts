@@ -183,7 +183,8 @@ export class ProfilePicFactory
         const image = new SVGFactory<SVGImageAttributes>(this.SVGElement, "image",
         {
             class: "svg-image",
-            href: "./static/images/myself.webp",
+            // href: "./static/images/myself.webp",
+            href: "../static/images/me_HH.png",
             x: 300,
             y: 300,
             width: 600,

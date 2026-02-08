@@ -17,8 +17,10 @@ export async function initProjects()
     const HexagonPath = "M250,0 L500,166.667 L500,433.333 L250,600 L0,433.333 L0,166.667 L250,0"
 
     const pathContent = "M1300,0 L3570,0 L3570,900 L3125,900 L3020,1060 L2525,1060 M1900,1060 L1500,1060 L1280,886.666 L1280,620 L1040,433.333 L1040,166.667 L1300,0"
-    const pathContentInner = "M1320,35 L3535,35 L3535,870 L3045,870 L2945,1025 L2615,1025 L1860,1025 L1520,1025 L1315,866.666 L1315,595 L1075,413.333 L1075,191.667 L1320,35"
-
+    
+    const pathContentInner = "M1320,35 L3535,35 L3535,870 L3045,870 L2945,1025 L1520,1025 L1315,866.666 L1315,595 L1075,413.333 L1075,191.667 L1320,35"
+    const pathContentInnerGradientPath = "M1420,135 L3435,135 L3435,770 L2945,770 L2845,925 L1620,925 L1415,766.666 L1415,495 L1175,313.333 L1175,291.667 L1420,135";
+    
     const pathLanguages = "M1450,-20 L1560,-20 L1560,90 L1505,125 L1450,90 L1450,-20" 
 
     const fetcher = new FetchProjects() 
@@ -44,7 +46,7 @@ export async function initProjects()
         const figures = PathFigures.createFigurePathString(HexagonPath, ProjectsRootElement.createInnerHexaPath());
         ProjectsHexa.styleLogo(root!, figures!)
 
-        const pathElement = ProjectsInnerHTMLContent.createLanguagePaths(root!, pathContentInner)
+        const pathElement = ProjectsInnerHTMLContent.createInnerPath(root!, pathContentInner, pathContentInnerGradientPath)
         ProjectsInnerHTMLContent.initContent(root!, pathElement, projectName, project.description!)
 
         // LANGUAGES AND FRAMEWORKS
