@@ -11,7 +11,7 @@ import { exportClass } from "./svg/homepage/factory/programming_languages/main/L
 import { LanguageSmallBorder } from "./svg/homepage/factory/programming_languages/small/LanguageSmallFactory.js";
 
 import { initProjects } from "./svg/projects/projectsInit.js"
-import { initSlideshow } from "./svg/project/slideshow/SlideshowMainSVG.js";
+import { initSlideshow } from "./svg/project/slideshow/slideshowInit.js"
 
 new Background("stars", 50);
 const navDropdown = new Dropdown();
