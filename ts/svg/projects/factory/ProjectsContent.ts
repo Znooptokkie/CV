@@ -11,7 +11,7 @@ export class ProjectsContent
     {
         const projectSecondSection = new SVGFactory(container, "path", {
             d: path,
-            stroke: "rgba(8, 63, 174, 1)",
+            stroke: "rgb(51, 81, 142)",
             opacity: options?.opacity ?? 1,
             fill: "none",
             "stroke-width": 8
@@ -24,11 +24,11 @@ export class ProjectsContent
     private static drawCircles(container: CreateSVG | null)
     {
         const circlesData = [
-            { cx: 1940, stroke: "rgba(8, 63, 174, 0.5)", fill: "none", "stroke-width": 6 },
-            { cx: 2000, stroke: "rgba(8, 63, 174, 0.5)", fill: "none", "stroke-width": 6 },
-            { cx: 2060, stroke: "rgba(8, 63, 174, 0.75)", fill: "none", "stroke-width": 6 },
-            { cx: 2120, stroke: "none", fill: "rgba(8, 63, 174, 0.5)" },
-            { cx: 2180, stroke: "none", fill: "rgba(8, 63, 174, 1)" }
+            { cx: 1940, stroke: "rgba(51, 81, 142, 0.5)", fill: "none", "stroke-width": 6 },
+            { cx: 2000, stroke: "rgba(51, 81, 142, 0.5)", fill: "none", "stroke-width": 6 },
+            { cx: 2060, stroke: "rgba(51, 81, 142, 0.75)", fill: "none", "stroke-width": 6 },
+            { cx: 2120, stroke: "none", fill: "rgba(51, 81, 142, 0.5)" },
+            { cx: 2180, stroke: "none", fill: "rgb(51, 81, 142)" }
         ]
 
         circlesData.forEach(data => {
