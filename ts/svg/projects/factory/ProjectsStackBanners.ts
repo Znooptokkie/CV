@@ -17,7 +17,7 @@ export class ProjectsStackBanners
 
         const pathElement = new SVGFactory(container, "path", {
             d: path,
-            stroke: "rgba(8, 63, 174, 1)",
+            stroke: "rgb(51, 81, 142)",
             "stroke-width": 8,
             fill: "rgba(0, 8, 25, 1)",
             transform: `translate(${offsetX},0)`
@@ -80,7 +80,7 @@ export class ProjectsStackBanners
         {
             icon.className = `devicon-${iconLanguage}-plain`
         }
-        icon.style.cssText = "font-size:60px; color:rgba(8, 63, 174, 1);"
+        icon.style.cssText = "font-size:60px; color:rgb(51, 81, 142);"
 
         wrapper.append(icon)
         return wrapper

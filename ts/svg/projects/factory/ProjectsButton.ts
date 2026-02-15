@@ -33,7 +33,7 @@ export class ProjectsButton
             new SVGFactory(group, "path", {
                 d,
                 class: `projects-button-path part-${i}`,
-                stroke: "rgba(8, 63, 174, 1)",
+                stroke: "rgb(51, 81, 142)",
                 "stroke-width": 8,
                 fill: "none"
             }).createSvgTag()
@@ -66,7 +66,7 @@ export class ProjectsButton
         text.style.cssText = `
             margin:0;
             font-size:74px;
-            color:rgba(8, 63, 174, 1);
+            color:rgb(51, 81, 142);
             font-weight:bold;
             font-family:"Ubuntu", sans-serif;
         `
@@ -98,7 +98,7 @@ export class ProjectsButton
 
         link.addEventListener("mouseleave", () =>
         {
-            link.querySelectorAll(".projects-button-path").forEach(p => p.setAttribute("stroke", "rgba(8, 63, 174, 1)"))
+            link.querySelectorAll(".projects-button-path").forEach(p => p.setAttribute("stroke", "rgb(51, 81, 142)"))
         })
     }
 }

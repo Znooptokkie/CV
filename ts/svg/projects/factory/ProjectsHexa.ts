@@ -10,8 +10,8 @@ export class ProjectsHexa
         figures.forEach((path) => {
             const borders = new SVGFactory(container, "path", {
                 d: path,
-                stroke: counter <= 2 ? "none" : "rgba(8, 63, 174, 1)",
-                fill: counter <= 2 ? "rgba(8, 63, 174, 1)" : "none"
+                stroke: counter <= 2 ? "none" : "rgb(51, 81, 142)",
+                fill: counter <= 2 ? "rgb(51, 81, 142)" : "none"
             }).createSvgTag()
 
             counter++

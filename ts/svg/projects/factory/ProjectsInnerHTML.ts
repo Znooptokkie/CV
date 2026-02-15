@@ -25,16 +25,16 @@ export class ProjectsInnerHTMLContent
         title.style.fontSize = "100px"
         title.style.fontStyle = "italic"
         title.style.fontFamily = "Goldman", "sans-serif"
-        // title.style.color = "rgb(51, 81, 142)"
-        title.style.color = "rgba(8, 63, 174, 1)"
+        title.style.color = "rgb(51, 81, 142)"
+        // title.style.color = "rgba(8, 63, 174, 1)"
         title.style.textShadow = "24px 24px 0 rgba(6, 10, 18, 1)";
         title.textContent = projectTitle
 
         const content = document.createElement("p")
         content.style.fontSize = "54px"
         content.style.lineHeight = "2.5"
-        // content.style.color = "rgb(51, 81, 142)"
-        content.style.color = "rgba(8, 63, 174, 1)"
+        content.style.color = "rgb(51, 81, 142)"
+        // content.style.color = "rgba(8, 63, 174, 1)"
         content.style.textAlign = "center"
         content.style.textShadow = "15px 15px 0 rgba(6, 10, 18, 1)";
         content.textContent = projectText
@@ -51,10 +51,10 @@ export class ProjectsInnerHTMLContent
 
         const pathElement = new SVGFactory(container, "path", {
             d: path!,
-            // stroke: "rgba(51, 81, 142, 0.55)",
-            stroke: "rgba(8, 63, 174, 0.5)",
+            stroke: "rgba(51, 81, 142, 0.55)",
+            // stroke: "rgba(8, 63, 174, 0.5)",
             // fill: "rgba(10, 20, 35, 0.5)",
-            fill: "rgba(8, 63, 174, 0.05)"
+            fill: "rgba(1, 12, 34, 0.5)"
         }).createSvgTag()
 
         // Voeg glow toe op basis van dit path
