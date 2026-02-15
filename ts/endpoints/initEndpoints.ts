@@ -11,5 +11,5 @@ export async function initProjectService(projectName: string | undefined): Promi
     const fetchProject = new FetchProject()
 
     const project = await fetchProject.getProjectData(projectName)
-    console.log(project);
+    // console.log(project);
 }
