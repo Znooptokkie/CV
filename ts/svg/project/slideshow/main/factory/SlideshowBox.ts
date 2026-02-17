@@ -38,7 +38,7 @@ export class SlideshowBox
         const topDecoration = new SlideshowTopDecoration(this.context)
         topDecoration.createTopDecoration(group, this.id)
 
-        const navBlocks = new SlideshowBlockNav()
-        navBlocks.createTopDecoration(group)
+        // const navBlocks = new SlideshowBlockNav()
+        // navBlocks.createTopDecoration(group)
     }
 }
