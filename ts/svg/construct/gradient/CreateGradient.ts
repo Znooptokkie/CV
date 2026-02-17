@@ -18,7 +18,7 @@ export class CreateGradient
         new SVGFactory(grad, "stop", 
             { 
                 offset: "0%", 
-                "stop-color": "rgba(43, 90, 184, 1)"
+                "stop-color": "rgba(43, 90, 184, 0.25)"
                 // "stop-color": "rgba(51, 81, 142, 0.5)" 
             }).createSvgTag();
         new SVGFactory(grad, "stop", { offset: "60%", "stop-color": "rgba(10,20,35,0)" }).createSvgTag();
