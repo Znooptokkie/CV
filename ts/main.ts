@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () =>
     if (whichPage === "project_detail_page") // ---- ALLE PAGINA'S MOETEN OP DEZE MANIER@#%^%$#$@
     {
         initProjectService(projectName)
-        initSlideshow()
+        initSlideshow(projectName!)
         // console.log(whichPage);
     }
 })
