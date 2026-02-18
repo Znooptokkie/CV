@@ -99,7 +99,6 @@ class Command(BaseCommand):
                         {"image_url": "projects/battlebot/battlebot_huge_mess_topview.webp", "alt_text": "Bovenaanzicht van de Battlebot", "is_main_image": False, "is_logo": False},
                         {"image_url": "projects/battlebot/battlebot_huge_mess.webp", "alt_text": "Enorme bende op de Battlebot", "is_main_image": True,  "is_logo": False},
                         {"image_url": "projects/battlebot/battlebot_mcp_connection.webp", "alt_text": "De MCP2515-module connectie tussen beide Pi's", "is_main_image": True, "is_logo": False},
-                        {"image_url": "projects/battlebot/battlebot_myself.webp", "alt_text": "Selfie van mij met de Battlebot", "is_main_image": False, "is_logo": False},
                         {"image_url": "projects/battlebot/battlebot_screen_picture.webp", "alt_text": "Foto van de Battlebot met de camera van de robot", "is_main_image": False, "is_logo": False},
                         {"image_url": "projects/battlebot/battlebot_selfmade_module_topview.webp", "alt_text": "Bovenaanzicht hardware zelf gemaakt hardware module", "is_main_image": True, "is_logo": False},
                         {"image_url": "projects/battlebot/battlebot_selfmade_module.webp", "alt_text": "Zelfgemaakte hardware module", "is_main_image": False, "is_logo": False},
