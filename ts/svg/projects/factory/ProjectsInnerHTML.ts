@@ -51,7 +51,8 @@ export class ProjectsInnerHTMLContent
 
         const pathElement = new SVGFactory(container, "path", {
             d: path!,
-            stroke: "rgba(51, 81, 142, 0.55)",
+            // stroke: "rgba(51, 81, 142, 0.55)",
+            stroke: "red",
             // stroke: "rgba(8, 63, 174, 0.5)",
             // fill: "rgba(10, 20, 35, 0.5)",
             fill: "rgba(1, 12, 34, 0.5)"
