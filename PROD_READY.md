@@ -81,40 +81,41 @@ python manage.py collectstatic --noinput
 
 # Website Updaten
 
-1. Pull de laatse code
+1. Ga naar projectmap
 ```bash
 cd /var/www/<project_naam>
+```
+
+2. Activeer virtualenv
+```bash
+source venv/bin/activate # is django_venv/bin/activate
+```
+
+3. Pull laatste code
+```bash
 git pull
 ```
 
-2. python manage.py collectstatic --noinput
-```bash
-source venv/bin/activate
-```
-
-3. Installeer nieuwe Python dependencies (indien nodig)
+4. Installeer Python dependencies (optioneel)
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Installeer nieuwe Node.js packages (indien frontend updates)
-```bash
-npm install
-```
-
-5. Rebuild frontend
-```bash
-npm run build
-```
-
-6. Voer migrations uit (indien database updates)
+5. Voer database migraties uit (indien database updates)
 ```bash
 python manage.py migrate
 ```
 
+6. Build frontend (indien frontend updates)
+```bash
+npm install
+npm run build
+```
+
+
 7. Update static files
 ```bash
-python manage.py collectstatic --noinput
+python manage.py collectstatic --noinput # --clear      Als alle files weg moeten
 ```
 
 8. Herstart Gunicorn
@@ -122,9 +123,9 @@ python manage.py collectstatic --noinput
 systemctl restart gunicorn
 ```
 
-9. Herstart Nginx (indien config gewijzigd)
+9. Reload Nginx (alleen bij config wijziging)
 ```bash
-systemctl restart nginx
+systemctl reload nginx
 ```
 
 ---
