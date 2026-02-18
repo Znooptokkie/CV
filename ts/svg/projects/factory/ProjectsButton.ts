@@ -8,7 +8,7 @@ export class ProjectsButton
     private static getLinkHref(container: CreateSVG | null, projectName: string)
     {
         const link = new SVGFactory(container, "a", {
-            href: `http://127.0.0.1:8000/projecten/${projectName.toLowerCase()}`,
+            href: `/projecten/${projectName.toLowerCase()}`,
             class: "projects-button-link"
         }).createSvgTag()
 
