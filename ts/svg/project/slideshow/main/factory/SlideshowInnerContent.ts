@@ -1,108 +1,94 @@
-import { SVGFactory } from "../../../../construct/core/SVGFactory.js"
-import { DeconstructPath } from "../../../../construct/DeconstructPath.js"
-import { CreateGradient } from "../../../../construct/gradient/CreateGradient.js"
-import { DrawSegments } from "../../../../construct/gradient/DrawSegments.js"
-import { OffsetVector } from "../../../../construct/gradient/OffsetVector.js"
-import { SlideshowContext } from "../SlideshowContext.js"
-import { SlideshowFunctionality } from "./nav/SlideshowBlockNav.js"
+import { SVGFactory } from "../../../../construct/core/SVGFactory.js";
+import { DeconstructPath } from "../../../../construct/DeconstructPath.js";
+import { CreateGradient } from "../../../../construct/gradient/CreateGradient.js";
+import { DrawSegments } from "../../../../construct/gradient/DrawSegments.js";
+import { OffsetVector } from "../../../../construct/gradient/OffsetVector.js";
+import { SlideshowContext } from "../SlideshowContext.js";
+import { SlideshowState } from "../../nav/SlideshowState.js";
+import { SlideshowMainFunctionality } from "../../nav/main/SlideshowMainFunctionality.js";
 
-
-export class SlideshowInnerContent
+/**
+ * Tekent de inner border, masked image en gradients van een slideshow
+ */
+export class SlideshowInnerContent 
 {
-    private innerPath: string = "M120,120 L1880,120 L1880,165 L1860,180 L1860,260 L1850,270 L1850,1200 L1840,1210 L1840,1280 L160,1280 L160,1220 L150,1210 L150,270 L140,260 L140,180 L120,165 L120,120"
-    private innerInnerPAth: string = "M160,160 L1820,160 L1820,160 L1800,160 L1800,200 L1790,210 L1790,1150 L1780,1150 L1780,1220 L220,1220 L220,1160 L210,1150 L210,210 L200,200 L200,160 L180,160 L160,160"
-    private imageElement: SVGImageElement | null = null
+private innerPath = "M30,120 L1790,120 L1790,165 L1770,180 L1770,260 L1760,270 L1760,1200 L1750,1210 L1750,1280 L70,1280 L70,1220 L60,1210 L60,270 L50,260 L50,180 L30,165 L30,120";
+
+private innerInnerPath = "M70,160 L1730,160 L1730,160 L1710,160 L1710,200 L1700,210 L1700,1150 L1690,1150 L1690,1220 L130,1220 L130,1160 L120,1150 L120,210 L110,200 L110,160 L90,160 L70,160";
+
+    private imageElement: SVGImageElement | null = null;
 
     constructor(private context: SlideshowContext) {}
 
-    public async drawInnerContentBorder(projectName: string): Promise<void>
+    public async drawInnerContentBorder(projectName: string, slideshow: SlideshowMainFunctionality, state: SlideshowState) 
     {
-        // FIX: moet niet hier komen, maar in de init code
-        //      Zorg wel dat hij eerder geladen wrodt dan de image
-        this.addInnerMaskToDefs(projectName)
-        await this.addMaskedImage(projectName)
+        this.addInnerMaskToDefs(projectName);
+        await this.addMaskedImage(projectName, slideshow, state);
 
-        const { svg } = this.context
-
+        const { svg } = this.context;
         new SVGFactory(svg.svg, "path", {
             d: this.innerPath,
             stroke: "rgb(51, 81, 142)",
             fill: "rgba(0,0,0,0.5)",
             "stroke-width": 4
-        }).createSvgTag()
-
-        
+        }).createSvgTag();
     }
 
-    public addInnerMaskToDefs(projectName: string)
+    private addInnerMaskToDefs(projectName: string) 
     {
-        const { svg } = this.context
-    
-        const defs = new SVGFactory(svg.svg, "defs", {}).createSvgTag()
-    
-        const mask = new SVGFactory(defs, "mask", {
-            id: `inner-mask-${projectName}`,
-            maskUnits: "userSpaceOnUse"
-        }).createSvgTag()
-    
+        const { svg } = this.context;
+        
+        const defs = new SVGFactory(svg.svg, "defs", {}).createSvgTag();
+        const mask = new SVGFactory(defs, "mask", { 
+            id: `inner-mask-${projectName}`, 
+            maskUnits: "userSpaceOnUse" 
+        }).createSvgTag();
+
         new SVGFactory(mask, "rect", {
             x: 0,
             y: 0,
             width: this.context.svg.viewboxWidth,
             height: this.context.svg.viewboxHeight,
             fill: "black"
-        }).createSvgTag()
-    
-        new SVGFactory(mask, "path", {
-            d: this.innerPath,
-            fill: "white"
-        }).createSvgTag()
+        }).createSvgTag();
 
-        // SHADOWEA#@$^%#$%#@!$WER
+        new SVGFactory(mask, "path", { 
+            d: this.innerPath, 
+            fill: "white" 
+        }).createSvgTag();
 
-        const OFFSET = 75
-        // console.log(this.innerPath);
-        // console.log(this.innerInnerPAth);
-        const innerInnerPoints = DeconstructPath.getPathParts(this.innerInnerPAth)
-        // console.log(innerInnerPoints);
-        const outerInnerPoints = DeconstructPath.getPathParts(this.innerPath)
-        // console.log(outerInnerPoints);
-        for (let i = 0; i < outerInnerPoints.length - 1 && i < innerInnerPoints.length - 1; i++)
+        const OFFSET = 75;
+        const innerPoints = DeconstructPath.getPathParts(this.innerInnerPath);
+        const outerPoints = DeconstructPath.getPathParts(this.innerPath);
+
+        for (let i = 0; i < Math.min(outerPoints.length - 1, innerPoints.length - 1); i++) 
         {
-            const [p0, p1] = [outerInnerPoints[i], outerInnerPoints[i + 1]];
-            const [p0A, p1A] = [innerInnerPoints[i], innerInnerPoints[i + 1]];
+            const [p0, p1] = [outerPoints[i], outerPoints[i + 1]];
+            const [p0A, p1A] = [innerPoints[i], innerPoints[i + 1]];
 
-            const offsetVector = OffsetVector.computeOffsetVector(p0, p1, OFFSET)
+            const offsetVector = OffsetVector.computeOffsetVector(p0, p1, OFFSET);
             const gradId = CreateGradient.createSegmentGradient(defs!, p0, offsetVector, i);
             DrawSegments.drawSegment(svg.svg, p0, p1, p0A, p1A, gradId);
         }
     }
-    
-    
-    public async addMaskedImage(projectName: string)
+
+    private async addMaskedImage(projectName: string, slideshow: SlideshowMainFunctionality, state: SlideshowState) 
     {
-        const { svg } = this.context
-
-        const navFunctionality = new SlideshowFunctionality(projectName, null)
-
-        await navFunctionality.getImages()
-        navFunctionality.recordWhichImages()
-
-        const imageURL = navFunctionality.getCurrentImage()?.image_url
+        const { svg } = this.context;
+        const imageURL = state.getCurrent()?.image_url;
 
         this.imageElement = new SVGFactory(svg.svg, "image", {
-            href: `../static/images/${imageURL}`,
+            href: `/static/images/${imageURL}`,
             x: 0,
             y: 0,
             width: this.context.svg.viewboxWidth,
             height: this.context.svg.viewboxHeight,
             mask: `url(#inner-mask-${projectName})`,
             preserveAspectRatio: "xMidYMid slice",
-            // opacity: "0.5",
             "pointer-events": "none"
-        }).createSvgTag() as SVGImageElement
+        }).createSvgTag() as SVGImageElement;
 
-        navFunctionality.setImageElement(this.imageElement)
-        navFunctionality.manipulateDOM()
+        slideshow.setImageElement(this.imageElement);
+        slideshow.bindNavigation();
     }
 }

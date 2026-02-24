@@ -7,8 +7,8 @@ export class SlideshowCornerDecoration
 {
     private cornerOrnamentPaths: Record<string, string> = 
     {
-        LeftTopCorner: "M100,170 L120,190 L120,270 L100,250",
-        leftBottomCorner: "M125,1205 L145,1225 L145,1300 L125,1300"
+        LeftTopCorner: "M10,170 L30,190 L30,270 L10,250",
+        leftBottomCorner: "M35,1205 L55,1225 L55,1300 L35,1300"
     } 
 
     constructor(private context: SlideshowContext) {}
