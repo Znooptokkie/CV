@@ -7,23 +7,22 @@ export class SlideshowTopDecoration
 {
     private decorationLines: Record<string, string> = 
     {
-        ornamentUnderline: "M820,5 L735,85 L425,85",
-        ornamentUpperline: "M780,15 L600,15 L545,70 L475,70"
+        ornamentUnderline: "M730,5 L645,85 L335,85",
+        ornamentUpperline: "M690,15 L510,15 L455,70 L385,70"
     }
 
     private decorationOrnamentBlocks: Record<string, string> =
     {
-        ornamentFirstBlock: "M793,30 L735,85 L705,85 L763,30 L793,30",
-        ornamentSeconBlock: "M743,30 L685,85 L655,85 L713,30 L743,30",
-        ornamentThirdBlock: "M693,30 L635,85 L605,85 L663,30 L693,30",
-        ornamentFourtBlock: "M643,30 L585,85 L555,85 L613,30 L643,30"
-
+        ornamentFirstBlock: "M703,30 L645,85 L615,85 L673,30 L703,30",
+        ornamentSeconBlock: "M653,30 L595,85 L565,85 L623,30 L653,30",
+        ornamentThirdBlock: "M603,30 L545,85 L515,85 L573,30 L603,30",
+        ornamentFourtBlock: "M553,30 L495,85 L465,85 L523,30 L553,30"
     }
 
     private decorationLayingBlocks: Record<string, string> = 
     {
-        ornamentFirstLayBlock: "M400,85 L325,85 L315,75 L390,75 L400,85",
-        ornamentSeconLayBlock: "M300,85 L225,85 L215,75 L290,75 L300,85",
+        ornamentFirstLayBlock: "M310,85 L235,85 L225,75 L300,75 L310,85",
+        ornamentSeconLayBlock: "M210,85 L135,85 L125,75 L200,75 L210,85",
     }
 
     constructor(private context: SlideshowContext) {}
