@@ -2,7 +2,6 @@ import { SVGFactory } from "../../../../construct/core/SVGFactory.js"
 import { SlideshowContext } from "../SlideshowContext.js"
 import { SlideshowCornerDecoration } from "./decoration/SlideshowCornerDecoration.js"
 import { SlideshowTopDecoration } from "./decoration/SlideshowTopDecoration.js"
-import { SlideshowBlockNav } from "./nav/SlideshowBlockNav.js"
 
 
 export class SlideshowBox
@@ -16,7 +15,7 @@ export class SlideshowBox
         SlideshowBox.boxPosition += 1
         context.boxes.push(this)
 
-        this.drawBoxDecorations()
+        this.drawBoxDecorations() 
     }
 
     public createGroup(): SVGElement | null

@@ -7,8 +7,8 @@ export class SlideshowMainInstance
 {
     private SVG: CreateSVG | null = null
     protected HTMLID: string = "svg-slideshow-main"
-    public viewboxWidth: number = 2000
-    public viewboxHeight: number = 1400
+    public viewboxWidth: number = 1820
+    public viewboxHeight: number = 1390
 
     private createSVGElement(): CreateSVG
     {

@@ -4,14 +4,20 @@ import { ProjectType } from "../../types/projects.type.js"
 
 export class FetchProject
 {
-    private project: ProjectType | null = null;
+    private static cache: Map<string, ProjectType> = new Map();
 
     public async getProjectData(projectName: string | undefined): Promise<ProjectType>
     {
+        if (!projectName)
+            throw new Error("Project name is required");
+
+        if (FetchProject.cache.has(projectName))
+            return FetchProject.cache.get(projectName)!;
+
         const fetchProject = await Fetch.fetchDetail<ProjectsInterface>(`project/${projectName}`);
 
-        this.project = {
-            title: fetchProject.title, 
+        const project: ProjectType = {
+            title: fetchProject.title,
             subtitle: fetchProject.subtitle,
             description: fetchProject.description,
             link: fetchProject.link,
@@ -28,12 +34,10 @@ export class FetchProject
 
             logo: fetchProject.images.find(img => img.is_logo) ?? null,
             mainImages: fetchProject.images.filter(img => img.is_main_image) ?? [],
-        }
-        return this.project
-    }
-    
-    public getProject(): ProjectType | null
-    {
-        return this.project
+        };
+
+        FetchProject.cache.set(projectName, project);
+
+        return project;
     }
 }

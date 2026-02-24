@@ -1,5 +1,10 @@
 import { ProjectParagraph, ProjectSpecification } from "../interfaces/api/ProjectsInterface"
 
+export interface ProjectImageSlideshowType extends ProjectImageType 
+{
+    is_active: boolean;
+}
+
 export type ProjectImageType = {
     image_url: string
     alt_text: string
