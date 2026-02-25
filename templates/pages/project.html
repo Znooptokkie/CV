@@ -3,8 +3,13 @@
 {% block page %}project_detail_page{% endblock %}
 {% block project_name %}{{project_name}}{% endblock %}
 
+{% block title %}{{ project_name|capfirst }}{% endblock %}
+
 {% block content %}
-    
+    <section>
+        <h1 class="section-title">{{ project_name|capfirst }}</h1>
+        <!-- <i>--- Een volledig geautomatiseerde robot ---</i> -->
+    </section>
     <section id="project-detail-section-slideshow">
 
         <div id="slideshow-main-parent">
@@ -16,6 +21,14 @@
         <div id="svg-images-list-container">
             
         </div>
+
+    </section>
+
+    <section id="project-detail-section-description">
+        
+    </section>
+
+    <section id="project-detail-section-specification">
 
     </section>
 

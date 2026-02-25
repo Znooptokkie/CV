@@ -2,15 +2,14 @@ import { SlideshowBlockNav } from "./nav/SlideshowBlockNav.js";
 import { SlideshowInnerContent } from "./main/factory/SlideshowInnerContent.js";
 import { SlideshowContext } from "./main/SlideshowContext.js";
 import { SlideshowMainDrawLines, SlideshowMainInstance } from "./main/factory/SlideshowMainSVG.js";
-import { FetchProject } from "../../../endpoints/service/FetchProject.js";
 import { SlideshowBox } from "./main/factory/SlideshowBox.js";
 import { SlideshowState } from "./nav/SlideshowState.js";
 import { SlideshowMainFunctionality } from "./nav/main/SlideshowMainFunctionality.js";
 import { SmallSVGSlideshow } from "./small/factory/SlideshowSmallSVG.js";
-// import { SlideshowSmallFunctionality } from "./nav/small/SlideshowSmallFunctionality.js";
-// import { SlideshowAddSmallSVGProperties, SlideshowCreateSmallSVG } from "./small/factory/SlideshowSmallSVG.js";
+import { ProjectType } from "../../../types/projects.type.js";
 
-export async function initSlideshow(projectName: string): Promise<void> 
+
+export async function initSlideshow(projectName: string, projectData: ProjectType): Promise<void> 
 {
     const svg = new SlideshowMainInstance();
     const context = new SlideshowContext(svg);
@@ -26,8 +25,8 @@ export async function initSlideshow(projectName: string): Promise<void>
     const navBlocks = new SlideshowBlockNav(context);
     navBlocks.createNavBlocks(projectName);
 
-    const fetcher = new FetchProject();
-    const projectData = await fetcher.getProjectData(projectName);
+    // const fetcher = new FetchProject();
+    // const projectData = await fetcher.getProjectData(projectName);
 
     const images = projectData.images
         .filter(img => !img.is_logo)
