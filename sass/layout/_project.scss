@@ -1,3 +1,6 @@
+@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as mix;
+
 #project-detail-section-slideshow
 {
     display: flex;
@@ -22,6 +25,38 @@
         svg
         {
             // border: solid red 2px;
+        }
+    }
+}
+
+#project-detail-section-description
+{
+    // background-color: red;
+
+
+    .project-description-div
+    {
+        @include mix.flexbox($direction: column);
+        // @include mix.glass-card();
+        padding: 3rem 2rem 4rem;
+        // box-shadow: inset 0 0 15px rgba(51, 81, 142, 0.25);
+        height: auto;
+        // border: solid 2px rgba(51, 81, 142, 0.5);
+
+        h2
+        {
+                @include mix.flexbox($direction: row, $justify: space-between, $align: center);
+                width: 100%;
+                // border-bottom: solid 3px rgba(158, 190, 255, 0.05);
+                padding: 0 2rem 1rem;
+        }
+
+        p
+        {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: vars.$secondary-color;
+            line-height: 2rem;
         }
     }
 }
