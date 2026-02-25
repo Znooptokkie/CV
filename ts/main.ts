@@ -1,4 +1,4 @@
-import { initEndpoints, initProjectService } from "./endpoints/initEndpoints.js";
+// import { initEndpoints, initProjectService } from "./endpoints/initEndpoints.js";
 
 import { TimelineAnimation } from "./utils/Timeline.js";
 import { Background } from "./utils/Background.js";
@@ -12,15 +12,18 @@ import { LanguageSmallBorder } from "./svg/homepage/factory/programming_language
 
 import { initProjects } from "./svg/projects/projectsInit.js"
 import { initSlideshow } from "./svg/project/slideshow/slideshowInit.js"
+import { fetchProject, projectInit } from "./svg/project/projectInit.js";
+import { ProjectType } from "./types/projects.type.js";
+
 
 new Background("stars", 50);
 const navDropdown = new Dropdown();
 
-initEndpoints();
+// initEndpoints();
 
 new TimelineAnimation();
 
-document.addEventListener("DOMContentLoaded", () => 
+document.addEventListener("DOMContentLoaded", async () => 
 {
     navDropdown.checkForButton();
 
@@ -52,8 +55,10 @@ document.addEventListener("DOMContentLoaded", () =>
 
     if (whichPage === "project_detail_page") // ---- ALLE PAGINA'S MOETEN OP DEZE MANIER@#%^%$#$@
     {
-        initProjectService(projectName)
-        initSlideshow(projectName!)
-        // console.log(whichPage);
+        // initProjectService(projectName)
+        // initSlideshow(projectName!)
+        const project = await fetchProject(projectName!)
+        projectInit(projectName!, project)
+        console.log(project);
     }
 })
