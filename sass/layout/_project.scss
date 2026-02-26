@@ -4,15 +4,10 @@
 #project-detail-section-slideshow
 {
     display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // width: 75%;
-    // align-self: center;
 
     #slideshow-main-parent
     {
         width: 75%;
-        // align-self: center;
     }
 
     #svg-images-list-container
@@ -24,39 +19,91 @@
 
         svg
         {
-            // border: solid red 2px;
+
         }
     }
 }
 
 #project-detail-section-description
 {
-    // background-color: red;
-
+    @include mix.flexbox($direction: column);
+    gap: 2rem;
+    
 
     .project-description-div
     {
         @include mix.flexbox($direction: column);
-        // @include mix.glass-card();
-        padding: 3rem 2rem 4rem;
-        // box-shadow: inset 0 0 15px rgba(51, 81, 142, 0.25);
         height: auto;
-        // border: solid 2px rgba(51, 81, 142, 0.5);
 
         h2
         {
-                @include mix.flexbox($direction: row, $justify: space-between, $align: center);
-                width: 100%;
-                // border-bottom: solid 3px rgba(158, 190, 255, 0.05);
-                padding: 0 2rem 1rem;
+            width: 40%;
+            color: rgba(250, 250, 250, 1);
         }
 
         p
         {
             font-size: 1.25rem;
             font-style: italic;
-            color: vars.$secondary-color;
+            color: rgba(51, 81, 142, 1);
             line-height: 2rem;
         }
     }
 }
+
+#project-detail-section-specification
+{
+    display: flex;
+    flex-direction: column;
+
+    .spec-accordion-item
+    {
+        .spec-accordion-svg
+        {
+            .spec-border 
+            {
+                fill: transparent;
+            }
+
+            .accordion-header-group
+            {
+                .accordion-header-path
+                {
+                    fill: rgba(51, 81, 142,0.1);
+                    cursor: pointer;
+
+                    // &:hover
+                    // {
+                    //     fill: green;
+                    // }
+                }
+
+                .accordion-title
+                {
+                    fill: rgba(51, 81, 142,1);
+                    font-size: 1rem;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+            }
+
+
+            .spec-content
+            {
+                .spec-html-content 
+                {
+                    margin: 0 auto;
+                    padding: 1rem 2.5rem;
+                    color: rgba(51, 81, 142,1);
+                    background-color: rgba(51, 81, 142,0.05);
+                    width: 83.5%;
+                    font-size: .75rem;
+                    box-shadow: inset 0 0 20px rgba(51, 81, 142, 0.05);
+                    border-bottom: solid 2px rgba(51, 81, 142, 0.5);
+                }
+            }
+        }
+    }
+}
+
+
