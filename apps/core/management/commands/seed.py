@@ -226,20 +226,20 @@ class Command(BaseCommand):
                         {"spec": "SPI (Serial Peripheral Interface)", "category": "PROTOCOL"},
                         {"spec": "SSH (Secure Shell)", "category": "PROTOCOL"},
                         {"spec": "Raspberry Pi 5", "category": "HARDWARE", "svg_url": "raspberrypi"},
-                        {"spec": "Hailo-HAT", "category": "HARDWARE"},
                         {"spec": "Raspberry Pi Pico 2", "category": "HARDWARE", "svg_url": "raspberrypi"},
+                        {"spec": "Hailo-HAT", "category": "HARDWARE"},
                         {"spec": "UBEC (Universal battery eliminator circuit)", "category": "HARDWARE"},
                         {"spec": "ESC (Electronic Speed Controller)", "category": "HARDWARE"},
                         {"spec": "MCP2515-module", "category": "HARDWARE"},
                         {"spec": "DC-Converter", "category": "HARDWARE"},
-                        {"spec": "FC-03 IR Optical Encoder", "category": "HARDWARE"},
                         {'spec': "CSI (Camera Serial Interface)", "category": "HARDWARE"},
-                        {"spec": "HC-SR04", "category": "HARDWARE"},
+                        {"spec": "PWM (Pulse-width modulation)", "category": "HARDWARE"},
+                        {"spec": "HC-SR04", "category": "SENSOR"},
+                        {"spec": "FC-03 IR Optical Encoder", "category": "SENSOR"},
                         {"spec": "Bitwise Operators", "category": "SOFTWARE"},
                         {"spec": "Thonny", "category": "SOFTWARE"},
                         {"spec": "YOLOv11", "category": "SOFTWARE"},
                         {"spec": "Crontab", "category": "SOFTWARE"},
-                        {"spec": "PWM (Pulse-width modulation)", "category": "OTHER"},
                     ]
                 },
                 # ====================
@@ -280,9 +280,9 @@ class Command(BaseCommand):
                     ],
                     "specifications": [
                         {"spec": "CI/CD", "category": "SOFTWARE"},
-                        {"spec": "SVG", "category": "SOFTWARE"},
-                        {"spec": "API", "category": "SOFTWARE"},
-                        {"spec": "JSON", "category": "SOFTWARE", "svg_url": "json"}
+                        {"spec": "API", "category": "COMMUNICATIE"},
+                        {"spec": "JSON", "category": "DATAFORMAT", "svg_url": "json"},
+                        {"spec": "SVG", "category": "INTERFACE"},
                     ],
                 },
                 # ====================
@@ -313,7 +313,7 @@ class Command(BaseCommand):
                     "specifications": [
                         {"spec": "Android SDK", "category": "SOFTWARE", "svg_url": "androidstudio"},
                         {"spec": "Gradle", "category": "SOFTWARE", "svg_url": "gradle"}, # Moet eigenlijk gradle-original zijn!@!$#%@$^
-                        {"spec": "XML", "category": "SOFTWARE", "svg_url": "xml"}
+                        {"spec": "XML", "category": "DATAFORMAT", "svg_url": "xml"}
                     ],
                 },
                 # ====================
@@ -353,7 +353,7 @@ class Command(BaseCommand):
                         }
                     ],
                     "specifications": [
-                        {"spec": "API", "category": "SOFTWARE"},
+                        {"spec": "API", "category": "COMMUNICATIE"},
                     ],
                 },
                 # ====================
@@ -395,7 +395,7 @@ class Command(BaseCommand):
                     "specifications": [
                         {"spec": "SSH (Secure Shell)", "category": "PROTOCOL"},
                         {"spec": "SCP (Secure Copy Protocol)", "category": "PROTOCOL"},
-                        {"spec": "API", "category": "SOFTWARE"},
+                        {"spec": "API", "category": "COMMUNICATIE"},
                     ],
                 },
                 # ====================
