@@ -4,6 +4,11 @@ import { InitPath } from "../../../../construct/InitPath.js";
 import { InnerPath } from "../../../../construct/InnerPath.js";
 
 import { LanguageService } from "../../../../../endpoints/service/LanguageService.js";
+import { SVGFactory } from "../../../../construct/core/SVGFactory.js";
+import { DeconstructPath } from "../../../../construct/DeconstructPath.js";
+import { OffsetVector } from "../../../../construct/gradient/OffsetVector.js";
+import { CreateGradient } from "../../../../construct/gradient/CreateGradient.js";
+import { DrawSegments } from "../../../../construct/gradient/DrawSegments.js";
 
 
 const cornerPoint = 50;
@@ -129,17 +134,48 @@ export class LanguageSmallBorder
             // Maak een MainBorder instantie voor deze kleine SVG
             const main = new CreateSVG(
                 svg.id,
-                { viewBox: `0 0 ${newW} ${newH}`, preserveAspectRatio: "xMidYMid meet" },
+                { viewBox: `-1 -2 ${newW} ${newH}`, preserveAspectRatio: "xMidYMid meet" },
                 true
             );
 
-            // Bereken het inner pad voor de border
-            const innerPathStr = InnerPath.buildOffsetPath(scaledPath, 5);
-            InitPath.createBorderParts(main, scaledPath, innerPathStr, "homepage-languages-small");
+
+            new SVGFactory(main, "path", {
+                d: scaledPath,
+                // stroke: "rgba(51, 81, 142, 0.15)",
+                stroke: "none",
+                "stroke-width": 2,
+                fill: "rgba(0, 6, 19, 1)"
+            }).createSvgTag()
+
+
+            const innerPath = InnerPath.buildOffsetPath(scaledPath, 5)
+
+            this.createGradientSmall(main, scaledPath, innerPath)
+
 
             // Voeg het foreignObject met HTML content toe aan de SVG
             const foreign = (svg as any)._foreignObject;
             svg.appendChild(foreign);
+        }
+    }
+
+    public createGradientSmall(svg: CreateSVG, path: string, innerPath: string): void
+    {
+        const defs = new SVGFactory(svg, "defs").createSvgTag();
+
+        const OFFSET = 100;
+
+        const outerPoints = DeconstructPath.getPathParts(path);
+        const innerPoints = DeconstructPath.getPathParts(innerPath);
+
+        for (let i = 0; i < outerPoints.length - 1; i++)
+        {
+            const [p0, p1] = [outerPoints[i], outerPoints[i + 1]];
+            const [p0A, p1A] = [innerPoints[i], innerPoints[i + 1]];
+
+            const offsetVector = OffsetVector.computeOffsetVector(p0, p1, OFFSET)
+            const gradId = CreateGradient.createSegmentGradient(defs!, p0, offsetVector, i);
+            DrawSegments.drawSegment(svg, p0, p1, p0A, p1A, gradId);
         }
     }
 
