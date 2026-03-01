@@ -15,9 +15,16 @@ export class ProjectSpecificationFactory
         const htmlContainer = document.getElementById(this.HTMLID)
         if (!htmlContainer) return
 
-        for (const spec of this.allSpecNames)
+        for (const specName of this.allSpecNames)
         {
-            const specification = new ProjectSpecificationUnit(spec)
+            const hasSpecs = this.projectData.specifications.some(
+                s => s.category.toLowerCase() === specName.toLowerCase()
+            )
+
+            if (!hasSpecs) 
+                continue
+
+            const specification = new ProjectSpecificationUnit(specName)
             specification.setProjectData(this.projectData)
             htmlContainer.appendChild(specification.createHTMLElement())
         }
@@ -55,8 +62,6 @@ export class ProjectSpecificationUnit
 
         const ul = document.createElement("ul")
 
-        let hasSpecifications = false
-
         for (const spec of this.projectData!.specifications)
         {
             if (this.specificationName.toLowerCase() === spec.category.toLowerCase())
@@ -64,21 +69,10 @@ export class ProjectSpecificationUnit
                 const li = document.createElement("li")
                 li.textContent = spec.specification
                 ul.appendChild(li)
-                hasSpecifications = true
             }
         }
 
-        if (hasSpecifications)
-        {
-            contentDiv.appendChild(ul)
-        }
-        else
-        {
-            const nvt = document.createElement("p")
-            nvt.textContent = "n.v.t."
-            contentDiv.appendChild(nvt)
-        }
-
+        contentDiv.appendChild(ul)
         return contentDiv
     }
 }
@@ -103,7 +97,6 @@ export class ProjectSpecificationSVG
         this.createBorder()
         this.createHeaderPath(title)
         this.createForeignObject(htmlContent)
-        // toggle wordt nu in createHeaderPath afgehandeld
     }
 
     private createSVGElement<T extends keyof SVGElementTagNameMap>(
@@ -128,7 +121,6 @@ export class ProjectSpecificationSVG
         this.border.setAttribute("y", "0")
         this.border.setAttribute("width", "600")
         this.border.setAttribute("height", this.baseHeight.toString())
-        // this.border.setAttribute("rx", "12")
         this.border.classList.add("spec-border")
         this.svg.appendChild(this.border)
     }
@@ -167,11 +159,6 @@ export class ProjectSpecificationSVG
         this.svg.appendChild(group)
     }
 
-    private createHeaderPathFigures(): void
-    {
-
-    }
-
     private createForeignObject(htmlContent: HTMLElement): void
     {
         this.foreign = this.createSVGElement("foreignObject")
@@ -197,7 +184,7 @@ export class ProjectSpecificationSVG
             {
                 const contentHeight = htmlContent.scrollHeight
                 const totalHeight = this.headerHeight + contentHeight 
-                const extra = 4   // ruimte voor border 
+                const extra = 4
 
                 this.foreign.setAttribute("height", (contentHeight + extra).toString())
 

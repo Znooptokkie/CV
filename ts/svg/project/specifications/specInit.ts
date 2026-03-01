@@ -11,7 +11,7 @@ export function specInit(projectData: ProjectType)
     "Sensor",
     "Beveiliging", // encryptie, authenticatie, noodstop, failsafe, fysieke risico’s
     "Interface", // UI, API, fysieke bediening
-    "Compliance" // Normering
+    "Dataformat"
 ]
 
     const specInstance = new ProjectSpecificationFactory(specNames, "project-detail-section-specification", projectData)
