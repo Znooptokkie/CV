@@ -55,7 +55,8 @@ export class ProjectsInnerHTMLContent
             // stroke: "red",
             // stroke: "rgba(8, 63, 174, 0.5)",
             // fill: "rgba(10, 20, 35, 0.5)",
-            fill: "rgba(1, 12, 34, 0.5)"
+            // fill: "rgba(1, 12, 34, 0.1)"
+            fill: "rgba(51, 81, 142, 0.025)"
         }).createSvgTag()
 
         // Voeg glow toe op basis van dit path

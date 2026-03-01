@@ -3,7 +3,6 @@ import { SVGFactory } from "../../../../construct/core/SVGFactory.js"
 import { DeconstructPath } from "../../../../construct/DeconstructPath.js";
 import { SlideshowState } from "../../nav/SlideshowState.js"
 
-
 export abstract class AbstractSmallSlideshow
 {
     protected container: HTMLElement | null = document.getElementById("svg-images-list-container");
@@ -18,7 +17,6 @@ export abstract class AbstractSmallSlideshow
     )
     {
         this.state.subscribe(() => this.render());
-
         this.render();
     }
 
@@ -69,26 +67,50 @@ export class SmallSVGSlideshow extends AbstractSmallSlideshow
 
     private createDynamicPathCoords(): void
     {
-        this.coords = SmallSVGImagesSlideshow.calcNewCoords(this.state.projectImages)
+        const maxSlots = Math.min(this.state.projectImages.length, 8)
+        this.coords = SmallSVGImagesSlideshow.calcNewCoords(maxSlots)
     }
 
-    private drawImages(): void
+private drawImages(): void
+{
+    if (!this.SVG || !this.coords) 
+        return;
+
+    const maxVisible = 7;
+    const totalImages = this.state.projectImages.length;
+
+    const start = this.state.windowStartIndex;
+    const end = Math.min(start + maxVisible, totalImages);
+    const visibleImages = this.state.projectImages.slice(start, end);
+
+    let counter = 0;
+
+    visibleImages.forEach(img => {
+        SmallSVGImagesSlideshow.createClipPaths(this.defs, this.projectName, counter, this.coords!)
+        SmallSVGImagesSlideshow.createSmallImages(
+            this.SVG,
+            this.projectName,
+            counter,
+            img,
+            this.coords!
+        )
+        counter++;
+    });
+
+    if (totalImages > maxVisible) 
     {
-        if (!this.SVG) 
-            return;
-
-        let counter = 0
-
-        this.state.projectImages.forEach(img => {
-
-            SmallSVGImagesSlideshow.createClipPaths(this.defs, this.projectName, counter, this.coords!)
-
-            // Voeg Images toe aan ClipPath
-            SmallSVGImagesSlideshow.createSmallImages(this.SVG, this.projectName, counter, img, this.coords!)
-            
-            counter++
-        });
+        const remaining = totalImages - maxVisible;
+        const overflowIndex = counter;
+        SmallSVGImagesSlideshow.createClipPaths(this.defs, this.projectName, overflowIndex, this.coords!)
+        SmallSVGImagesSlideshow.createOverflowTile(
+            this.SVG,
+            this.projectName,
+            overflowIndex,
+            remaining,
+            this.coords!
+        )
     }
+}
 }
 
 export class SmallSVGImagesSlideshow
@@ -100,14 +122,15 @@ export class SmallSVGImagesSlideshow
         coords: Array<{ x: number; y: number }>
     ): void
     {
-        const path = "M50,0 L150,0 L200,100 L150,200 L50,200 L0,100 L50,0"
+        const path = "M110,15 L210,15 L260,115 L210,215 L110,215 L60,115 L110,15"
         const hashPath = DeconstructPath.getPathParts(path)
-        const newCoords: { x: number; y: number }[] = hashPath.map(c => ({
+
+        const newCoords = hashPath.map(c => ({
             x: c.x + coords[counter].x,
             y: c.y + coords[counter].y
         }));
+
         const newPath = DeconstructPath.createNewSVGPathString(newCoords)
-        // console.log(newPath);
 
         const clipPath = new SVGFactory(defs, "clipPath", {
             id: `small-hex-image-${projectName}-${counter}`,
@@ -127,36 +150,88 @@ export class SmallSVGImagesSlideshow
         coords: Array<{ x: number; y: number }>
     ): void
     {
+        const offsetX = 60;
+        const offsetY = 15;
+
         const group = new SVGFactory(SVG, "g", {
             "clip-path": `url(#small-hex-image-${projectName}-${counter})`
         }).createSvgTag()
 
         new SVGFactory(group, "image", {
             href: `../static/images/${img.image_url}`,
-            x: coords[counter].x,
-            y: coords[counter].y,
+            x: coords[counter].x + offsetX,
+            y: coords[counter].y + offsetY,
             width: 200,
             height: 200,
             preserveAspectRatio: "xMidYMid slice"
         }).createSvgTag()
 
-        // new SVGFactory(group, "rect", {
-        //     x: coords[counter].x,
-        //     y: coords[counter].y,
-        //     width: 200,
-        //     height: 200,
-        //     fill: img.is_active ? "green" : "red",
-        //     opacity: "0.5",
-        // }).createSvgTag()
+
+        // OVerlay voor actieve iamge
+        const path = "M110,15 L210,15 L260,115 L210,215 L110,215 L60,115 L110,15"
+        const hashPath = DeconstructPath.getPathParts(path)
+        const overlayCoords = hashPath.map(c => ({
+            x: c.x + coords[counter].x,
+            y: c.y + coords[counter].y
+        }))
+        const overlayPath = DeconstructPath.createNewSVGPathString(overlayCoords)
+
+        new SVGFactory(group, "path", {
+            d: overlayPath,
+            fill: img.is_active ? "transparent" : "rgba(0,0,0, 0.5)"
+        }).createSvgTag()
     }
 
-    public static calcNewCoords(projectImages: ProjectImageSlideshowType[]): Array<{ x: number; y: number }> 
+    public static createOverflowTile(
+        SVG: SVGElement | null,
+        projectName: string,
+        counter: number,
+        remaining: number,
+        coords: Array<{ x: number; y: number }>
+    ): void
+    {
+        const group = new SVGFactory(SVG, "g", {
+            "clip-path": `url(#small-hex-image-${projectName}-${counter})`
+        }).createSvgTag();
+
+        const path = "M110,15 L210,15 L260,115 L210,215 L110,215 L60,115 L110,15";
+        const hashPath = DeconstructPath.getPathParts(path);
+        const newCoords = hashPath.map(c => ({
+            x: c.x + coords[counter].x,
+            y: c.y + coords[counter].y
+        }));
+        const newPath = DeconstructPath.createNewSVGPathString(newCoords);
+
+        new SVGFactory(group, "path", {
+            d: newPath,
+            fill: "rgba(51, 81, 142, 0.15)",
+            stroke: "rgb(51, 81, 142)",
+            "stroke-width": "4"
+        }).createSvgTag();
+
+        const textEl = new SVGFactory(group, "text", {
+            x: coords[counter].x + 160,
+            y: coords[counter].y + 125,
+            "text-anchor": "middle",
+            "font-size": "34",
+            "font-weight": "bold",
+            fill: "rgb(51, 81, 142)",
+        }).createSvgTag();
+
+        if (textEl) 
+        {
+            textEl.textContent = `${remaining} meer...`;
+            textEl.style.userSelect = "none"
+        }
+    }
+
+    public static calcNewCoords(count: number): Array<{ x: number; y: number }> 
     {
         const width = 200;
         const height = 200;
         const coords: { x: number; y: number }[] = [];
 
-        for (let i = 0; i < projectImages.length; i++) 
+        for (let i = 0; i < count; i++) 
         {
             const col = i % 2;
             const row = Math.floor(i);

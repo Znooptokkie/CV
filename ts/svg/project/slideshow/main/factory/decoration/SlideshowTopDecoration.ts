@@ -48,7 +48,7 @@ export class SlideshowTopDecoration
         new SVGFactory(group, "path", {
             d: id === 0 ? this.decorationLines.ornamentUnderline : newOrnamentUnderline,
             stroke: "rgb(51, 81, 142)",
-            "stroke-width": 4,
+            "stroke-width": 3,
             fill: "none"
         }).createSvgTag()
 
@@ -56,7 +56,7 @@ export class SlideshowTopDecoration
         new SVGFactory(this.context.svg.svg, "path", {
             d: newOrnamentUpperline,
             stroke: "rgb(51, 81, 142)",
-            "stroke-width": 4,
+            "stroke-width": 3,
             fill: "none"
         }).createSvgTag()
     }
@@ -72,7 +72,7 @@ export class SlideshowTopDecoration
         new SVGFactory(this.context.svg.svg, "path", {
             d: id === 0 ? this.decorationOrnamentBlocks.ornamentFirstBlock : newFirstBlock,
             stroke: "rgb(51, 81, 142)",
-            "stroke-width": 4,
+            "stroke-width": 3,
             fill: "rgba(8, 63, 174, 0.2)"
         }).createSvgTag()
 
@@ -80,7 +80,7 @@ export class SlideshowTopDecoration
         new SVGFactory(this.context.svg.svg, "path", {
             d: id === 0 ? this.decorationOrnamentBlocks.ornamentSeconBlock : newSeconBlock,
             stroke: "rgb(51, 81, 142)",
-            "stroke-width": 4,
+            "stroke-width": 3,
             fill: "rgba(8, 63, 174, 0.2)"
         }).createSvgTag()
 
@@ -88,7 +88,7 @@ export class SlideshowTopDecoration
         new SVGFactory(this.context.svg.svg, "path", {
             d: id === 0 ? this.decorationOrnamentBlocks.ornamentThirdBlock : newThirdBlock,
             stroke: "rgb(51, 81, 142)",
-            "stroke-width": 4,
+            "stroke-width": 3,
             fill: "rgba(8, 63, 174, 0.2)"
         }).createSvgTag()
 
@@ -96,7 +96,7 @@ export class SlideshowTopDecoration
         new SVGFactory(this.context.svg.svg, "path", {
             d: id === 0 ? this.decorationOrnamentBlocks.ornamentFourtBlock : newFourtBlock,
             stroke: "rgb(51, 81, 142)",
-            "stroke-width": 4,
+            "stroke-width": 3,
             fill: "rgba(8, 63, 174, 0.2)"
         }).createSvgTag()
     }
@@ -110,14 +110,14 @@ export class SlideshowTopDecoration
         new SVGFactory(this.context.svg.svg, "path", {
             d: id === 0 ? this.decorationLayingBlocks.ornamentFirstLayBlock : newFirstLayBlock,
             stroke: "rgb(51, 81, 142)",
-            "stroke-width": 4,
+            "stroke-width": 3,
             fill: "rgba(8, 63, 174, 0.2)"
         }).createSvgTag()
 
         new SVGFactory(this.context.svg.svg, "path", {
             d: id === 0 ? this.decorationLayingBlocks.ornamentSeconLayBlock : newSeconLayBlock,
             stroke: "rgb(51, 81, 142)",
-            "stroke-width": 4,
+            "stroke-width": 3,
             fill: "rgba(8, 63, 174, 0.2"
         }).createSvgTag()
     }

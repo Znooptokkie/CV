@@ -150,6 +150,7 @@ export class ProjectSpecificationSVG
         text.setAttribute("dominant-baseline", "middle")
         text.setAttribute("text-anchor", "middle")
         text.textContent = title.toUpperCase()
+        text.style.userSelect = "none"
     
         group.appendChild(mainPathE)
         group.appendChild(text)

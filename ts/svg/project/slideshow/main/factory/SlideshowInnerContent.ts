@@ -30,7 +30,7 @@ private innerInnerPath = "M70,160 L1730,160 L1730,160 L1710,160 L1710,200 L1700,
             d: this.innerPath,
             stroke: "rgb(51, 81, 142)",
             fill: "rgba(0,0,0,0.5)",
-            "stroke-width": 4
+            "stroke-width": 2
         }).createSvgTag();
     }
 
