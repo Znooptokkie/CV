@@ -14,7 +14,7 @@ export class ProjectsContent
             stroke: "rgb(51, 81, 142)",
             opacity: options?.opacity ?? 1,
             fill: "none",
-            "stroke-width": 8
+            "stroke-width": 3
         }).createSvgTag()
 
         ProjectsContent.drawCircles(container)

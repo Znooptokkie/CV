@@ -34,8 +34,9 @@ export class ProjectsButton
                 d,
                 class: `projects-button-path part-${i}`,
                 stroke: "rgb(51, 81, 142)",
-                "stroke-width": 8,
+                "stroke-width": 3,
                 fill: "none"
+                // fill: "rgba(51, 81, 142, 0.15)"
             }).createSvgTag()
         })
     }
@@ -61,8 +62,8 @@ export class ProjectsButton
             pointer-events:none;
         `
 
-        const text = document.createElement("p")
-        text.textContent = "GO"
+        const text = document.createElement("p");
+        text.textContent = "GO";
         text.style.cssText = `
             margin:0;
             font-size:74px;

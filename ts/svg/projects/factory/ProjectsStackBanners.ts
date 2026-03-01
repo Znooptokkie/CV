@@ -18,7 +18,7 @@ export class ProjectsStackBanners
         const pathElement = new SVGFactory(container, "path", {
             d: path,
             stroke: "rgb(51, 81, 142)",
-            "stroke-width": 8,
+            "stroke-width": 3,
             fill: "rgba(0, 8, 25, 1)",
             transform: `translate(${offsetX},0)`
         }).createSvgTag() as SVGPathElement

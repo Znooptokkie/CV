@@ -4,22 +4,37 @@
 #project-detail-section-slideshow
 {
     display: flex;
+    gap: 2rem; // ruimte tussen main en small slideshow
 
     #slideshow-main-parent
     {
         width: 75%;
+
+        #svg-slideshow-main
+        {
+            .block-navigation-group-battlebot
+            {
+                #slideshow-next-button,
+                #slideshow-previous-button
+                {
+                    cursor: pointer;
+                }
+            }
+        }
     }
 
     #svg-images-list-container
     {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        gap: .75rem;
-        width: 25%;
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        justify-content: center; // start vanaf boven
+        align-items: center;
 
         svg
         {
-
+            width: 100%;       // svg past in container
+            height: auto;
         }
     }
 }
