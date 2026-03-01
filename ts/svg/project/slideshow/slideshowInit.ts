@@ -14,7 +14,7 @@ export async function initSlideshow(projectName: string, projectData: ProjectTyp
     const svg = new SlideshowMainInstance();
     const context = new SlideshowContext(svg);
 
-    const pathMain = "M10,100 L655,100 L735,25 L1085,25 L1165,100 L1810,100 L1810,250 L1785,275 L1785,1310 L1165,1300 L1085,1375 L735,1375 L655,1300 L35,1300 L35,275 L10,250 L10,100 Z";
+    const pathMain = "M10,100 L655,100 L735,25 L1085,25 L1165,100 L1810,100 L1810,250 L1785,275 L1785,1300 L1165,1300 L1085,1375 L735,1375 L655,1300 L35,1300 L35,275 L10,250 L10,100 Z";
     const lines = new SlideshowMainDrawLines(context, pathMain);
     lines.drawContour();
 

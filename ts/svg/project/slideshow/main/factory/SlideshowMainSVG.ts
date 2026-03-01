@@ -47,7 +47,7 @@ export class SlideshowMainDrawLines
         new SVGFactory(this.context.svg.svg, "path", {
             d: this.path,
             stroke: "rgb(51, 81, 142)",
-            "stroke-width": 6,
+            "stroke-width": 3,
             fill: "none"
         }).createSvgTag()
     }
