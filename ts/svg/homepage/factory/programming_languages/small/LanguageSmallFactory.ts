@@ -141,16 +141,16 @@ export class LanguageSmallBorder
 
             new SVGFactory(main, "path", {
                 d: scaledPath,
-                // stroke: "rgba(51, 81, 142, 0.15)",
-                stroke: "none",
-                "stroke-width": 2,
-                fill: "rgba(0, 6, 19, 1)"
+                stroke: "rgba(51, 81, 142, 0.15)",
+                // stroke: "none",
+                "stroke-width": 4,
+                fill: "rgba(51, 81, 142, 0.025)"
             }).createSvgTag()
 
 
-            const innerPath = InnerPath.buildOffsetPath(scaledPath, 5)
+            // const innerPath = InnerPath.buildOffsetPath(scaledPath, 5)
 
-            this.createGradientSmall(main, scaledPath, innerPath)
+            // this.createGradientSmall(main, scaledPath, innerPath)
 
 
             // Voeg het foreignObject met HTML content toe aan de SVG
@@ -159,14 +159,18 @@ export class LanguageSmallBorder
         }
     }
 
+
+    // WERKT NIET!@$@ --- INNERSHADOW WORDT NIET CORRECT TOEGEVOEGD!
     public createGradientSmall(svg: CreateSVG, path: string, innerPath: string): void
     {
         const defs = new SVGFactory(svg, "defs").createSvgTag();
 
-        const OFFSET = 100;
+        const OFFSET = 1000;
 
         const outerPoints = DeconstructPath.getPathParts(path);
         const innerPoints = DeconstructPath.getPathParts(innerPath);
+        console.log(outerPoints);
+        console.log(innerPoints);
 
         for (let i = 0; i < outerPoints.length - 1; i++)
         {
