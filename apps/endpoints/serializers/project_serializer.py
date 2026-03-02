@@ -9,6 +9,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     languages = serializers.SerializerMethodField() # Get the representation from "get_languages" method
     frameworks = serializers.SerializerMethodField() # Get the representation from "get_frameworks" method
     specifications = serializers.SerializerMethodField()# Get the representation from "get_specifications" method
+    contributors = serializers.SerializerMethodField()
     images = ImageSerializer(source="images_relation", many=True, read_only=True) # images_relatiom -> Image Model
     paragraphs = ParagraphSerializer(source="paragraphs_relation", many=True, read_only=True) # paragraphs_relation -> Paragraph Model
 
@@ -29,7 +30,8 @@ class ProjectSerializer(serializers.ModelSerializer):
             "frameworks",
             "images",
             "specifications",
-            "paragraphs"
+            "paragraphs",
+            "contributors"
         ]
 
     def get_languages(self, obj):
@@ -58,4 +60,14 @@ class ProjectSerializer(serializers.ModelSerializer):
                 "category": spec.specification.category
             }
             for spec in obj.specifications_relation.all()
+        ]
+    
+    def get_contributors(self, obj):
+        return [
+            {
+                "name": con.contributor.name,
+                "git_url": con.contributor.git_url,
+                "git_image": con.contributor.git_image
+            }
+            for con in obj.contributors_relation.all()
         ]
