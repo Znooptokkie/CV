@@ -1,10 +1,12 @@
 from django.core.management.base import BaseCommand
 
+from apps.core.models.contributor import Contributor
 from apps.core.models.framework import Framework
 from apps.core.models.image import Image
 from apps.core.models.language import Language
 from apps.core.models.paragraph import Paragraph
 from apps.core.models.project import Project
+from apps.core.models.project_contributor import ProjectContributor
 from apps.core.models.project_framework import ProjectFramework
 from apps.core.models.project_language import ProjectLanguage
 from apps.core.models.project_specification import ProjectSpecification
@@ -22,9 +24,14 @@ class Command(BaseCommand):
             # =================
             SubParagraph.objects.all().delete()
             Paragraph.objects.all().delete()
-            Specification.objects.all().delete()
+            ProjectSpecification.objects.all().delete()
+            ProjectFramework.objects.all().delete()
+            ProjectLanguage.objects.all().delete()
+            ProjectContributor.objects.all().delete()
+            
             Image.objects.all().delete()
-            # Koppeltabel wordt verwijderd via Project delete
+            Specification.objects.all().delete()
+            Contributor.objects.all().delete()
             Project.objects.all().delete()
             Framework.objects.all().delete()
             Language.objects.all().delete()
@@ -240,6 +247,18 @@ class Command(BaseCommand):
                         {"spec": "Thonny", "category": "SOFTWARE"},
                         {"spec": "YOLOv11", "category": "SOFTWARE"},
                         {"spec": "Crontab", "category": "SOFTWARE"},
+                    ],
+                    "contributors": [
+                        {
+                            "name": "A. Oomen", 
+                            "git_url": "https://github.com/Znooptokkie",
+                            "git_image": "contributors/oomen_git_avatar.jpeg"
+                        },
+                                                {
+                            "name": "M. de Graaf", 
+                            "git_url": "https://github.com/Matthijs-de-Graaf",
+                            "git_image": "contributors/graaf_git_avatar.png"
+                        }
                     ]
                 },
                 # ====================
@@ -284,6 +303,13 @@ class Command(BaseCommand):
                         {"spec": "JSON", "category": "DATAFORMAT", "svg_url": "json"},
                         {"spec": "SVG", "category": "INTERFACE"},
                     ],
+                    "contributors": [
+                        {
+                            "name": "A. Oomen", 
+                            "git_url": "https://github.com/Znooptokkie",
+                            "git_image": "contributors/oomen_git_avatar.jpeg"
+                        }
+                    ]
                 },
                 # ====================
                 # BRAM
@@ -315,6 +341,28 @@ class Command(BaseCommand):
                         {"spec": "Gradle", "category": "SOFTWARE", "svg_url": "gradle"}, # Moet eigenlijk gradle-original zijn!@!$#%@$^
                         {"spec": "XML", "category": "DATAFORMAT", "svg_url": "xml"}
                     ],
+                    "contributors": [
+                        {
+                            "name": "A. Oomen", 
+                            "git_url": "https://github.com/Znooptokkie",
+                            "git_image": "contributors/oomen_git_avatar.jpeg"
+                        },
+                                                {
+                            "name": "M. de Graaf", 
+                            "git_url": "https://github.com/Matthijs-de-Graaf",
+                            "git_image": "contributors/graaf_git_avatar.png"
+                        },
+                                                {
+                            "name": "R. van Putten", 
+                            "git_url": "https://github.com/SanzoVP",
+                            "git_image": "contributors/putten_git_avatar.jpeg"
+                        },
+                                                {
+                            "name": "B. Diker", 
+                            "git_url": "https://github.com/bdiker61",
+                            "git_image": "contributors/diker_git_avatar.jpeg"
+                        }
+                    ]
                 },
                 # ====================
                 # SMARTGARDEN DESKTOP
@@ -355,6 +403,38 @@ class Command(BaseCommand):
                     "specifications": [
                         {"spec": "API", "category": "COMMUNICATIE"},
                     ],
+                    "contributors": [
+                        {
+                            "name": "A. Oomen", 
+                            "git_url": "https://github.com/Znooptokkie",
+                            "git_image": "contributors/oomen_git_avatar.jpeg"
+                        },
+                        {
+                            "name": "R. van Putten", 
+                            "git_url": "https://github.com/SanzoVP",
+                            "git_image": "contributors/putten_git_avatar.jpeg"
+                        },
+                        {
+                            "name": "B. Diker", 
+                            "git_url": "https://github.com/bdiker61",
+                            "git_image": "contributors/diker_git_avatar.jpeg"
+                        },
+                        {
+                            "name": "M. Cifci", 
+                            "git_url": "https://github.com/mohammedcifci",
+                            "git_image": "contributors/cifci_git_avatar.jpeg"
+                        },
+                                                {
+                            "name": "J. Doekhi", 
+                            "git_url": "https://github.com/6027529",
+                            "git_image": "contributors/doekhi_git_avatar.jpeg"
+                        },
+                        {
+                            "name": "M. Heins", 
+                            "git_url": "https://github.com/martijnhe",
+                            "git_image": "contributors/cifci_git_avatar.jpeg"
+                        }
+                    ]
                 },
                 # ====================
                 # SMARTGARDEN MOBILE
@@ -397,6 +477,13 @@ class Command(BaseCommand):
                         {"spec": "SCP (Secure Copy Protocol)", "category": "PROTOCOL"},
                         {"spec": "API", "category": "COMMUNICATIE"},
                     ],
+                    "contributors": [
+                        {
+                            "name": "A. Oomen", 
+                            "git_url": "https://github.com/Znooptokkie",
+                            "git_image": "contributors/oomen_git_avatar.jpeg"
+                        }
+                    ]
                 },
                 # ====================
                 # ZINRA
@@ -436,6 +523,28 @@ class Command(BaseCommand):
                     "specifications": [
                         {"spec": "SMTP (Simple Mail Transfer Protocol)", "category": "PROTOCOL"},
                     ],
+                    "contributors": [
+                        {
+                            "name": "A. Oomen", 
+                            "git_url": "https://github.com/Znooptokkie",
+                            "git_image": "contributors/oomen_git_avatar.jpeg"
+                        },
+                        {
+                            "name": "R. van Putten", 
+                            "git_url": "https://github.com/SanzoVP",
+                            "git_image": "contributors/putten_git_avatar.jpeg"
+                        },
+                        {
+                            "name": "B. Diker", 
+                            "git_url": "https://github.com/bdiker61",
+                            "git_image": "contributors/diker_git_avatar.jpeg"
+                        },
+                        {
+                            "name": "M. Cifci", 
+                            "git_url": "https://github.com/mohammedcifci",
+                            "git_image": "contributors/cifci_git_avatar.jpeg"
+                        }
+                    ]
                 },
             ]
 
@@ -484,6 +593,21 @@ class Command(BaseCommand):
                     ProjectFramework.objects.get_or_create(
                         project=proj,
                         framework=framework_objs[frame_name]
+                    )
+
+                # Contributors
+                for contributor_data in project_data.get("contributors", []):
+                    contributor_obj, _ = Contributor.objects.update_or_create(
+                        name=contributor_data["name"],
+                        defaults={
+                            "git_url": contributor_data["git_url"],
+                            "git_image": contributor_data["git_image"],
+                        }
+                    )
+
+                    ProjectContributor.objects.get_or_create(
+                        project=proj,
+                        contributor=contributor_obj
                     )
 
                 for spec in project_data.get("specifications", []):
