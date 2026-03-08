@@ -25,16 +25,16 @@
 
     #svg-images-list-container
     {
-        display: flex;
-        flex-direction: column;
+        // display: flex;
+        // flex-direction: column;
         width: 20%;
-        justify-content: center; // start vanaf boven
-        align-items: center;
+        // justify-content: center;
+        // align-items: center;
 
         svg
         {
-            width: 100%;       // svg past in container
-            height: auto;
+            width: 100%;
+            height: 100%;
         }
     }
 }
@@ -54,14 +54,14 @@
         h2
         {
             width: 40%;
-            color: rgba(250, 250, 250, 1);
+            color: rgba(51, 81, 142, 1);
         }
 
         p
         {
             font-size: 1.25rem;
             font-style: italic;
-            color: rgba(51, 81, 142, 1);
+            color: rgba(51, 81, 142, 0.75);
             line-height: 2rem;
         }
     }
@@ -125,3 +125,16 @@
 }
 
 
+#project-detail-section-contributors
+{
+    #project-detail-contributors-svg
+    {
+        display: flex;
+        justify-content: center;
+
+        .contributor-svg
+        {
+            max-width: 17.5rem;
+        }
+    }
+}

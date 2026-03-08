@@ -42,6 +42,7 @@ export class SmallSVGSlideshow extends AbstractSmallSlideshow
         this.createMainSVG();
         this.createDefs();
         this.createDynamicPathCoords()
+        this.drawRaster()
         this.drawImages();
     }
 
@@ -52,7 +53,7 @@ export class SmallSVGSlideshow extends AbstractSmallSlideshow
             "svg"
         );
 
-        this.SVG.setAttribute("viewBox", "0 0 500 1000");
+        this.SVG.setAttribute("viewBox", "0 -75 500 1100");
         this.SVG.classList.add("slideshow-small-main-svg");
 
         this.container?.appendChild(this.SVG);
@@ -71,46 +72,83 @@ export class SmallSVGSlideshow extends AbstractSmallSlideshow
         this.coords = SmallSVGImagesSlideshow.calcNewCoords(maxSlots)
     }
 
-private drawImages(): void
-{
-    if (!this.SVG || !this.coords) 
-        return;
-
-    const maxVisible = 7;
-    const totalImages = this.state.projectImages.length;
-
-    const start = this.state.windowStartIndex;
-    const end = Math.min(start + maxVisible, totalImages);
-    const visibleImages = this.state.projectImages.slice(start, end);
-
-    let counter = 0;
-
-    visibleImages.forEach(img => {
-        SmallSVGImagesSlideshow.createClipPaths(this.defs, this.projectName, counter, this.coords!)
-        SmallSVGImagesSlideshow.createSmallImages(
-            this.SVG,
-            this.projectName,
-            counter,
-            img,
-            this.coords!
-        )
-        counter++;
-    });
-
-    if (totalImages > maxVisible) 
+    private drawImages(): void
     {
-        const remaining = totalImages - maxVisible;
-        const overflowIndex = counter;
-        SmallSVGImagesSlideshow.createClipPaths(this.defs, this.projectName, overflowIndex, this.coords!)
-        SmallSVGImagesSlideshow.createOverflowTile(
-            this.SVG,
-            this.projectName,
-            overflowIndex,
-            remaining,
-            this.coords!
-        )
+        if (!this.SVG || !this.coords) 
+            return;
+
+        const maxVisible = 7;
+        const totalImages = this.state.projectImages.length;
+
+        const start = this.state.windowStartIndex;
+        const end = Math.min(start + maxVisible, totalImages);
+        const visibleImages = this.state.projectImages.slice(start, end);
+
+        let counter = 0;
+
+        visibleImages.forEach(img => {
+            SmallSVGImagesSlideshow.createClipPaths(this.defs, this.projectName, counter, this.coords!)
+            SmallSVGImagesSlideshow.createSmallImages(
+                this.SVG,
+                this.projectName,
+                counter,
+                img,
+                this.coords!
+            )
+            counter++;
+        });
+
+        if (totalImages > maxVisible) 
+        {
+            const remaining = totalImages - maxVisible;
+            const overflowIndex = counter;
+            SmallSVGImagesSlideshow.createClipPaths(this.defs, this.projectName, overflowIndex, this.coords!)
+            SmallSVGImagesSlideshow.createOverflowTile(
+                this.SVG,
+                this.projectName,
+                overflowIndex,
+                remaining,
+                this.coords!
+            )
+        }
     }
-}
+
+    private drawRaster(): void 
+    {
+        if (!this.SVG || !this.coords) 
+            return
+
+        const hexPath = [
+            { x: 110, y: 15 },
+            { x: 210, y: 15 },
+            { x: 260, y: 115 },
+            { x: 210, y: 215 },
+            { x: 110, y: 215 },
+            { x: 60, y: 115 },
+            { x: 110, y: 15 }
+        ];
+
+        const offsetX = 60; 
+        const offsetY = 60;
+
+        let rasterPath = "";
+
+        this.coords.forEach(coord => {
+            hexPath.forEach((p, idx) => {
+                const x = p.x + coord.x + offsetX;
+                const y = p.y + coord.y + offsetY;
+                rasterPath += (idx === 0 ? "M" : "L") + `${x},${y} `;
+            });
+        });
+
+        const pathEl = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        pathEl.setAttribute("d", rasterPath.trim());
+        pathEl.setAttribute("fill", "none");
+        pathEl.setAttribute("stroke", "rgba(51, 81, 142, 0.5)");
+        pathEl.setAttribute("stroke-width", "2");
+
+        this.SVG.appendChild(pathEl);
+    }
 }
 
 export class SmallSVGImagesSlideshow
@@ -204,7 +242,7 @@ export class SmallSVGImagesSlideshow
 
         new SVGFactory(group, "path", {
             d: newPath,
-            fill: "rgba(51, 81, 142, 0.15)",
+            fill: "rgba(51, 81, 142, 1)",
             stroke: "rgb(51, 81, 142)",
             "stroke-width": "4"
         }).createSvgTag();
@@ -215,7 +253,7 @@ export class SmallSVGImagesSlideshow
             "text-anchor": "middle",
             "font-size": "34",
             "font-weight": "bold",
-            fill: "rgb(51, 81, 142)",
+            fill: "#00010fff",
         }).createSvgTag();
 
         if (textEl) 

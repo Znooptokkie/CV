@@ -360,7 +360,7 @@ class Command(BaseCommand):
                                                 {
                             "name": "B. Diker", 
                             "git_url": "https://github.com/bdiker61",
-                            "git_image": "contributors/diker_git_avatar.jpeg"
+                            "git_image": "contributors/diker_git_avatar.png"
                         }
                     ]
                 },
@@ -417,7 +417,7 @@ class Command(BaseCommand):
                         {
                             "name": "B. Diker", 
                             "git_url": "https://github.com/bdiker61",
-                            "git_image": "contributors/diker_git_avatar.jpeg"
+                            "git_image": "contributors/diker_git_avatar.png"
                         },
                         {
                             "name": "M. Cifci", 
@@ -427,12 +427,12 @@ class Command(BaseCommand):
                                                 {
                             "name": "J. Doekhi", 
                             "git_url": "https://github.com/6027529",
-                            "git_image": "contributors/doekhi_git_avatar.jpeg"
+                            "git_image": "contributors/doekhi_git_avatar.png"
                         },
                         {
                             "name": "M. Heins", 
                             "git_url": "https://github.com/martijnhe",
-                            "git_image": "contributors/cifci_git_avatar.jpeg"
+                            "git_image": "contributors/heins_git_avatar.png"
                         }
                     ]
                 },
@@ -537,7 +537,7 @@ class Command(BaseCommand):
                         {
                             "name": "B. Diker", 
                             "git_url": "https://github.com/bdiker61",
-                            "git_image": "contributors/diker_git_avatar.jpeg"
+                            "git_image": "contributors/diker_git_avatar.png"
                         },
                         {
                             "name": "M. Cifci", 
