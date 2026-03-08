@@ -15,6 +15,13 @@ export interface ProjectsInterface
     images: ProjectImage[]
     specifications: ProjectSpecification[]
     paragraphs: ProjectParagraph[]
+    contributors: ProjectContributors[]
+}
+
+export interface ProjectContributors {
+    name: string;
+    git_url: string
+    git_image: string
 }
 
 export interface ProjectLanguages {

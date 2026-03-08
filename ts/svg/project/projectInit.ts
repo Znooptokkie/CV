@@ -1,5 +1,6 @@
 import { FetchProject } from "../../endpoints/service/FetchProject.js";
 import { ProjectType } from "../../types/projects.type";
+import { contributorInit } from "./contributors/contributorInit.js";
 import { ProjectDescriptionFactory } from "./description/ProjectDescriptionFactory.js";
 import { initSlideshow } from "./slideshow/slideshowInit.js";
 import { specInit } from "./specifications/specInit.js";
@@ -16,4 +17,5 @@ export function projectInit(projectName: string, projectData: ProjectType)
     const projectDescription = new ProjectDescriptionFactory(projectName, projectData)
     projectDescription.addToParentElement()
     specInit(projectData)
+    contributorInit(projectData)
 }

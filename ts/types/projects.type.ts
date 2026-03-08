@@ -22,6 +22,12 @@ export type ProjectFrameworkType = {
     svg_url: string;
 }
 
+export type ProjectContributorType = {
+    name: string;
+    git_url: string
+    git_image: string
+}
+
 export type ProjectType = {
     title: string
     subtitle: string | null
@@ -37,6 +43,7 @@ export type ProjectType = {
     images: ProjectImageType[]
     specifications: ProjectSpecification[]
     paragraphs: ProjectParagraph[]
+    contributors: ProjectContributorType[]
 
     logo: ProjectImageType | null
     mainImages: ProjectImageType[]
