@@ -25,7 +25,7 @@ export class ProjectDescriptionFactory
             paragraphDiv.className = `project-description-div`
             
             const title = document.createElement("h2")
-            title.textContent = paragraph.title
+            title.textContent = `♦ ${paragraph.title}`
             paragraphDiv.appendChild(title)
             
             for (const subParagraph of paragraph.subparagraphs)

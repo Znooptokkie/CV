@@ -27,6 +27,7 @@ export class FetchProjects
             images: proj.images,
             specifications: proj.specifications,
             paragraphs: proj.paragraphs,
+            contributors: proj.contributors,
 
             logo: proj.images.find(img => img.is_logo) ?? null,
             mainImages: proj.images.filter(img => img.is_main_image) ?? [],
