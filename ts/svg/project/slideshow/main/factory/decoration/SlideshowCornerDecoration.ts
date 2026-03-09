@@ -24,14 +24,14 @@ export class SlideshowCornerDecoration
         new SVGFactory(group, "path", {
             d: id === 0 ? this.cornerOrnamentPaths.LeftTopCorner : newLeftTopCorner,
             stroke: "rgba(51, 81, 142, 1)",
-            fill: "rgba(51, 81, 142, 0.15)",
+            fill: "rgba(51, 81, 142, 0.1)",
             "stroke-width": 3
         }).createSvgTag()
 
         new SVGFactory(group, "path", {
             d: id === 0 ? this.cornerOrnamentPaths.leftBottomCorner : newLeftBottomCorner,
             stroke: "rgba(51, 81, 142, 1)",
-            fill: "rgba(51, 81, 142, 0.15)",
+            fill: "rgba(51, 81, 142, 0.1)",
             "stroke-width": 3
         }).createSvgTag()
     }

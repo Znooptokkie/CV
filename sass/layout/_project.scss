@@ -87,7 +87,7 @@
             {
                 .accordion-header-path
                 {
-                    fill: rgba(51, 81, 142,0.1);
+                    fill: rgba(51, 81, 142,0.05);
                     cursor: pointer;
 
                     // &:hover
@@ -149,15 +149,12 @@
     #project-detail-section-description
     {
         .project-description-div
-    {
-
-
-        h2
         {
-            width: 100%;
+            h2
+            {
+                width: 100%;
+            }
         }
-    }
-
     }
 
     #project-detail-section-slideshow 
@@ -174,8 +171,5 @@
     #svg-images-list-container 
     {
         display: none;
-        // display: block;
-        // margin-top: 20px;
-        // width: 100% !important; // volle breedte
     }
 }

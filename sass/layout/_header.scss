@@ -92,6 +92,7 @@ header
             transition: transform 0.3s ease;
             z-index: 9999;
             position: fixed;
+            align-self: center;
 
             &::before 
             {

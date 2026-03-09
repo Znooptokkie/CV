@@ -73,7 +73,7 @@ export class SlideshowTopDecoration
             d: id === 0 ? this.decorationOrnamentBlocks.ornamentFirstBlock : newFirstBlock,
             stroke: "rgb(51, 81, 142)",
             "stroke-width": 3,
-            fill: "rgba(8, 63, 174, 0.2)"
+            fill: "rgba(8, 63, 174, 0.1)"
         }).createSvgTag()
 
         // Tweede schuine blok
@@ -81,7 +81,7 @@ export class SlideshowTopDecoration
             d: id === 0 ? this.decorationOrnamentBlocks.ornamentSeconBlock : newSeconBlock,
             stroke: "rgb(51, 81, 142)",
             "stroke-width": 3,
-            fill: "rgba(8, 63, 174, 0.2)"
+            fill: "rgba(8, 63, 174, 0.1)"
         }).createSvgTag()
 
         // Derde schuine blok
@@ -89,7 +89,7 @@ export class SlideshowTopDecoration
             d: id === 0 ? this.decorationOrnamentBlocks.ornamentThirdBlock : newThirdBlock,
             stroke: "rgb(51, 81, 142)",
             "stroke-width": 3,
-            fill: "rgba(8, 63, 174, 0.2)"
+            fill: "rgba(8, 63, 174, 0.1)"
         }).createSvgTag()
 
         // Vierdde schuine blok
@@ -97,7 +97,7 @@ export class SlideshowTopDecoration
             d: id === 0 ? this.decorationOrnamentBlocks.ornamentFourtBlock : newFourtBlock,
             stroke: "rgb(51, 81, 142)",
             "stroke-width": 3,
-            fill: "rgba(8, 63, 174, 0.2)"
+            fill: "rgba(8, 63, 174, 0.1)"
         }).createSvgTag()
     }
 
@@ -111,7 +111,7 @@ export class SlideshowTopDecoration
             d: id === 0 ? this.decorationLayingBlocks.ornamentFirstLayBlock : newFirstLayBlock,
             stroke: "rgb(51, 81, 142)",
             "stroke-width": 3,
-            fill: "rgba(8, 63, 174, 0.2)"
+            fill: "rgba(8, 63, 174, 0.1)"
         }).createSvgTag()
 
         new SVGFactory(this.context.svg.svg, "path", {

@@ -30,8 +30,8 @@ export class LanguageAddedFeatures
         {
             id: "big-sidebar-left",
             d: barLeftPath,
-            fill: "#2ecc71",                     // Vul kleur groen
-            stroke: "rgba(6, 10, 18, 0.7)",     // Donkere randkleur
+            fill: "#2ecc71",
+            stroke: "rgba(6, 10, 18, 0.7)",
             "stroke-opacity": "1",
             "stroke-width": 8
         });
@@ -86,7 +86,7 @@ export class LanguageAddedFeatures
             div.style.fontStyle = "italic";
             div.style.fontSize = "54px";
             div.style.fontFamily = "Courier Prime, monospace";
-            div.style.color = "rgba(51, 81, 142, 0.5)";
+            div.style.color = "rgba(51, 81, 142, 1)";
             div.innerText = '"Ik beschik over een goede basis in meerdere programmeertalen, vooral in Python en JavaScript. En ik blijf mijn kennis verder uitbreiden."';
 
             foreignObject.getSVGElement.appendChild(div);
