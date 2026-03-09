@@ -138,3 +138,44 @@
         }
     }
 }
+
+@media (max-width: 1024px) 
+{
+    #project-detail-section-specification
+    {
+        width: 100% !important;
+    }       
+    
+    #project-detail-section-description
+    {
+        .project-description-div
+    {
+
+
+        h2
+        {
+            width: 100%;
+        }
+    }
+
+    }
+
+    #project-detail-section-slideshow 
+    {
+        flex-direction: column;
+        gap: 1rem;
+
+        #slideshow-main-parent
+        {
+            width: 100% !important;
+        }
+    }
+
+    #svg-images-list-container 
+    {
+        display: none;
+        // display: block;
+        // margin-top: 20px;
+        // width: 100% !important; // volle breedte
+    }
+}

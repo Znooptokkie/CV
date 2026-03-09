@@ -86,7 +86,7 @@ export class LanguageAddedFeatures
             div.style.fontStyle = "italic";
             div.style.fontSize = "54px";
             div.style.fontFamily = "Courier Prime, monospace";
-            div.style.color = "rgba(51, 81, 142, 0.75)";
+            div.style.color = "rgba(51, 81, 142, 0.5)";
             div.innerText = '"Ik beschik over een goede basis in meerdere programmeertalen, vooral in Python en JavaScript. En ik blijf mijn kennis verder uitbreiden."';
 
             foreignObject.getSVGElement.appendChild(div);

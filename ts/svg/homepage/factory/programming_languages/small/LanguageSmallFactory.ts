@@ -14,7 +14,13 @@ import { DrawSegments } from "../../../../construct/gradient/DrawSegments.js";
 const cornerPoint = 50;
 
 // SVG pad voor de buitenrand van een klein taalcontainer SVG
-const outerPath = `M60,0 L200,0 L250,50 L750,50 L800,0 L940,0 L1000,${cornerPoint} L1000,150 L950,175 L950,500 L1000,525 L1000,625 L940,675 L800,675 L775,650 L225,650 L200,675 L60,675 L0,625 L0,525 L${cornerPoint},500 L${cornerPoint},175 L0,150 L0,${cornerPoint} L60,0`;
+const outerPath = `M60,0 L200,0 L250,50 L750,50 L800,0 L940,0 L1000,${cornerPoint} L1000,150 L950,175 L950,500 L1000,525 L1000,625 L940,675 L800,675 L775,650 L225,650 L200,675 L60,675 L0,625 L0,525 L${cornerPoint},500 L${cornerPoint},175 L0,150 L0,${cornerPoint} L60,0 M1000,175 L965,195 L965,275 L1000,255 L1000,175 M1000,275 L965,295 L965,375 L1000,355 L1000,275`;
+
+// M1000,175 L965,195 L965,275 L1000,255 L1000,175
+// M1000,275 L965,295 L965,375 L1000,355 L1000,275
+// M1000,375 L965,395 L965,475 L1000,455 L1000,375
+
+
 
 /**
  * LanguageSmallContainerHTML
@@ -72,11 +78,11 @@ class LanguageSmallContainerHTML
         // Icon div met devicon class
         const icon = document.createElement("div");
         icon.className = `devicon-${language.toLowerCase()}-plain`;
-        icon.style.cssText = "font-size:60px; color:rgba(51, 81, 142, 1);";
+        icon.style.cssText = "font-size:60px; color:rgba(51, 81, 142, 0.5);";
 
         // Label met taalnaam
         const label = document.createElement("p");
-        label.style.cssText = "margin:0; font-size:28px; color:rgba(51, 81, 142, 1);";
+        label.style.cssText = "margin:0; font-size:28px; color:rgba(51, 81, 142, 0.5);";
         label.textContent = language.toLowerCase() === "azuresqldatabase" ? "SQL" : language;
 
         // Voeg icon en label toe aan wrapper en wrapper aan foreignObject
