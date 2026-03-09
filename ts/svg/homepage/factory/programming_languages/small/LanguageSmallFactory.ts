@@ -53,14 +53,14 @@ class LanguageSmallContainerHTML
             svgElements.push(svg);
 
             // Binnen de SVG een foreignObject toevoegen voor HTML content
-            this.createDivContainer(lang.svg_url, svg);
+            this.createDivContainer(lang, svg);
         }
 
         return svgElements;
     }
 
     // Voegt een foreignObject toe met icon en label in de SVG
-    private createDivContainer(language: string, svg: SVGElement)
+    private createDivContainer(language: LanguageInterface, svg: SVGElement)
     {
         const foreign = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");
         foreign.setAttribute("width", "100%");
@@ -77,14 +77,14 @@ class LanguageSmallContainerHTML
 
         // Icon div met devicon class
         const icon = document.createElement("div");
-        icon.className = `devicon-${language.toLowerCase()}-plain`;
-        icon.style.cssText = "font-size:60px; color:rgba(51, 81, 142, 0.5);";
+        icon.className = `devicon-${language.svg_url.toLowerCase()}-plain`;
+        icon.style.cssText = "font-size:60px; color:rgba(51, 81, 142, 0.75);";
 
         // Label met taalnaam
         const label = document.createElement("p");
-        label.style.cssText = "margin:0; font-size:28px; color:rgba(51, 81, 142, 0.5);";
-        label.textContent = language.toLowerCase() === "azuresqldatabase" ? "SQL" : language;
-
+        label.style.cssText = "margin:0; font-size:28px; color:rgba(51, 81, 142, 0.75);";
+        label.textContent = language.name === "azuresqldatabase" ? "SQL" : language.name;
+        // console.log(language);
         // Voeg icon en label toe aan wrapper en wrapper aan foreignObject
         wrapper.append(icon, label);
         foreign.appendChild(wrapper);
@@ -100,6 +100,7 @@ class LanguageSmallContainerHTML
         const fetcher = await LanguageService.filterItems()
         // const result = await fetcher.fetchJsonData();
         this.languageName = fetcher;
+        // console.log(this.languageName);
         return fetcher;
     }
 }
@@ -140,17 +141,17 @@ export class LanguageSmallBorder
             // Maak een MainBorder instantie voor deze kleine SVG
             const main = new CreateSVG(
                 svg.id,
-                { viewBox: `-1 -2 ${newW} ${newH}`, preserveAspectRatio: "xMidYMid meet" },
+                { viewBox: `-1 -1 ${newW} ${newH}`, preserveAspectRatio: "xMidYMid meet" },
                 true
             );
 
 
             new SVGFactory(main, "path", {
                 d: scaledPath,
-                stroke: "rgba(51, 81, 142, 0.15)",
+                stroke: "rgba(51, 81, 142, 0.5)",
                 // stroke: "none",
-                "stroke-width": 4,
-                fill: "rgba(51, 81, 142, 0.025)"
+                "stroke-width": 2,
+                fill: "rgba(51, 81, 142, 0.05)"
             }).createSvgTag()
 
 
@@ -175,8 +176,8 @@ export class LanguageSmallBorder
 
         const outerPoints = DeconstructPath.getPathParts(path);
         const innerPoints = DeconstructPath.getPathParts(innerPath);
-        console.log(outerPoints);
-        console.log(innerPoints);
+        // console.log(outerPoints);
+        // console.log(innerPoints);
 
         for (let i = 0; i < outerPoints.length - 1; i++)
         {
