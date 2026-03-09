@@ -17,7 +17,7 @@ export class SlideshowBlockNav
             d: "M685,100 L745,45 L1075,45 L1135,100 L685,100 Z",
             id: "slideshow-next-button",
             stroke: "rgb(51, 81, 142)",
-            fill: "rgba(51, 81, 142, 0.2)", // Moet transparent zijn, anders werkt klikken niet????
+            fill: "rgba(51, 81, 142, 0.1)", // Moet transparent zijn, anders werkt klikken niet????
             "stroke-width": 3
         }).createSvgTag()
 
@@ -33,7 +33,7 @@ export class SlideshowBlockNav
             d: "M685,1300 L1135,1300 L1075,1355 L745,1355 L685,1300 Z",
             id: "slideshow-previous-button",
             stroke: "rgb(51, 81, 142)",
-            fill: "rgba(51, 81, 142, 0.2)",
+            fill: "rgba(51, 81, 142, 0.1)",
             "stroke-width": 3
         }).createSvgTag()
         
