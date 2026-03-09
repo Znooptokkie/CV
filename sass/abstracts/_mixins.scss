@@ -21,7 +21,7 @@
 {
     height: $height;
     width: $width;
-    border: solid 3px rgba(70, 80, 100, 0.05);
+    border: solid 3px rgba(70, 80, 100, 0.5);
     border-radius: $border-radius;
     backdrop-filter: blur($blur);
     background: linear-gradient(135deg, rgba(50, 60, 80, 0.05), rgba(50, 60, 80, 0.05));

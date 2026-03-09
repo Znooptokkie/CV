@@ -19,6 +19,7 @@ main
                 color: vars.$secondary-color;
                 line-height: 2rem;
                 text-align: center;
+                font-size: 1.25rem;
             }
 
              hr
@@ -58,7 +59,7 @@ main
                         color: vars.$secondary-color;
                         background: linear-gradient(135deg, rgba(50, 60, 80, 0.05), rgba(50, 60, 80, 0.05));
                         border: solid 2px vars.$secondary-color;
-                        border-radius: 25px;
+                        border-radius: 5px;
                         padding: .75rem 1rem;
                         font-size: 1rem;
                         font-family: vars.$font-courier;
@@ -95,9 +96,10 @@ main
                 {
                     cursor: pointer;
                     max-width: min(90%, 200px);
-                    @include mix.glass-card();
+                    // @include mix.glass-card();
+                    background-color: transparent;
                     color: vars.$secondary-color;
-                    border-radius: 25px;
+                    // border-radius: 25px;
                     padding: .75rem 1rem;
                     font-size: 1rem;
                     font-family: vars.$font-courier;

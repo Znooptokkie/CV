@@ -20,7 +20,7 @@ export class LanguageMainSVG
 
         const defs = new SVGFactory(svg, "defs").createSvgTag();
 
-        const OFFSET = 40;
+        const OFFSET = 50;
 
         const outerPoints = DeconstructPath.getPathParts(path);
         const innerPoints = DeconstructPath.getPathParts(innerPath);

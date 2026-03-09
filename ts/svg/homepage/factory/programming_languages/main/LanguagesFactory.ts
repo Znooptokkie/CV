@@ -11,7 +11,7 @@ export const outerPath = "M25,0 L200,0 L250,50 L750,50 L800,0 L975,0 L1000,25 L1
 const viewboxWidth = 1006 
 const viewboxHeight = 682
 
-const HARDCODED_OUTER_PADDING = 30
+const HARDCODED_OUTER_PADDING = 60
 
 const createStringInnerContainerPath = InnerPath.buildOffsetPath(outerPath, HARDCODED_OUTER_PADDING)
 
