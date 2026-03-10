@@ -62,12 +62,21 @@ export class ProjectSpecificationUnit
 
         const ul = document.createElement("ul")
 
+        const scale = window.matchMedia("(max-width: 768px)").matches ? 2 : 1
+
         for (const spec of this.projectData!.specifications)
         {
             if (this.specificationName.toLowerCase() === spec.category.toLowerCase())
             {
                 const li = document.createElement("li")
                 li.textContent = spec.specification
+
+                if (scale === 2)
+                {
+                    li.style.fontSize = "1.2rem"
+                    li.style.lineHeight = "1.6"
+                }
+
                 ul.appendChild(li)
             }
         }
@@ -86,8 +95,10 @@ export class ProjectSpecificationSVG
     private headerPath!: SVGPathElement
     private foreign!: SVGForeignObjectElement
 
-    private headerHeight = 40
-    private baseHeight = 50
+    private scale = window.matchMedia("(max-width: 768px)").matches ? 2 : 1
+
+    private headerHeight = 30 * this.scale
+    private baseHeight = 40 * this.scale
 
     constructor(private wrapper: HTMLElement) {}
 
@@ -129,6 +140,9 @@ export class ProjectSpecificationSVG
     {
         const group = this.createSVGElement("g")
         group.setAttribute("class", "accordion-header-group")
+        // group.setAttribute("transform", `scale(1 ${this.scale})`)
+        const headerScale = this.scale * 0.8
+        group.setAttribute("transform", `scale(1 ${headerScale})`)
 
         const firstArrowLeft = "M0,20 L20,0 L25,0 L5,20 L25,40 L20,40 L0,20"
         const secondArrowLeft = "M15,20 L35,0 L40,0 L20,20 L40,40 L35,40 L15,20"
@@ -146,11 +160,21 @@ export class ProjectSpecificationSVG
         const text = this.createSVGElement("text")
         text.setAttribute("class", "accordion-title")
         text.setAttribute("x", "300")
-        text.setAttribute("y", (this.headerHeight / 2).toString())
+        // text.setAttribute("y", ((this.headerHeight / 2) / this.scale).toString())
+        text.setAttribute(
+            "y",
+            ((this.headerHeight / 2) / headerScale).toString()
+        )
         text.setAttribute("dominant-baseline", "middle")
         text.setAttribute("text-anchor", "middle")
         text.textContent = title.toUpperCase()
         text.style.userSelect = "none"
+
+        if (this.scale === 2)
+        {
+            text.style.fontSize = "1rem"
+            text.style.letterSpacing = "0.1em"
+        }
     
         group.appendChild(mainPathE)
         group.appendChild(text)
@@ -184,7 +208,7 @@ export class ProjectSpecificationSVG
             requestAnimationFrame(() =>
             {
                 const contentHeight = htmlContent.scrollHeight
-                const totalHeight = this.headerHeight + contentHeight 
+                const totalHeight = this.headerHeight + contentHeight
                 const extra = 4
 
                 this.foreign.setAttribute("height", (contentHeight + extra).toString())
