@@ -11,7 +11,7 @@ export class LanguageMainSVG
     {
         new SVGFactory(svg, "path", {
             d: path,
-            stroke: "rgba(51, 81, 142, 0.75)",
+            stroke: "rgba(51, 81, 142, 0.25)",
             // stroke: "none",
             "stroke-width": 2,
             fill: "rgba(51, 81, 142, 0.05)"
