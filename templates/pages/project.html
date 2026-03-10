@@ -6,10 +6,6 @@
 {% block title %}{{ project_name|capfirst }}{% endblock %}
 
 {% block content %}
-    <section>
-        <!-- <h1 class="section-title">{{ project_name|capfirst }}</h1>
-        <i>--- Een volledig geautomatiseerde robot ---</i> -->
-    </section>
     <section id="project-detail-section-slideshow">
 
         <div id="slideshow-main-parent">
@@ -25,7 +21,8 @@
     </section>
 
     <section id="project-detail-section-description">
-        <h2 class="section-title project-subtitle">Project <span class="green-name">Overzicht</span></h2>
+        <!-- <h2 class="section-title project-subtitle">Project <span class="green-name">Overzicht</span></h2> -->
+         <h1 class="project-title">{{project_name|capfirst}}</h1>
     </section>
 
     <section id="project-detail-section-specification">

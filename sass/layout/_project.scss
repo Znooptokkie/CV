@@ -43,8 +43,16 @@
 {
     @include mix.flexbox($direction: column);
     gap: 2rem;
-        width: 90%;
+    width: 90%;
     align-self: center;
+
+    .project-title
+    {
+        // color: vars.$secondary-color;
+        color: white;
+        align-self: center;
+        font-size: 2.5rem;
+    }
 
     .project-description-div
     {
@@ -124,17 +132,22 @@
     }
 }
 
-
 #project-detail-section-contributors
 {
     #project-detail-contributors-svg
     {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         justify-content: center;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
 
         .contributor-svg
         {
-            max-width: 17.5rem;
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto;
         }
     }
 }
@@ -148,6 +161,11 @@
     
     #project-detail-section-description
     {
+
+        .project-title
+        {
+            font-size: 2rem;
+        }
         .project-description-div
         {
             h2
@@ -171,5 +189,19 @@
     #svg-images-list-container 
     {
         display: none;
+    }
+
+    #project-detail-section-contributors
+    {
+        #project-detail-contributors-svg
+        {
+            gap: 0;
+            .contributor-svg
+            {
+                width: 100%;
+                max-width: 175px;
+                margin: 0 auto;
+            }
+        }
     }
 }
