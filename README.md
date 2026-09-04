@@ -1,30 +1,63 @@
-# Wishlist
+# Set-up
 
-    - Aparte .env voor development (.env.dev) EN productie (.env.prod)
-    - Cors header voor API endpoints
-    - Unit tests
+1. Maak een venv aan:
+```bash
+python -m venv .venv
+```
 
-## Optioneel Wishlist
+2. Start de venv:
+```bash
+source .venv/bin/activate
+```
 
-    - Shell script -> CI/CD
-    - Database back-up
-    - Logging
+3. Maak de database aan in MySQL:
+```sql
+CREATE DATABASE porto_db;
+```
 
----
+4. Maak een gebruiker aan in MySQL:
+```sql
+CREATE USER 'porto_user'@'localhost' IDENTIFIED BY 'JOUW_WACHTWOORD';
+```
 
-# Migrations
+5. Geef de rechten aan de gebruiker:
+```sql
+GRANT ALL PRIVILEGES ON porto_db.* TO 'porto_user'@'localhost';
+```
 
-## Aanmaken
+6. Herlaad de MySQL omgeving:
+```sql
+FLUSH PRIVILEGES;
+```
 
-Maak nieuw migratiebestand aan
+7. Zorg dat de juiste variables staan in de .env!
+
+8. Maak nieuw migratiebestand aan
 ```bash
 python manage.py makemigrations core --name next_migration # Optional --empty for empty migration
 ```
 
-Pas migrations toe
+9. Pas migrations toe
 ```bash
 python manage.py migrate
 ```
+
+10. Seed de database:
+```bash
+python manage.py seed
+```
+
+11. Installeer de frontend:
+```bash
+npm install
+```
+
+12. Watch de volledige frontend (TS & SASS):
+```bash
+npm run watch:dev
+```
+
+---
 
 ## Rollback
 
@@ -49,6 +82,11 @@ python manage.py migrate core
 Compile TS eenmalig
 ```bash
 npm run build:ts
+```
+
+Compile SASS eenmalig
+```bash
+npm run build:sass
 ```
 
 Development watch mode
@@ -164,6 +202,3 @@ SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 CSRF_COOKIE_SECURE = True # Voor HTTPS
 ```
-3. Zet correcte .env bestand
-
-
