@@ -37,7 +37,7 @@ export async function initProjects()
         const project = projects[i]
         const projectName = projects[i].title.toLocaleLowerCase()
 
-        const defs = ProjectsRootElement.createDefs(root)
+        const defs = ProjectsRootElement.createDefs(root, projectName)
         
         // CONTENT
         ProjectsContent.drawBorder(rootElements[i], pathContent)

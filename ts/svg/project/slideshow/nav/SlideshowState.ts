@@ -17,7 +17,7 @@ export class SlideshowState
         this.setActive(0);
     }
 
-    private setActive(index: number) 
+    public setActive(index: number) 
     {
         this.projectImages.forEach((img, i) => img.is_active = i === index)
         this.currentIndex = index

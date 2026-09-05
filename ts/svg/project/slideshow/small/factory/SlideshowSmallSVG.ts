@@ -1,6 +1,7 @@
 import { ProjectImageSlideshowType } from "../../../../../types/projects.type.js";
 import { SVGFactory } from "../../../../construct/core/SVGFactory.js"
 import { DeconstructPath } from "../../../../construct/DeconstructPath.js";
+import { HexaStyling } from "../../../../sharedHexStyling/HexaStyling.js";
 import { SlideshowState } from "../../nav/SlideshowState.js"
 
 export abstract class AbstractSmallSlideshow
@@ -64,6 +65,8 @@ export class SmallSVGSlideshow extends AbstractSmallSlideshow
         this.defs = new SVGFactory(this.SVG, "defs", {
             id: `small-slideshow-defs-${this.projectName}`
         }).createSvgTag()
+
+        HexaStyling.createInnerShadowDefs(this.defs, this.projectName)
     }
 
     private createDynamicPathCoords(): void
@@ -87,14 +90,23 @@ export class SmallSVGSlideshow extends AbstractSmallSlideshow
         let counter = 0;
 
         visibleImages.forEach(img => {
-            SmallSVGImagesSlideshow.createClipPaths(this.defs, this.projectName, counter, this.coords!)
+            SmallSVGImagesSlideshow.createClipPaths(
+                this.defs,
+                this.projectName,
+                counter,
+                this.coords!
+            )
+
             SmallSVGImagesSlideshow.createSmallImages(
                 this.SVG,
                 this.projectName,
                 counter,
                 img,
-                this.coords!
+                this.coords!,
+                start + counter,
+                this.state
             )
+
             counter++;
         });
 
@@ -102,7 +114,14 @@ export class SmallSVGSlideshow extends AbstractSmallSlideshow
         {
             const remaining = totalImages - maxVisible;
             const overflowIndex = counter;
-            SmallSVGImagesSlideshow.createClipPaths(this.defs, this.projectName, overflowIndex, this.coords!)
+
+            SmallSVGImagesSlideshow.createClipPaths(
+                this.defs,
+                this.projectName,
+                overflowIndex,
+                this.coords!
+            )
+
             SmallSVGImagesSlideshow.createOverflowTile(
                 this.SVG,
                 this.projectName,
@@ -137,11 +156,16 @@ export class SmallSVGSlideshow extends AbstractSmallSlideshow
             hexPath.forEach((p, idx) => {
                 const x = p.x + coord.x + offsetX;
                 const y = p.y + coord.y + offsetY;
+
                 rasterPath += (idx === 0 ? "M" : "L") + `${x},${y} `;
             });
         });
 
-        const pathEl = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        const pathEl = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "path"
+        );
+
         pathEl.setAttribute("d", rasterPath.trim());
         pathEl.setAttribute("fill", "none");
         pathEl.setAttribute("stroke", "rgba(51, 81, 142, 0.5)");
@@ -161,6 +185,7 @@ export class SmallSVGImagesSlideshow
     ): void
     {
         const path = "M110,15 L210,15 L260,115 L210,215 L110,215 L60,115 L110,15"
+
         const hashPath = DeconstructPath.getPathParts(path)
 
         const newCoords = hashPath.map(c => ({
@@ -171,7 +196,7 @@ export class SmallSVGImagesSlideshow
         const newPath = DeconstructPath.createNewSVGPathString(newCoords)
 
         const clipPath = new SVGFactory(defs, "clipPath", {
-            id: `small-hex-image-${projectName}-${counter}`,
+            id: `hex-image-${projectName}-${counter}`,
             clipPathUnits: "userSpaceOnUse"
         }).createSvgTag()
 
@@ -185,15 +210,24 @@ export class SmallSVGImagesSlideshow
         projectName: string, 
         counter: number,
         img: ProjectImageSlideshowType,
-        coords: Array<{ x: number; y: number }>
+        coords: Array<{ x: number; y: number }>,
+        imageIndex: number,
+        state: SlideshowState
     ): void
     {
         const offsetX = 60;
         const offsetY = 15;
 
         const group = new SVGFactory(SVG, "g", {
-            "clip-path": `url(#small-hex-image-${projectName}-${counter})`
+            "clip-path": `url(#hex-image-${projectName}-${counter})`,
+            class: "hexa-image",
+            cursor: "pointer"
         }).createSvgTag()
+
+        group?.addEventListener("click", () =>
+        {
+            state.setActive(imageIndex)
+        })
 
         new SVGFactory(group, "image", {
             href: `../static/images/${img.image_url}`,
@@ -204,22 +238,26 @@ export class SmallSVGImagesSlideshow
             preserveAspectRatio: "xMidYMid slice"
         }).createSvgTag()
 
+        HexaStyling.activeImageStyling(
+            img,
+            group,
+            coords,
+            counter
+        )
 
-        // OVerlay voor actieve iamge
-        const path = "M110,15 L210,15 L260,115 L210,215 L110,215 L60,115 L110,15"
-        const hashPath = DeconstructPath.getPathParts(path)
-        const overlayCoords = hashPath.map(c => ({
-            x: c.x + coords[counter].x,
-            y: c.y + coords[counter].y
-        }))
-        const overlayPath = DeconstructPath.createNewSVGPathString(overlayCoords)
-
-        new SVGFactory(group, "path", {
-            d: overlayPath,
-            fill: img.is_active ? "transparent" : "rgba(0,0,0, 0.5)"
-        }).createSvgTag()
+        // Alle images een inner shadow, behalve de active image
+        if (!img.is_active)
+        {
+            HexaStyling.createInnerShadow(
+                group,
+                coords[counter].x,
+                coords[counter].y,
+                projectName,
+                "small"
+            );
+        }
     }
-
+    
     public static createOverflowTile(
         SVG: SVGElement | null,
         projectName: string,
@@ -229,22 +267,25 @@ export class SmallSVGImagesSlideshow
     ): void
     {
         const group = new SVGFactory(SVG, "g", {
-            "clip-path": `url(#small-hex-image-${projectName}-${counter})`
+            "clip-path": `url(#hex-image-${projectName}-${counter})`,
         }).createSvgTag();
 
         const path = "M110,15 L210,15 L260,115 L210,215 L110,215 L60,115 L110,15";
+
         const hashPath = DeconstructPath.getPathParts(path);
+
         const newCoords = hashPath.map(c => ({
             x: c.x + coords[counter].x,
             y: c.y + coords[counter].y
         }));
+
         const newPath = DeconstructPath.createNewSVGPathString(newCoords);
 
         new SVGFactory(group, "path", {
             d: newPath,
-            fill: "rgba(51, 81, 142, 1)",
+            fill: "rgba(51, 81, 142, 0.2)",
             stroke: "rgb(51, 81, 142)",
-            "stroke-width": "4"
+            "stroke-width": "6"
         }).createSvgTag();
 
         const textEl = new SVGFactory(group, "text", {
@@ -253,7 +294,7 @@ export class SmallSVGImagesSlideshow
             "text-anchor": "middle",
             "font-size": "34",
             "font-weight": "bold",
-            fill: "#00010fff",
+            fill: "rgb(51, 81, 142)",
         }).createSvgTag();
 
         if (textEl) 
@@ -263,10 +304,13 @@ export class SmallSVGImagesSlideshow
         }
     }
 
-    public static calcNewCoords(count: number): Array<{ x: number; y: number }> 
+    public static calcNewCoords(
+        count: number
+    ): Array<{ x: number; y: number }> 
     {
         const width = 200;
         const height = 200;
+
         const coords: { x: number; y: number }[] = [];
 
         for (let i = 0; i < count; i++) 

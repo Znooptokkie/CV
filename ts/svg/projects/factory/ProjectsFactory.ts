@@ -5,6 +5,7 @@ import { DeconstructPath } from "../../construct/DeconstructPath.js"
 import { Project } from "../Project.js"
 
 import { ProjectsType } from "../../../types/projects.type.js"
+import { HexaStyling } from "../../sharedHexStyling/HexaStyling.js"
 
 export class ProjectsRootElement
 {
@@ -34,12 +35,27 @@ export class ProjectsRootElement
         return projectContainer
     }
 
-    public static createDefs(container: CreateSVG | null): SVGElement | null
+
+    public static createDefs(
+        container: CreateSVG | null,
+        projectName: string
+    ): SVGElement | null
     {
         if (!container)
-            return null
+            return null;
 
-        return new SVGFactory(container, "defs", {}).createSvgTag()
+        const defs = new SVGFactory(
+            container,
+            "defs",
+            {}
+        ).createSvgTag();
+
+        HexaStyling.createInnerShadowDefs(
+            defs,
+            projectName
+        );
+
+        return defs;
     }
 
     public static createInnerHexaPath(): string
@@ -193,6 +209,14 @@ export class ProjectsRootElement
                 opacity: 0.4
             }).createSvgTag();
 
+            HexaStyling.createInnerShadow(
+                group,
+                xValue,
+                yValue,
+                projectName,
+                "large"
+            );
+            
             counter++;
         }
     }
