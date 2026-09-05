@@ -35,8 +35,7 @@ export class ProjectsButton
                 class: `projects-button-path part-${i}`,
                 stroke: "rgb(51, 81, 142)",
                 "stroke-width": 3,
-                fill: "none"
-                // fill: "rgba(51, 81, 142, 0.15)"
+                fill: "rgba(22, 38, 70, 0.25)"
             }).createSvgTag()
         })
     }
@@ -63,6 +62,7 @@ export class ProjectsButton
         `
 
         const text = document.createElement("p");
+        text.classList.add("projects-button-text");
         text.textContent = "GO";
         text.style.cssText = `
             margin:0;
@@ -92,14 +92,29 @@ export class ProjectsButton
         // Zorg dat de inner html de precies even groot is
         ProjectsButton.buttonHTML(link)
 
+        // Hover effecht voor de projects buttons
         link.addEventListener("mouseenter", () =>
         {
-            link.querySelectorAll(".projects-button-path").forEach(p => p.setAttribute("stroke", "#2ecc71"))
+            link.querySelectorAll(".projects-button-path").forEach(p => 
+            {
+                p.setAttribute("stroke", "#2ecc71")
+                p.setAttribute("fill", "rgba(46, 204, 113, 0.1)")
+            })
+        
+            const text = link.querySelector(".projects-button-text") as HTMLElement
+            text.style.color = "#2ecc71"
         })
 
         link.addEventListener("mouseleave", () =>
         {
-            link.querySelectorAll(".projects-button-path").forEach(p => p.setAttribute("stroke", "rgb(51, 81, 142)"))
+            link.querySelectorAll(".projects-button-path").forEach(p => 
+            {
+                p.setAttribute("stroke", "rgb(51, 81, 142)")
+                p.setAttribute("fill", "rgba(22, 38, 70, 0.25)")
+            })
+
+            const text = link.querySelector(".projects-button-text") as HTMLElement
+            text.style.color = "rgb(51, 81, 142)"
         })
     }
 }

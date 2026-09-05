@@ -23,18 +23,16 @@ export class ProjectsInnerHTMLContent
     
         const title = document.createElement("h2")
         title.style.fontSize = "100px"
-        title.style.fontStyle = "italic"
         title.style.fontFamily = "Goldman", "sans-serif"
         title.style.color = "rgb(51, 81, 142)"
-        // title.style.color = "rgba(8, 63, 174, 1)"
         title.style.textShadow = "24px 24px 0 rgba(6, 10, 18, 1)";
         title.textContent = projectTitle
 
         const content = document.createElement("p")
         content.style.fontSize = "54px"
-        content.style.lineHeight = "2.5"
+        content.style.lineHeight = "2"
+        content.style.fontStyle = "italic"
         content.style.color = "rgb(51, 81, 142)"
-        // content.style.color = "rgba(8, 63, 174, 1)"
         content.style.textAlign = "center"
         content.style.textShadow = "15px 15px 0 rgba(6, 10, 18, 1)";
         content.textContent = projectText
@@ -52,10 +50,6 @@ export class ProjectsInnerHTMLContent
         const pathElement = new SVGFactory(container, "path", {
             d: path!,
             stroke: "rgba(51, 81, 142, 0.55)",
-            // stroke: "red",
-            // stroke: "rgba(8, 63, 174, 0.5)",
-            // fill: "rgba(10, 20, 35, 0.5)",
-            // fill: "rgba(1, 12, 34, 0.1)"
             fill: "rgba(51, 81, 142, 0.025)"
         }).createSvgTag()
 
@@ -71,9 +65,9 @@ export class ProjectsInnerHTMLContent
             return null
 
         const foreign = new SVGFactory(container, "foreignObject", {
-            x: 1750,
+            x: 1500,
             y: 100,
-            width: 1500,
+            width: 1750,
             height: 775
         }).createSvgTag()
 
