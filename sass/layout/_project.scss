@@ -12,12 +12,24 @@
 
         #svg-slideshow-main
         {
-            .block-navigation-group-battlebot
+            [class^="block-navigation-group-"]
             {
                 #slideshow-next-button,
                 #slideshow-previous-button
                 {
                     cursor: pointer;
+
+                &:hover
+                {
+                    stroke: #2ecc71;
+                    fill: rgba(46, 204, 113, 0.1);
+                }
+                }
+                
+                #slideshow-previous-button:hover + .slideshow-nav-arrow,
+                #slideshow-next-button:hover + .slideshow-nav-arrow
+                {
+                    fill: #2ecc71;
                 }
             }
         }
@@ -61,16 +73,17 @@
 
         h2
         {
-            width: 40%;
+            // width: 40%;
             color: rgba(51, 81, 142, 1);
         }
 
         p
         {
             font-size: 1.25rem;
-            font-style: italic;
+            // font-style: ;
             color: rgba(51, 81, 142, 0.75);
-            line-height: 2rem;
+            line-height: 1.5rem;
+            margin-bottom: 1.5rem;
         }
     }
 }

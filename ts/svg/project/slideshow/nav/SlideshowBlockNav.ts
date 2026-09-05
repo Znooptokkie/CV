@@ -15,7 +15,8 @@ export class SlideshowBlockNav
         // Top
         new SVGFactory(group, "path", {
             d: "M685,100 L745,45 L1075,45 L1135,100 L685,100 Z",
-            id: "slideshow-next-button",
+            id: "slideshow-previous-button",
+            class: "slideshow-nav-button",
             stroke: "rgb(51, 81, 142)",
             fill: "rgba(51, 81, 142, 0.1)", // Moet transparent zijn, anders werkt klikken niet????
             "stroke-width": 3
@@ -24,6 +25,7 @@ export class SlideshowBlockNav
         // Top Arrow
         new SVGFactory(group, "path", {
             d: "M910,60 L925,85 L895,85 L910,60 Z",
+            class: "slideshow-nav-arrow",
             stroke: "none",
             fill: "rgb(51, 81, 142)"
         }).createSvgTag()
@@ -31,7 +33,8 @@ export class SlideshowBlockNav
         // Bottom
         new SVGFactory(group, "path", {
             d: "M685,1300 L1135,1300 L1075,1355 L745,1355 L685,1300 Z",
-            id: "slideshow-previous-button",
+            id: "slideshow-next-button",
+            class: "slideshow-nav-button",
             stroke: "rgb(51, 81, 142)",
             fill: "rgba(51, 81, 142, 0.1)",
             "stroke-width": 3
@@ -40,6 +43,7 @@ export class SlideshowBlockNav
         // Bottom Arrow
         new SVGFactory(group, "path", {
             d: "M910,1340 L925,1315 L895,1315 L910,1340 Z",
+            class: "slideshow-nav-arrow",
             stroke: "none",
             fill: "rgb(51, 81, 142)"
         }).createSvgTag()
