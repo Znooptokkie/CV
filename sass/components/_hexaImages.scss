@@ -1,0 +1,10 @@
+.hexa-image .hex-outline 
+{
+    stroke: transparent;
+    transition: stroke 0.2s ease;
+}
+
+.hexa-image:hover .hex-outline 
+{
+    stroke: #2ecc71;
+}
