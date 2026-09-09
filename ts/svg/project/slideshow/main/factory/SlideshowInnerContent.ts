@@ -72,10 +72,52 @@ private innerInnerPath = "M70,160 L1730,160 L1730,160 L1710,160 L1710,200 L1700,
         }
     }
 
-    private async addMaskedImage(projectName: string, slideshow: SlideshowMainFunctionality, state: SlideshowState) 
+    private async addMaskedImage(
+        projectName: string,
+        slideshow: SlideshowMainFunctionality,
+        state: SlideshowState
+    ) 
     {
         const { svg } = this.context;
         const imageURL = state.getCurrent()?.image_url;
+
+        const defs = new SVGFactory(svg.svg, "defs", {}).createSvgTag();
+
+        const backgroundGradient = new SVGFactory(
+            defs,
+            "radialGradient",
+            {
+                id: `image-background-${projectName}`,
+                cx: "50%",
+                cy: "50%",
+                r: "70%"
+            }
+        ).createSvgTag();
+
+        new SVGFactory(backgroundGradient, "stop", {
+            offset: "0%",
+            "stop-color": "rgba(51, 81, 142, 0.35)"
+        }).createSvgTag();
+
+        new SVGFactory(backgroundGradient, "stop", {
+            offset: "40%",
+            "stop-color": "rgba(51, 81, 142, 0.3)"
+        }).createSvgTag();
+
+        new SVGFactory(backgroundGradient, "stop", {
+            offset: "75%",
+            "stop-color": "rgba(51, 81, 142, 0.25)"
+        }).createSvgTag();
+        
+        new SVGFactory(backgroundGradient, "stop", {
+            offset: "100%",
+            "stop-color": "rgba(51, 81, 142, 0.2)"
+        }).createSvgTag();
+
+        new SVGFactory(svg.svg, "path", {
+            d: this.innerPath,
+            fill: `url(#image-background-${projectName})`
+        }).createSvgTag();
 
         this.imageElement = new SVGFactory(svg.svg, "image", {
             href: `/static/images/${imageURL}`,
@@ -84,7 +126,7 @@ private innerInnerPath = "M70,160 L1730,160 L1730,160 L1710,160 L1710,200 L1700,
             width: this.context.svg.viewboxWidth,
             height: this.context.svg.viewboxHeight,
             mask: `url(#inner-mask-${projectName})`,
-            preserveAspectRatio: "xMidYMid slice",
+            preserveAspectRatio: "xMidYMid meet",
             "pointer-events": "none"
         }).createSvgTag() as SVGImageElement;
 

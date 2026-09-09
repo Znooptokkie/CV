@@ -288,7 +288,6 @@ export class CreateSides
             innerLeft.push(innerTop[0])
         }
 
-        // console.log({innerTop, innerRight, innerBottom, innerLeft})
         return { innerTop, innerRight, innerBottom, innerLeft }
     }
 

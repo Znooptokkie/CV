@@ -153,7 +153,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 5,
-                            "title": "Overgang naar Autonome Besturing",
+                            "title": "Autonome Besturing",
                             "subparagraphs": [
                                 "Nadat de handmatige besturing stabiel functioneerde, verschoof de focus naar autonome aansturing. Hiervoor werd een camerasysteem toegevoegd waarmee de robot zijn omgeving kan waarnemen en visuele data kan verzamelen voor objectdetectie.",
                                 "Door visuele input te combineren met afstandsmetingen van sensoren kon de robot objecten detecteren, volgen en ermee interacteren, zoals het oppakken of ontwijken van obstakels."
@@ -161,7 +161,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 6,
-                            "title": "Hardwarekeuze en Onderbouwing",
+                            "title": "Hardwarekeuze",
                             "subparagraphs": [
                                 "De keuze voor de Raspberry Pi 5 was gebaseerd op de behoefte aan rekenkracht, uitbreidbaarheid en ondersteuning voor AI-frameworks. De Raspberry Pi Pico 2 werd ingezet voor real-time besturing vanwege de directe GPIO-aansturing en voorspelbare timing.",
                                 "Deze combinatie resulteerde in een schaalbaar systeem waarin software en hardware logisch van elkaar gescheiden zijn, waardoor complexe taken betrouwbaar uitgevoerd kunnen worden."
@@ -169,7 +169,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 7,
-                            "title": "Communicatie via CAN-bus",
+                            "title": "CAN-bus",
                             "subparagraphs": [
                                 "Voor communicatie tussen Raspberry Pi 5 en Pico 2 is gekozen voor het CAN-bus protocol, bekend om zijn betrouwbaarheid en fouttolerantie. De MCP2515-modules verzorgen de interface, waardoor berichten met verschillende prioriteiten veilig verzonden kunnen worden.",
                                 "Hoewel de implementatie complex was, bood het waardevolle inzichten in industriële communicatieprotocollen en message-prioritization technieken."
@@ -177,14 +177,14 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 8,
-                            "title": "RC-Receiver Integratie",
+                            "title": "RC-Receiver",
                             "subparagraphs": [
                                 "De Flysky FS-iA10B receiver vormt de schakel tussen gebruiker en robot, waarbij RC-signalen worden ontvangen en verwerkt. De signalen worden via UART omgezet naar digitale besturingswaarden die de Pi 5 kan interpreteren en doorsturen naar de Pico 2. Failsafe-functionaliteit zorgt ervoor dat de robot automatisch stopt of in een veilige modus komt bij signaalverlies of foutieve inputs."
                             ]
                         },
                         {
                             "order": 9,
-                            "title": "Sensoren als Ondersteuning",
+                            "title": "Sensoren",
                             "subparagraphs": [
                                 "Extra sensoren werden toegevoegd voor betrouwbaardere besturing, vooral tijdens autonome navigatie. Ultrasone afstandssensoren leveren realtime data over de omgeving, wat cruciaal is voor obstakelvermijding en positionering van de grijparm. Deze sensoren ondersteunen zowel autonome navigatie als het nauwkeurig uitvoeren van fysieke taken.",
                                 "Om rijprecisie te verbeteren zijn optische encoders en odometrie onderzocht. Hoewel deze technieken theoretisch nauwkeurige resultaten opleverden, bleken ze in de praktijk gevoelig voor mechanische afwijkingen en oppervlakteruis. Uiteindelijk is gekozen voor een eenvoudiger correctiemechanisme op basis van PWM-aansturing, dat betrouwbaarder en onderhoudsvriendelijker bleek."
@@ -192,14 +192,14 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 10,
-                            "title": "AI-Verwerking aan de Edge",
+                            "title": "AI-Verwerking",
                             "subparagraphs": [
                                 "Real-time objectdetectie werd uitgevoerd met de Hailo-8 AI Accelerator, die beelden lokaal verwerkt zonder externe afhankelijkheid. De accelerator maakt het mogelijk zware AI-modellen snel en efficiënt uit te voeren, wat cruciaal is voor autonome beslissingen. Dankzij deze setup kan de robot zelfstandig objecten herkennen en acties uitvoeren op basis van lokaal verwerkte data."
                             ]
                         },
                         {
                             "order": 11,
-                            "title": "Visie en Cameragebruik",
+                            "title": "Cameragebruik",
                             "subparagraphs": [
                                 "De Camera Module 3 Wide NoIR werd gekozen vanwege het brede gezichtsveld en de goede prestaties bij weinig licht. Beelden worden direct naar de Hailo-8 gestuurd voor analyse, waardoor realtime objectdetectie mogelijk is. Aanpassingen aan autofocus en aanvullende sensoren verbeterden de nauwkeurigheid bij korte afstand en complexe interacties."
                             ]
@@ -213,14 +213,14 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 13,
-                            "title": "Projectverloop en Iteratie",
+                            "title": "Projectverloop",
                             "subparagraphs": [
                                 "Het project volgde een iteratief proces, waarbij ontwerpen regelmatig werden herzien op basis van testresultaten en observaties. Problemen met voeding, communicatie en mechanica leidden tot meerdere herontwerpen, wat het systeem uiteindelijk robuuster maakte. Deze iteraties leverden diepgaand inzicht in systeemintegratie, foutafhandeling en praktische engineering-vaardigheden."
                             ]
                         },
                         {
                             "order": 14,
-                            "title": "Eindresultaat en Reflectie",
+                            "title": "Eindresultaat",
                             "subparagraphs": [
                                 "Het eindresultaat is een robot die stabiel handmatig bestuurbaar is en gedeeltelijk autonoom kan functioneren. Hoewel niet alle doelen volledig zijn gerealiseerd, biedt het project een solide basis voor verdere uitbreiding en verbetering. De belangrijkste opbrengst is kennis over embedded systemen, AI, communicatieprotocollen en de integratie van complexe software-hardware-systemen."
                             ]
@@ -313,116 +313,6 @@ class Command(BaseCommand):
                     ]
                 },
                 # ====================
-                # BRAM
-                # ====================
-                {
-                    "link": "bram",
-                    "title": "BRAM",
-                    "description": "BRAM was mijn eerste mobiele project, aangeboden door de gemeente Zoetermeer, waarbij we in Android Studio met Java een applicatie bouwden die ouderen moet helpen om gemakkelijker overweg te kunnen met hun mobiel, met functies zoals een noodknop en eenvoudige toegang tot familiefoto's.",
-                    "year": 2024,
-                    "github": "https://github.com/bdiker61/BRAM",
-                    "featured": False,
-                    "in_progress": False,
-                    "languages": ["Java"],
-                    "images": [
-                        {"image_url": "projects/bram/bram-logo.png", "alt_text": "Logo van het project BRAM", "is_main_image": False, "is_logo": True},
-                        {"image_url": "projects/bram/bram_loadingscreen.webp", "alt_text": "Een screenshot van het laadscherm van de mobiele applicatie", "is_main_image": False, "is_logo": False},
-                        {"image_url": "projects/bram/bram_verwarming.webp", "alt_text": "Een screenshot voor het aansturen van de verwarming van de mobiele applicatie", "is_main_image": True, "is_logo": False},
-                        {"image_url": "projects/bram/bram_lichten.webp", "alt_text": "Een screenshot voor het aansturen van de lichten van de mobiele applicatie", "is_main_image": True, "is_logo": False},
-                        {"image_url": "projects/bram/bram_home.webp", "alt_text": "Een screenshot van de Homepage van de mobiele applicatie", "is_main_image": True, "is_logo": False},
-                        {"image_url": "projects/bram/bram_foto.webp", "alt_text": "Een screenshot van de Album pagina van de mobiele applicatie", "is_main_image": False, "is_logo": False},
-                        {"image_url": "projects/bram/bram_contact.webp", "alt_text": "Een screenshot van de Contact pagina van de mobiele applicatie", "is_main_image": False, "is_logo": False},
-                    ],
-                    "paragraphs": [
-                        {
-                            "order": 1,
-                            "title": "Introductie",
-                            "subparagraphs": [
-                                "Dit project werd aan ons aangeboden door de gemeente Zoetermeer.",
-                                "Het was mijn eerste project voor mobiel. Deze applicatie moest het voor ouderen gemakkelijker maken om met de mobiel overweg te kunnen.",
-                                "Omdat ouderen vaak moeilijker mee kunnen komen met de technologie, kregen wij de opdracht om een applicatie te maken waarmee ouderen wat makkelijker overweg kunnen."
-                            ],
-                        },
-                        {
-                            "order": 2,
-                            "title": "Visie en Doelstelling",
-                            "subparagraphs": [
-                                "De voornaamste doelstelling was dat ouderen door het gebruik van deze app niet tegen beperkingen zouden aanlopen.",
-                                "Zo hebben wij verschillende ouderen geïnterviewd over wat voor hen nou zo belangrijk is om in deze applicatie te hebben.",
-                                "Waar vrijwel iedereen het over eens was, was veiligheid. Er moest binnen de app een duidelijke 'noodknop' zijn waarmee externe hulp ingeschakeld kan worden.",
-                                "Ook vonden de ouderen het erg belangrijk om gemakkelijk toegang tot foto's te hebben, vooral die van hun eigen familie."
-                            ]
-                        },
-                        {
-                            "order": 3,
-                            "title": "Besluitvorming over Ontwikkelomgeving",
-                            "subparagraphs": [
-                                "Vanuit school was er de optie om dit project te maken met de kennis die wij al hadden. Dat hield in dat wij de applicatie met HTML, CSS en JavaScript mochten bouwen.",
-                                "Voor wie een wat grotere uitdaging zocht, was er de mogelijkheid om het project in Android Studio te maken.",
-                                "Uiteraard koos mijn projectgroep voor de tweede optie: Android Studio. Binnen Android Studio hadden we vervolgens nog de keuze tussen twee programmeertalen: Java of Kotlin.",
-                                "Na wat onderzoek te hebben gedaan, besloten wij het in Java te maken, vooral omdat Java een meer gebruikte taal is dan Kotlin. Het leek ons daardoor een grotere toegevoegde waarde om Java te leren."
-                            ]
-                        },
-                        {
-                            "order": 4,
-                            "title": "Taakverdeling",
-                            "subparagraphs":
-                            [
-                                "Er moesten vier hoofdpagina's gerealiseerd worden. Dat kwam mooi uit, want we waren ook met precies vier man.",
-                                "De 'Lampen'-pagina was aan mij toegekend, samen met het opzetten van de applicatie in Android Studio.",
-                                "Zodra ik begreep hoe alles werkte binnen Android Studio, heb ik dit uitgelegd aan de rest van mijn groepje. Uiteraard zochten zij zelf ook het een en ander uit, maar ik neem meestal de leiding op me omdat ik altijd een duidelijk overzicht wil hebben van hoe alles werkt, zodat ik ook kan helpen mocht er ergens iets vastlopen. Daarnaast was ik ook een stuk ouder dan de rest, wat natuurlijk ook meehielp.",
-                            ]
-                        },
-                        {
-                            "order": 5,
-                            "title": "Realisatie",
-                            "subparagraphs": [
-                                "Toen kwam het daadwerkelijke programmeren van de applicatie.",
-                                "Van een docent kregen wij een inlogcode om via zijn VPS een set JSON-data op te halen waarmee we een lamp konden aansturen. Hiervoor moest namelijk een echte API gemaakt worden waarmee we dingen konden besturen, te beginnen bij die lamp.",
-                                "Dit gebeurde allemaal via een lokaal wifinetwerk, anders kwamen er weer heel andere veiligheidsaspecten bij kijken.",
-                                "Het realiseren verliep eigenlijk best vlekkeloos. Wel had ik zelf wat problemen met het inladen van foto's via een emulator, maar na vele pogingen is het gelukt. Ik had het zelf graag nog wat 'beter' willen maken, maar in de laatste week van het project was ik helaas niet op school (ik ging naar een festival dat al gepland stond).",
-                                "Wel ben ik in constant contact gebleven met mijn projectgroep. Eigenlijk hadden ze mij niet echt nodig, het lukte hen zelf al aardig goed. Vooral Matthijs de Graaf moet ik hiervoor enorm bedanken, want hij zette zich elke dag voor de volle honderd procent in, waardoor het uit handen geven van de leiding mij niet echt zwaar viel."
-                            ],
-                        },
-                        {
-                            "order": 6,
-                            "title": "Oplevering",
-                            "subparagraphs": [
-                                "Zoals wij het project hadden bedacht, zo is het ook geworden!",
-                                "Ik kijk met een zeer tevreden gevoel terug op dit project. Het werd beoordeeld met een 10/10, wat natuurlijk een enorme boost voor het zelfvertrouwen was."
-                            ]
-                        }
-                    ],
-                    "specifications": [
-                        {"spec": "Android SDK", "category": "SOFTWARE", "svg_url": "androidstudio"},
-                        {"spec": "Gradle", "category": "SOFTWARE", "svg_url": "gradle"}, # Moet eigenlijk gradle-original zijn!@!$#%@$^
-                        {"spec": "XML", "category": "DATAFORMAT", "svg_url": "xml"},
-                        {"spec": "API", "category": "COMMUNICATIE"},
-                    ],
-                    "contributors": [
-                        {
-                            "name": "A. Oomen",
-                            "git_url": "https://github.com/Znooptokkie",
-                            "git_image": "contributors/oomen_git_avatar.jpeg"
-                        },
-                        {
-                            "name": "M. de Graaf",
-                            "git_url": "https://github.com/Matthijs-de-Graaf",
-                            "git_image": "contributors/graaf_git_avatar.png"
-                        },
-                        {
-                            "name": "R. van Putten",
-                            "git_url": "https://github.com/SanzoVP",
-                            "git_image": "contributors/putten_git_avatar.jpeg"
-                        },
-                        {
-                            "name": "B. Diker",
-                            "git_url": "https://github.com/bdiker61",
-                            "git_image": "contributors/diker_git_avatar.png"
-                        }
-                    ]
-                },
-                # ====================
                 # SMARTGARDEN DESKTOP
                 # ====================
                 {
@@ -457,7 +347,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 2,
-                            "title": "Het Team en de Opdracht",
+                            "title": "De Opdracht",
                             "subparagraphs": [
                                 "Iedere tweedejaars student van de opleiding Software Developer bij mboRijnland kreeg in deze periode dezelfde opdracht, waarna groepjes werden gevormd om deze uit te voeren. Ons groepje bestond uit vijf leden.",
                                 "Door de scrum-methodiek toe te passen, hadden we vanaf het begin een duidelijke rolverdeling: twee front-end developers, twee back-end developers (waarvan één ook de rol van Product Owner vervulde), en ikzelf als Scrum Master en projectleider.",
@@ -484,7 +374,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 5,
-                            "title": "Vervolgopdracht: de Pomp",
+                            "title": "Vervolgopdracht",
                             "subparagraphs": [
                                 "Nadat de opdracht was afgerond, mochten wij als groep verder werken aan Smart Garden, terwijl de rest van de klas aan een nieuw project begon. Deze kans grepen we uiteraard met beide handen aan.",
                                 "De vervolgopdracht hield in dat we een pomp moesten aansturen die zich bevindt in het Smart Building bij The Field. Op dit moment kwam een extra teamlid ons versterken, gespecialiseerd in embedded systems en Linux.",
@@ -495,7 +385,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 6,
-                            "title": "Samenwerking en Oplevering",
+                            "title": "De Oplevering",
                             "subparagraphs": [
                                 "Vanaf dit punt werkten we nauw samen met de studenten van Technicus Engineering, die de pomp hadden gebouwd. Deze samenwerking verliep uitstekend, mede dankzij de motivatie aan beide kanten.",
                                 "De oplevering ging niet zonder slag of stoot: we kregen te maken met een onstabiele wifiverbinding, verkeerd gekalibreerde sensoren, en het feit dat vrijwel alles nieuw voor ons was.",
@@ -504,7 +394,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 7,
-                            "title": "Overdracht aan de Haagse Hogeschool",
+                            "title": "Overdracht",
                             "subparagraphs": [
                                 "Via een pitch bij het DIF in Zoetermeer werden studenten van de Haagse Hogeschool enthousiast gemaakt om Smart Garden voort te zetten.",
                                 "Zij bouwen voort op de Raspberry Pi 4 als centraal brein van het systeem, en breiden dit uit met sensoren voor grondvochtigheid per plantenbak, een sensor voor luchtvochtigheid in de kas en een lichtsensor.",
@@ -609,7 +499,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 3,
-                            "title": "Ontwikkelomgeving en Technische Keuzes",
+                            "title": "Technische Keuzes",
                             "subparagraphs": [
                                 "Voor de applicatie zelf koos ik voor React Native met TypeScript, een framework waar ik al goed mee overweg kon en dat het mogelijk maakt om in de toekomst ook op iOS uit te breiden.",
                                 "Voor de backend bouwde ik eerst een eigen API in Node.js, maar stapte ik uiteindelijk over naar Flask, omdat Python prettiger werkte dan JavaScript voor dit deel van het project.",
@@ -618,7 +508,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 4,
-                            "title": "Koppeling met de Raspberry Pi",
+                            "title": "Raspberry Pi",
                             "subparagraphs": [
                                 "Voor de communicatie met de sensoren en de pomp bij The Field, die worden aangestuurd door een Raspberry Pi 4, koos ik voor een SSH-verbinding waarbij JSON-bestanden via het SCP-protocol werden uitgewisseld.",
                                 "Op mijn mobiel gebruikte ik Termux om deze verbinding op te zetten en om een kleine Node.js-server te draaien die de data via HTTP-verzoeken beschikbaar maakte voor de app.",
@@ -627,7 +517,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 5,
-                            "title": "Ontwerp en Functionaliteiten",
+                            "title": "Functionaliteiten",
                             "subparagraphs": [
                                 "De applicatie bevat onder andere een inlog- en registratiesysteem, een homepagina met een vijfdaagse weersverwachting en een overzicht van de planten aan beide kanten van de kas, en een pagina met alle ooit toegevoegde planten.",
                                 "Op de pagina van een individuele plant wordt automatisch een deel van de gegevens ingevuld via de Perenual API, en kan de aanwezigheid, locatie en status van de plant worden beheerd.",
@@ -636,7 +526,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 6,
-                            "title": "Tegengekomen Problemen",
+                            "title": "Problemen",
                             "subparagraphs": [
                                 "Naast de wegvallende SSH-verbinding liep ik tegen een aantal andere technische uitdagingen aan. React Native ondersteunt standaard geen interne communicatie binnen hetzelfde domein, waardoor ik CORS goed moest configureren om de app en de Flask-API probleemloos met elkaar te laten praten.",
                                 "Ook het opslaan van gevoelige gegevens, zoals API-sleutels, in een apart .env-bestand bleek problematisch: na het toevoegen van de benodigde dependency crashte de applicatie volledig, zonder dat ik de oorzaak kon achterhalen. Uiteindelijk heb ik ervoor gekozen om deze gegevens, noodgedwongen, hardcoded in de applicatie te verwerken."
@@ -644,7 +534,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 7,
-                            "title": "Extra Toevoegingen",
+                            "title": "Toevoegingen",
                             "subparagraphs": [
                                 "Tijdens de ontwikkeling heb ik een aantal functionaliteiten toegevoegd die niet in het oorspronkelijke ontwerp stonden. Zo kan er per plant een irrigatieschema worden ingesteld, waarin wordt bijgehouden hoe vaak een plant water nodig heeft en wanneer de volgende irrigatie gepland staat.",
                                 "Ook kunnen admins alle gegevens van een plant achteraf aanpassen, en heb ik een functie toegevoegd om planten volledig uit het systeem te verwijderen, iets wat in eerste instantie ontbrak."
@@ -652,7 +542,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 8,
-                            "title": "Niet Gerealiseerd",
+                            "title": "Ongerealiseerd",
                             "subparagraphs": [
                                 "Niet alles is gelukt zoals oorspronkelijk gepland. Het automatisch invullen van plantgegevens bleek uiteindelijk complexer dan gedacht, omdat hiervoor eigenlijk twee API's nodig waren in plaats van één: een vertaal-API om de ingevoerde tekst naar het Engels om te zetten, voordat deze als parameter aan de Perenual API kon worden meegegeven.",
                                 "Ook een exportfunctie voor sensor- en plantdata naar CSV of PDF heb ik uiteindelijk laten liggen, omdat ik meer tijd kwijt was aan het afronden van de kernfunctionaliteit dan verwacht.",
@@ -662,7 +552,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 9,
-                            "title": "Testen en Kwaliteitsborging",
+                            "title": "Kwaliteitsborging",
                             "subparagraphs": [
                                 "Om de betrouwbaarheid van de applicatie te waarborgen, heb ik uitgebreid handmatig getest aan de hand van vooraf opgestelde testcases, gericht op zowel de normale gebruiker als de admin.",
                                 "Vrijwel alle geteste functionaliteiten, zoals registreren, inloggen, planten toevoegen, filteren en verwijderen, bleken succesvol te werken. Eén test bracht aan het licht dat er geen foutmelding werd getoond bij het invoeren van een ongeldige gebruikersnaam, wat ik vervolgens heb opgelost door een validatiefunctie en een duidelijke foutmelding toe te voegen."
@@ -670,7 +560,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 10,
-                            "title": "Eindresultaat en Vooruitblik",
+                            "title": "Eindresultaat",
                             "subparagraphs": [
                                 "Het eindresultaat is een volledig functionerende mobiele applicatie die het beheer van een verticale tuin overzichtelijk en toegankelijk maakt, ook al draait een deel van de data momenteel nog op hardcoded waarden in plaats van live sensordata.",
                                 "Mocht de SSH-verbinding met de Raspberry Pi in de toekomst weer stabiel werken, dan zou de overstap naar echte live data relatief snel te realiseren moeten zijn.",
@@ -699,6 +589,116 @@ class Command(BaseCommand):
                             "name": "A. Oomen", 
                             "git_url": "https://github.com/Znooptokkie",
                             "git_image": "contributors/oomen_git_avatar.jpeg"
+                        }
+                    ]
+                },
+                # ====================
+                # BRAM
+                # ====================
+                {
+                    "link": "bram",
+                    "title": "BRAM",
+                    "description": "BRAM was mijn eerste mobiele project, aangeboden door de gemeente Zoetermeer, waarbij we in Android Studio met Java een applicatie bouwden die ouderen moet helpen om gemakkelijker overweg te kunnen met hun mobiel, met functies zoals een noodknop en eenvoudige toegang tot familiefoto's.",
+                    "year": 2024,
+                    "github": "https://github.com/bdiker61/BRAM",
+                    "featured": False,
+                    "in_progress": False,
+                    "languages": ["Java"],
+                    "images": [
+                        {"image_url": "projects/bram/bram-logo.png", "alt_text": "Logo van het project BRAM", "is_main_image": False, "is_logo": True},
+                        {"image_url": "projects/bram/bram_loadingscreen.webp", "alt_text": "Een screenshot van het laadscherm van de mobiele applicatie", "is_main_image": False, "is_logo": False},
+                        {"image_url": "projects/bram/bram_verwarming.webp", "alt_text": "Een screenshot voor het aansturen van de verwarming van de mobiele applicatie", "is_main_image": True, "is_logo": False},
+                        {"image_url": "projects/bram/bram_lichten.webp", "alt_text": "Een screenshot voor het aansturen van de lichten van de mobiele applicatie", "is_main_image": True, "is_logo": False},
+                        {"image_url": "projects/bram/bram_home.webp", "alt_text": "Een screenshot van de Homepage van de mobiele applicatie", "is_main_image": True, "is_logo": False},
+                        {"image_url": "projects/bram/bram_foto.webp", "alt_text": "Een screenshot van de Album pagina van de mobiele applicatie", "is_main_image": False, "is_logo": False},
+                        {"image_url": "projects/bram/bram_contact.webp", "alt_text": "Een screenshot van de Contact pagina van de mobiele applicatie", "is_main_image": False, "is_logo": False},
+                    ],
+                    "paragraphs": [
+                        {
+                            "order": 1,
+                            "title": "Introductie",
+                            "subparagraphs": [
+                                "Dit project werd aan ons aangeboden door de gemeente Zoetermeer.",
+                                "Het was mijn eerste project voor mobiel. Deze applicatie moest het voor ouderen gemakkelijker maken om met de mobiel overweg te kunnen.",
+                                "Omdat ouderen vaak moeilijker mee kunnen komen met de technologie, kregen wij de opdracht om een applicatie te maken waarmee ouderen wat makkelijker overweg kunnen."
+                            ],
+                        },
+                        {
+                            "order": 2,
+                            "title": "Visie en Doelstelling",
+                            "subparagraphs": [
+                                "De voornaamste doelstelling was dat ouderen door het gebruik van deze app niet tegen beperkingen zouden aanlopen.",
+                                "Zo hebben wij verschillende ouderen geïnterviewd over wat voor hen nou zo belangrijk is om in deze applicatie te hebben.",
+                                "Waar vrijwel iedereen het over eens was, was veiligheid. Er moest binnen de app een duidelijke 'noodknop' zijn waarmee externe hulp ingeschakeld kan worden.",
+                                "Ook vonden de ouderen het erg belangrijk om gemakkelijk toegang tot foto's te hebben, vooral die van hun eigen familie."
+                            ]
+                        },
+                        {
+                            "order": 3,
+                            "title": "Besluitvorming",
+                            "subparagraphs": [
+                                "Vanuit school was er de optie om dit project te maken met de kennis die wij al hadden. Dat hield in dat wij de applicatie met HTML, CSS en JavaScript mochten bouwen.",
+                                "Voor wie een wat grotere uitdaging zocht, was er de mogelijkheid om het project in Android Studio te maken.",
+                                "Uiteraard koos mijn projectgroep voor de tweede optie: Android Studio. Binnen Android Studio hadden we vervolgens nog de keuze tussen twee programmeertalen: Java of Kotlin.",
+                                "Na wat onderzoek te hebben gedaan, besloten wij het in Java te maken, vooral omdat Java een meer gebruikte taal is dan Kotlin. Het leek ons daardoor een grotere toegevoegde waarde om Java te leren."
+                            ]
+                        },
+                        {
+                            "order": 4,
+                            "title": "Taakverdeling",
+                            "subparagraphs":
+                            [
+                                "Er moesten vier hoofdpagina's gerealiseerd worden. Dat kwam mooi uit, want we waren ook met precies vier man.",
+                                "De 'Lampen'-pagina was aan mij toegekend, samen met het opzetten van de applicatie in Android Studio.",
+                                "Zodra ik begreep hoe alles werkte binnen Android Studio, heb ik dit uitgelegd aan de rest van mijn groepje. Uiteraard zochten zij zelf ook het een en ander uit, maar ik neem meestal de leiding op me omdat ik altijd een duidelijk overzicht wil hebben van hoe alles werkt, zodat ik ook kan helpen mocht er ergens iets vastlopen. Daarnaast was ik ook een stuk ouder dan de rest, wat natuurlijk ook meehielp.",
+                            ]
+                        },
+                        {
+                            "order": 5,
+                            "title": "Realisatie",
+                            "subparagraphs": [
+                                "Toen kwam het daadwerkelijke programmeren van de applicatie.",
+                                "Van een docent kregen wij een inlogcode om via zijn VPS een set JSON-data op te halen waarmee we een lamp konden aansturen. Hiervoor moest namelijk een echte API gemaakt worden waarmee we dingen konden besturen, te beginnen bij die lamp.",
+                                "Dit gebeurde allemaal via een lokaal wifinetwerk, anders kwamen er weer heel andere veiligheidsaspecten bij kijken.",
+                                "Het realiseren verliep eigenlijk best vlekkeloos. Wel had ik zelf wat problemen met het inladen van foto's via een emulator, maar na vele pogingen is het gelukt. Ik had het zelf graag nog wat 'beter' willen maken, maar in de laatste week van het project was ik helaas niet op school (ik ging naar een festival dat al gepland stond).",
+                                "Wel ben ik in constant contact gebleven met mijn projectgroep. Eigenlijk hadden ze mij niet echt nodig, het lukte hen zelf al aardig goed. Vooral Matthijs de Graaf moet ik hiervoor enorm bedanken, want hij zette zich elke dag voor de volle honderd procent in, waardoor het uit handen geven van de leiding mij niet echt zwaar viel."
+                            ],
+                        },
+                        {
+                            "order": 6,
+                            "title": "Oplevering",
+                            "subparagraphs": [
+                                "Zoals wij het project hadden bedacht, zo is het ook geworden!",
+                                "Ik kijk met een zeer tevreden gevoel terug op dit project. Het werd beoordeeld met een 10/10, wat natuurlijk een enorme boost voor het zelfvertrouwen was."
+                            ]
+                        }
+                    ],
+                    "specifications": [
+                        {"spec": "Android SDK", "category": "SOFTWARE", "svg_url": "androidstudio"},
+                        {"spec": "Gradle", "category": "SOFTWARE", "svg_url": "gradle"}, # Moet eigenlijk gradle-original zijn!@!$#%@$^
+                        {"spec": "XML", "category": "DATAFORMAT", "svg_url": "xml"},
+                        {"spec": "API", "category": "COMMUNICATIE"},
+                    ],
+                    "contributors": [
+                        {
+                            "name": "A. Oomen",
+                            "git_url": "https://github.com/Znooptokkie",
+                            "git_image": "contributors/oomen_git_avatar.jpeg"
+                        },
+                        {
+                            "name": "M. de Graaf",
+                            "git_url": "https://github.com/Matthijs-de-Graaf",
+                            "git_image": "contributors/graaf_git_avatar.png"
+                        },
+                        {
+                            "name": "R. van Putten",
+                            "git_url": "https://github.com/SanzoVP",
+                            "git_image": "contributors/putten_git_avatar.jpeg"
+                        },
+                        {
+                            "name": "B. Diker",
+                            "git_url": "https://github.com/bdiker61",
+                            "git_image": "contributors/diker_git_avatar.png"
                         }
                     ]
                 },
@@ -741,7 +741,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 3,
-                            "title": "Twee Programma's, Eén Doel",
+                            "title": "Ons Idee",
                             "subparagraphs": [
                                 "Om deze opdracht aan te pakken, besloten wij twee afzonderlijke programma's te ontwikkelen die elkaar aanvulden.",
                                 "Het eerste programma was gericht op de mailbox zelf. Omdat e-mails in de kern zijn opgebouwd uit HTML, konden wij de inhoud van binnenkomende mails uitlezen met JavaScript. Door gebruik te maken van het \"Bag of Words\"-concept, waarbij op basis van de aanwezige woorden een inschatting wordt gemaakt van het onderwerp, kon het systeem automatisch bepalen bij welke categorie een bepaalde mail hoorde. Op deze manier konden documenten en mails al vroegtijdig, nog voordat iemand ze daadwerkelijk had gelezen, worden voorgesorteerd op relevantie.",
@@ -750,7 +750,7 @@ class Command(BaseCommand):
                         },
                         {
                             "order": 4,
-                            "title": "Een Onverwachte Ontdekking",
+                            "title": "Doorzetten",
                             "subparagraphs": [
                                 "Gedurende het project ging ik ervan uit dat het eerste programma, de mailbox-applicatie, uiteindelijk niet naar behoren werkte. Ik kreeg namelijk verschillende errors en waarschuwingen te zien, wat mij deed concluderen dat er iets structureel mis was. Pas tegen het einde van het project besloot ik er toch nog eens goed naar te kijken, om te zien of het probleem alsnog op te lossen was.",
                                 "Tot mijn eigen verbazing bleek de applicatie eigenlijk gewoon te werken. De problemen die ik had gezien, waren uiteindelijk slechts een aantal kleine foutjes die relatief eenvoudig te verhelpen waren. Deze ontdekking was een mooie les in doorzettingsvermogen: soms lijkt iets kapot, terwijl het probleem uiteindelijk een stuk kleiner is dan gedacht."

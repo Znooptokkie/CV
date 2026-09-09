@@ -41,7 +41,7 @@ export async function initProjects()
         
         // CONTENT
         ProjectsContent.drawBorder(rootElements[i], pathContent)
-        ProjectsContent.drawBorder(rootElements[i], pathContentInner, {opacity: 0.5})
+        ProjectsContent.drawBorder(rootElements[i], pathContentInner, {opacity: 0.5}, project, rootElements.length - i)
 
         const figures = PathFigures.createFigurePathString(HexagonPath, ProjectsRootElement.createInnerHexaPath());
         ProjectsHexa.styleLogo(root!, figures!)

@@ -20,10 +20,10 @@
     }
 }
 
-// @media (max-width: vars.$breakpoint-tablet)
-// {
-//     .section-title
-//     {
-//         margin-bottom: 0rem !important;
-//     }
-// } 
+@media (max-width: vars.$breakpoint-tablet)
+{
+    .section-title
+    {
+        font-size: 2rem;
+    }
+} 

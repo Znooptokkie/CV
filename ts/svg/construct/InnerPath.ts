@@ -75,8 +75,7 @@ export class InnerPath
         }
     
         const newPath = DeconstructPath.createNewSVGPathString(newInnerValues)
-        // console.log(`OUD PATH: ${path}`)
-        // console.log(`NEW PATH: ${newPath}`)
+
         return newPath
     }
 

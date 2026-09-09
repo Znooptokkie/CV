@@ -87,8 +87,6 @@ export class InitPath
 
         InitPath.createBorderGradients(defs, figures, borderGroup);
         // InitPath.createBorderParts(container, outer, inner, "language-small")
-        // console.log(inner);
-        // console.log(figures);
     }
 
     /**
@@ -132,8 +130,6 @@ export class InitPath
                 fill: `url(#${gradId})`,
                 stroke: "rgba(51, 81, 142, 0.1)"
             }).createSvgTag();
-
-            // console.log(figure);
         });
     }
 }

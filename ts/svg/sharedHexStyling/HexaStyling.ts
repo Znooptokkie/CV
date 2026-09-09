@@ -57,7 +57,7 @@ export class HexaStyling
 
         new SVGFactory(shadowBlur, "feGaussianBlur", {
             in: "SourceGraphic",
-            stdDeviation: "10"
+            stdDeviation: "12"
         }).createSvgTag();
     }
 

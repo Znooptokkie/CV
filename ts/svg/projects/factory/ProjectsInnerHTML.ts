@@ -22,17 +22,20 @@ export class ProjectsInnerHTMLContent
         `
     
         const title = document.createElement("h2")
+
         title.style.fontSize = "100px"
-        title.style.fontFamily = "Goldman", "sans-serif"
-        title.style.color = "rgb(51, 81, 142)"
-        title.style.textShadow = "24px 24px 0 rgba(6, 10, 18, 1)";
-        title.textContent = projectTitle
+        title.style.fontFamily = "Goldman, sans-serif"    
+        title.style.color = "transparent"
+        title.style.webkitTextFillColor = "transparent"
+        title.style.webkitTextStroke = "5px rgb(51, 81, 142)"
+        title.style.textShadow = "24px 24px 0 rgba(6, 10, 18, 1)"
+        title.textContent = projectTitle.toUpperCase()
 
         const content = document.createElement("p")
         content.style.fontSize = "54px"
         content.style.lineHeight = "2"
         content.style.fontStyle = "italic"
-        content.style.color = "rgb(51, 81, 142)"
+        content.style.color = "rgba(51, 81, 142, 0.75)"
         content.style.textAlign = "center"
         content.style.textShadow = "15px 15px 0 rgba(6, 10, 18, 1)";
         content.textContent = projectText
