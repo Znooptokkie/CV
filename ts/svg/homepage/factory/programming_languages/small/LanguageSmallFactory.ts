@@ -84,7 +84,6 @@ class LanguageSmallContainerHTML
         const label = document.createElement("p");
         label.style.cssText = "margin:0; font-size:28px; color:rgba(51, 81, 142, 0.75);";
         label.textContent = language.name === "azuresqldatabase" ? "SQL" : language.name;
-        // console.log(language);
         // Voeg icon en label toe aan wrapper en wrapper aan foreignObject
         wrapper.append(icon, label);
         foreign.appendChild(wrapper);
@@ -100,7 +99,7 @@ class LanguageSmallContainerHTML
         const fetcher = await LanguageService.filterItems()
         // const result = await fetcher.fetchJsonData();
         this.languageName = fetcher;
-        // console.log(this.languageName);
+
         return fetcher;
     }
 }
@@ -176,8 +175,6 @@ export class LanguageSmallBorder
 
         const outerPoints = DeconstructPath.getPathParts(path);
         const innerPoints = DeconstructPath.getPathParts(innerPath);
-        // console.log(outerPoints);
-        // console.log(innerPoints);
 
         for (let i = 0; i < outerPoints.length - 1; i++)
         {

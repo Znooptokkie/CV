@@ -14,6 +14,7 @@ import { initProjects } from "./svg/projects/projectsInit.js"
 import { initSlideshow } from "./svg/project/slideshow/slideshowInit.js"
 import { fetchProject, projectInit } from "./svg/project/projectInit.js";
 import { ProjectType } from "./types/projects.type.js";
+import { Console } from "./utils/Console.js";
 
 
 new Background("stars", 50);
@@ -26,6 +27,9 @@ new TimelineAnimation();
 document.addEventListener("DOMContentLoaded", async () => 
 {
     navDropdown.checkForButton();
+
+    // Funny extra thing in the console
+    Console.logoInConsole()
 
     // Check which page is shown
     const whichPage = document.body.dataset.page
@@ -59,6 +63,5 @@ document.addEventListener("DOMContentLoaded", async () =>
         // initSlideshow(projectName!)
         const project = await fetchProject(projectName!)
         projectInit(projectName!, project)
-        console.log(project);
     }
 })

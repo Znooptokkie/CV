@@ -197,7 +197,9 @@ export class ProjectsRootElement
                 y: yValue,
                 width: 500,
                 height: 600,
-                preserveAspectRatio: "xMidYMid slice"
+                // preserveAspectRatio: "xMidYMid meet"
+                // preserveAspectRatio: "xMidYMin slice"
+                preserveAspectRatio: "xMidYMax slice"
             }).createSvgTag();
 
             new SVGFactory(group, "rect", {

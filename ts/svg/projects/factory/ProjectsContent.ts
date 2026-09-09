@@ -1,12 +1,15 @@
 import { CreateSVG } from "../../construct/core/SVGCreate.js"
 import { SVGFactory } from "../../construct/core/SVGFactory.js"
+import { Project } from "../Project.js"
 
 export class ProjectsContent
 {
     public static drawBorder(
         container: CreateSVG | null, 
         path: string, 
-        options?: Record<string, number | string>
+        options?: Record<string, number | string>,
+        project?: Project,
+        index?: number
     )
     {
         const projectSecondSection = new SVGFactory(container, "path", {
@@ -18,7 +21,7 @@ export class ProjectsContent
         }).createSvgTag()
 
         ProjectsContent.drawCircles(container)
-        ProjectsContent.drawInitials(container)
+        ProjectsContent.drawInitials(container, project, index)
     }
 
     private static drawCircles(container: CreateSVG | null)
@@ -45,8 +48,36 @@ export class ProjectsContent
 
     }
 
-    private static drawInitials(container: CreateSVG | null)
+    private static drawInitials(
+        container: CreateSVG | null,
+        project?: Project,
+        index?: number
+    )
     {
+        const projectLang = project?.languages[0].name.toLowerCase()
+        const year = project?.year
+
+        let shortName = ""
+        if (projectLang != undefined)
+        {
+            switch (projectLang) 
+            {
+                case "python":
+                    shortName = "PY"
+                    break;
+                case "java":
+                    shortName = "JV"
+                    break;
+                case "php":
+                    shortName = "PH"
+                    break;
+                case "typescript":
+                    shortName = "TS"
+                default:
+                    break;
+            }
+        }
+
         const textBorder = new SVGFactory(container, "text", {
             x: 2225,
             y: 1060,
@@ -56,7 +87,18 @@ export class ProjectsContent
             "dominant-baseline": "middle",
             opacity: 0.25
         }).createSvgTag()
+              
+        if (!index)
+            return
+        
+        let projectCount = ""
+        if (index < 10)
+             projectCount = `000${index}`
+        else if (index < 100)
+            projectCount = `00${index}`
+        else
+            projectCount = index!.toString()
 
-        textBorder!.textContent = "PY.2025.003A"
+        textBorder!.textContent = `${shortName}.${year}.${projectCount}`
     }
 }

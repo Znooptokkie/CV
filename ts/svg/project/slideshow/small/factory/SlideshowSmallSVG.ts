@@ -54,7 +54,7 @@ export class SmallSVGSlideshow extends AbstractSmallSlideshow
             "svg"
         );
 
-        this.SVG.setAttribute("viewBox", "0 -75 500 1100");
+        this.SVG.setAttribute("viewBox", "0 -75 500 1125");
         this.SVG.classList.add("slideshow-small-main-svg");
 
         this.container?.appendChild(this.SVG);

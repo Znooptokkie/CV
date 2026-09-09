@@ -160,13 +160,17 @@ export class ProjectSpecificationSVG
         const text = this.createSVGElement("text")
         text.setAttribute("class", "accordion-title")
         text.setAttribute("x", "300")
-        // text.setAttribute("y", ((this.headerHeight / 2) / this.scale).toString())
         text.setAttribute(
             "y",
             ((this.headerHeight / 2) / headerScale).toString()
         )
         text.setAttribute("dominant-baseline", "middle")
         text.setAttribute("text-anchor", "middle")
+
+        text.setAttribute("fill", "transparent")
+        text.setAttribute("stroke", "rgba(51, 81, 142, 0.75)")
+        text.setAttribute("stroke-width", "1")
+
         text.textContent = title.toUpperCase()
         text.style.userSelect = "none"
 

@@ -51,7 +51,7 @@ main
             padding: 3rem 2rem 4rem;
             box-shadow: inset 0 0 15px rgba(51, 81, 142, 0.25);
             height: auto;
-            border: solid 2px rgba(51, 81, 142, 0.5);
+            border: solid 1px rgba(51, 81, 142, 0.5);
 
             .education-title
             {
@@ -64,7 +64,11 @@ main
                 {
                     h3
                     {
-                        color: rgba(51, 81, 142, 1);
+                        color: vars.$secondary-color;
+                        // color: transparent;
+                        // -webkit-text-fill-color: transparent;
+                        // -webkit-text-stroke: 1px rgb(51, 81, 142);
+                        // text-shadow: 24px 24px 0 rgba(6, 10, 18, 1);
                         font-size: 2rem;
                     }
                 }
@@ -236,7 +240,9 @@ main
                     {
                         h3
                         {
+                            text-align: center;
                             font-size: 1.25rem;
+                            margin-bottom: .5rem;
                         }
                     }
                 
