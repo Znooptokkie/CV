@@ -15,17 +15,25 @@ import { initSlideshow } from "./svg/project/slideshow/slideshowInit.js"
 import { fetchProject, projectInit } from "./svg/project/projectInit.js";
 import { ProjectType } from "./types/projects.type.js";
 import { Console } from "./utils/Console.js";
+import { LoadingScreen } from "./utils/LoadingScreen.js";
+import { LoadAssets } from "./utils/loading_screen/WaitForAssets.js";
 
-
+// Website background
 new Background("stars", 50);
-const navDropdown = new Dropdown();
 
-// initEndpoints();
+// Loading screen background
+new Background("page-loader-stars", 50);
+
+const navDropdown = new Dropdown();
 
 new TimelineAnimation();
 
+
 document.addEventListener("DOMContentLoaded", async () => 
 {
+    const loadingScreen = new LoadingScreen("page-loader-svg-animation")
+    loadingScreen.init()
+
     navDropdown.checkForButton();
 
     // Funny extra thing in the console
@@ -54,14 +62,17 @@ document.addEventListener("DOMContentLoaded", async () =>
 
     if (window.location.pathname === "/projecten/")
     {
-        initProjects()
+        await initProjects()
     }
 
     if (whichPage === "project_detail_page") // ---- ALLE PAGINA'S MOETEN OP DEZE MANIER@#%^%$#$@
     {
-        // initProjectService(projectName)
-        // initSlideshow(projectName!)
         const project = await fetchProject(projectName!)
         projectInit(projectName!, project)
     }
+
+    // Wait for al content to be loaded
+    // When finished, hide loading screen
+    await LoadAssets.waitForAssets()
+    loadingScreen.finish()
 })
