@@ -1,0 +1,133 @@
+@use "../abstracts/variables" as vars;
+
+// Zorg dat de scrollbar niet getoond wordt op het laadscherm
+html.is-loading,
+body.is-loading
+{
+    overflow: hidden;
+    height: 100%;
+}
+
+#page-loader
+{
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: vars.$background-color;
+    overflow: hidden;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+
+    #page-loader-stars
+    {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+    }
+
+    #page-loader-content
+    {
+        position: relative;
+        z-index: 1;
+        width: 12.5rem;
+        height: 12.5rem;
+    }
+
+    #page-loader-logo,
+    #page-loader-svg-animation
+    {
+        position: absolute;
+        transform: translate(-50%, -50%);
+    }
+
+    #page-loader-svg-animation
+    {
+        top: 55%;
+        left: 50%;
+    }
+
+    #page-loader-logo
+    {
+        top: 50%;
+        left: 50%;
+        width: 7.5rem;
+    }
+}
+
+#page-loader.loaded
+{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.active-loading-circle 
+{
+    stroke: vars.$primary-color;
+    transition: stroke 0.2s ease;
+    opacity: .1;
+}
+
+.second-loading-circle 
+{
+    stroke: vars.$primary-color; 
+    transition: stroke 0.2s ease;
+    opacity: .25;
+}
+
+.third-loading-circle 
+{
+    stroke: vars.$primary-color; 
+    transition: stroke 0.2s ease;
+    opacity: .5;
+}
+
+.fourth-loading-circle
+{
+    stroke: vars.$primary-color;
+    transition: stroke 0.2s ease;
+}
+
+.inactive-loading-circle 
+{
+    stroke: none;
+    transition: stroke 0.2s ease;
+}
+
+.active-loading-circle,
+.second-loading-circle,
+.third-loading-circle,
+.fourth-loading-circle,
+.inactive-loading-circle
+{
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: rotate 10s linear infinite;
+}
+
+@media (max-width: vars.$breakpoint-mobile)
+{
+    #page-loader
+    {
+        #page-loader-content
+        {
+            width: 7.5rem;
+            height: 7.5rem;
+        }
+
+        #page-loader-logo
+        {
+            width: 4rem;
+        }
+    }
+}

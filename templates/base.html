@@ -12,6 +12,14 @@
     <script type="module" src="{% static 'js/dist/main.js' %}" defer></script>
 </head>
 <body data-page="{% block page %}{% endblock %}" data-project_name="{% block project_name %}{% endblock %}">
+
+    <div id="page-loader">
+        <canvas id="page-loader-stars"></canvas>
+        <div id="page-loader-content">
+            <img id="page-loader-logo" src="../static/images/logo_cv.svg" alt="Het logo van de website" 2>
+        </div>
+    </div>
+
     <canvas id="stars"></canvas>
     {% include "components/layout/header.html" %}
     <main>
