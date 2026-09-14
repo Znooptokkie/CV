@@ -14,7 +14,7 @@
   "scripts": {
     "build:ts": "tsc",
     "build:sass": "sass sass/main.scss:static/css/main.css",
-    "build": "esbuild ts/main.ts --bundle --minify --sourcemap --outfile=static/js/dist/main.js",
+    "build": "npm run build:ts && npm run build:sass",
     "watch:ts": "esbuild ts/main.ts --bundle --sourcemap --outfile=static/js/dist/main.js --watch",
     "watch:sass": "sass --watch sass/main.scss:static/css/main.css",
     "watch:dev": "npm-run-all --parallel watch:ts watch:sass"

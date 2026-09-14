@@ -79,6 +79,11 @@ python manage.py migrate core
 
 # Static scripts
 
+Compile TS & SASS
+```bash
+npm run build
+```
+
 Compile TS eenmalig
 ```bash
 npm run build:ts
@@ -189,16 +194,53 @@ git push -u origin/feature/*
 
 ---
 
-# Productie
-
-1. Static file hashing / cahche-busting
-```py
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+# VPS Updaten
+1. Ga naar het project:
+```bash
+cd /var/www/django_website
 ```
 
-2. Security headers & best practice
-```py
-SECURE_BROWSER_XSS_FILTER = True
-X_FRAME_OPTIONS = 'DENY'
-CSRF_COOKIE_SECURE = True # Voor HTTPS
+2. Haal de nieuwe code op:
+```bash
+git pull origin master
+```
+
+3. Activeer de Virtual Environment:
+```bash
+source django_venv/bin/activate
+```
+
+4. Installeer dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+5. Compileer SASS & TypeScript:
+```bash
+npm run build # Command staat in package.json
+```
+
+6. Update static files
+```bash
+python manage.py collectstatic --noinput
+```
+
+7. Herstart Gunicorn & Nginx
+```bash
+systemctl restart gunicorn
+systemctl reload nginx
+```
+
+## VPS Optioneel
+
+1. Update static files en verwijder bestaande files:
+```bash
+python manage.py collectstatic --clear --noinput
+```
+
+2. Seed de database opnieuw:
+> [!WARNING]
+> Dit verwijdert de database!
+```bash
+python manage.py seed
 ```

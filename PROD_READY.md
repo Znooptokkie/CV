@@ -79,56 +79,6 @@ python manage.py collectstatic --noinput
 
 ---
 
-# Website Updaten
-
-1. Ga naar projectmap
-```bash
-cd /var/www/<project_naam>
-```
-
-2. Activeer virtualenv
-```bash
-source venv/bin/activate # is django_venv/bin/activate
-```
-
-3. Pull laatste code
-```bash
-git pull
-```
-
-4. Installeer Python dependencies (optioneel)
-```bash
-pip install -r requirements.txt
-```
-
-5. Voer database migraties uit (indien database updates)
-```bash
-python manage.py migrate
-```
-
-6. Build frontend (indien frontend updates)
-```bash
-npm install
-npm run build
-```
-
-
-7. Update static files
-```bash
-python manage.py collectstatic --noinput # --clear      Als alle files weg moeten
-```
-
-8. Herstart Gunicorn
-```bash
-systemctl restart gunicorn
-```
-
-9. Reload Nginx (alleen bij config wijziging)
-```bash
-systemctl reload nginx
-```
-
----
 
 # Database aanmaken
 
@@ -139,7 +89,7 @@ sudo mariadb
 
 2. Maak een gebruiker aan:
 ```sql
-CREATE USER 'proto_user'@'localhost' IDENTIFIED BY 'porto_password';
+CREATE USER 'porto_user'@'localhost' IDENTIFIED BY 'porto_password';
 ```
 
 3. Maak de database aan:
