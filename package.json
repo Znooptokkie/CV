@@ -12,7 +12,7 @@
     "typescript": "^5.9.3"
   },
   "scripts": {
-    "build:ts": "tsc",
+    "build:ts": "esbuild ts/main.ts --bundle --minify --sourcemap --outfile=static/js/dist/main.js",
     "build:sass": "sass sass/main.scss:static/css/main.css",
     "build": "npm run build:ts && npm run build:sass",
     "watch:ts": "esbuild ts/main.ts --bundle --sourcemap --outfile=static/js/dist/main.js --watch",
