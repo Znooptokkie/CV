@@ -91,15 +91,11 @@
                     h3
                     {
                         font-size: clamp(1.5rem, 2.5vw, 2rem);
-                        // color: white;
-                        color: transparent;
-                        -webkit-text-fill-color: transparent;
-                        -webkit-text-stroke: 1px rgb(51, 81, 142);
-                        text-shadow: 24px 24px 0 rgba(6, 10, 18, 1);
-                        // text-decoration: underline;
-                        // text-underline-offset: .25rem;
-                        // text-decoration-color: vars.$primary-color;
-                        // text-decoration-thickness: 1px;
+                        color: white;
+                        // color: transparent;
+                        // -webkit-text-fill-color: transparent;
+                        // -webkit-text-stroke: 1px rgb(51, 81, 142);
+                        // text-shadow: 24px 24px 0 rgba(6, 10, 18, 1);
                     }
 
                     p

@@ -96,18 +96,18 @@ private innerInnerPath = "M70,160 L1730,160 L1730,160 L1710,160 L1710,200 L1700,
 
         new SVGFactory(backgroundGradient, "stop", {
             offset: "0%",
-            "stop-color": "rgba(51, 81, 142, 0.35)"
+            "stop-color": "rgba(51, 81, 142, 0.05)"
         }).createSvgTag();
 
         new SVGFactory(backgroundGradient, "stop", {
             offset: "40%",
-            "stop-color": "rgba(51, 81, 142, 0.3)"
+            "stop-color": "rgba(51, 81, 142, 0.2)"
         }).createSvgTag();
 
-        new SVGFactory(backgroundGradient, "stop", {
-            offset: "75%",
-            "stop-color": "rgba(51, 81, 142, 0.25)"
-        }).createSvgTag();
+        // new SVGFactory(backgroundGradient, "stop", {
+        //     offset: "75%",
+        //     "stop-color": "rgba(51, 81, 142, 0.1)"
+        // }).createSvgTag();
         
         new SVGFactory(backgroundGradient, "stop", {
             offset: "100%",
@@ -126,7 +126,7 @@ private innerInnerPath = "M70,160 L1730,160 L1730,160 L1710,160 L1710,200 L1700,
             width: this.context.svg.viewboxWidth,
             height: this.context.svg.viewboxHeight,
             mask: `url(#inner-mask-${projectName})`,
-            preserveAspectRatio: "xMidYMid meet",
+            preserveAspectRatio: "xMidYMid none",
             "pointer-events": "none"
         }).createSvgTag() as SVGImageElement;
 

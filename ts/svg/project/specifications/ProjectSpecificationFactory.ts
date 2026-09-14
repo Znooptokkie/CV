@@ -153,7 +153,7 @@ export class ProjectSpecificationSVG
         const mainPathE = this.createSVGElement("path")
         mainPathE.setAttribute("class", "accordion-header-path")
         mainPathE.setAttribute("d", `${firstArrowLeft} ${secondArrowLeft} ${midPart} ${firstArrowRight} ${secondArrowRight}`)
-        mainPathE.setAttribute("stroke", "rgba(51, 81, 142, 0.5)")
+        mainPathE.setAttribute("stroke", "rgba(51, 81, 142, 1)")
         mainPathE.setAttribute("stroke-width", "2")
         mainPathE.setAttribute("vector-effect", "non-scaling-stroke")
     
@@ -167,9 +167,9 @@ export class ProjectSpecificationSVG
         text.setAttribute("dominant-baseline", "middle")
         text.setAttribute("text-anchor", "middle")
 
-        text.setAttribute("fill", "transparent")
-        text.setAttribute("stroke", "rgba(51, 81, 142, 0.75)")
-        text.setAttribute("stroke-width", "1")
+        text.setAttribute("fill", "rgba(51, 81, 142, 1)")
+        // text.setAttribute("stroke", "rgba(51, 81, 142, 1)")
+        // text.setAttribute("stroke-width", "1")
 
         text.textContent = title.toUpperCase()
         text.style.userSelect = "none"

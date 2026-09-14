@@ -78,11 +78,11 @@ class LanguageSmallContainerHTML
         // Icon div met devicon class
         const icon = document.createElement("div");
         icon.className = `devicon-${language.svg_url.toLowerCase()}-plain`;
-        icon.style.cssText = "font-size:60px; color:rgba(51, 81, 142, 0.75);";
+        icon.style.cssText = "font-size:60px; color:rgba(51, 81, 142, 1);";
 
         // Label met taalnaam
         const label = document.createElement("p");
-        label.style.cssText = "margin:0; font-size:28px; color:rgba(51, 81, 142, 0.75);";
+        label.style.cssText = "margin:0; font-size:28px; color:rgba(51, 81, 142, 1);";
         label.textContent = language.name === "azuresqldatabase" ? "SQL" : language.name;
         // Voeg icon en label toe aan wrapper en wrapper aan foreignObject
         wrapper.append(icon, label);
@@ -147,10 +147,11 @@ export class LanguageSmallBorder
 
             new SVGFactory(main, "path", {
                 d: scaledPath,
-                stroke: "rgba(51, 81, 142, 0.5)",
+                stroke: "rgba(51, 81, 142, 0.25)",
                 // stroke: "none",
-                "stroke-width": 2,
-                fill: "rgba(51, 81, 142, 0.05)"
+                // stroke: "none",
+                "stroke-width": 1,
+                fill: "rgba(22, 44, 88, 0.05)"
             }).createSvgTag()
 
 
