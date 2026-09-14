@@ -11,10 +11,11 @@ export class LanguageMainSVG
     {
         new SVGFactory(svg, "path", {
             d: path,
-            stroke: "rgba(51, 81, 142, 0.25)",
+            stroke: "rgba(51, 81, 142, 0.0)",
             // stroke: "none",
             "stroke-width": 2,
-            fill: "rgba(51, 81, 142, 0.05)"
+            // fill: "rgba(51, 81, 142, 0.05)"
+            fill: "rgba(22, 44, 88, 0.05)"
             // fill: "none"
         }).createSvgTag()
 

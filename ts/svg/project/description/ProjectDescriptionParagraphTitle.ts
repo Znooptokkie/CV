@@ -7,7 +7,7 @@ export class CreateProjectDescriptionParagraphTitleSVG
 {
     private SVGElement: CreateSVG | null = null
 
-    private viewboxSize: string = "0 0 1200 100"
+    private viewboxSize: string = "0 0 1200 160"
     private preserveAspectRatio: string = "xMidYMid meet"
 
     private paragraphTitle: SVGTextElement | null = null
@@ -228,14 +228,18 @@ export class CreateProjectDescriptionParagraphTitleSVG
         title: string
     )
     {
+        const isMobile = window.innerWidth > 768
+
         this.paragraphTitle = new SVGFactory(parent, "text", {
+            class: "paragraph-title",
             x: this.middleWidth,
-            y: this.middleHeight,
+            y: isMobile ? this.middleHeight : this.middleHeight - 30,
             "text-anchor": "middle",
             "dominant-baseline": "middle",
-            fill: "none",
+            fill: isMobile ? "none" : "rgba(51, 81, 142, 1)",
             stroke: "rgba(51, 81, 142, 1)",
-            "font-size": window.innerWidth > 768 ? "2rem" : "7rem"
+            "stroke-width": 2,
+            "font-size": isMobile ? "2rem" : "7rem"
 
         }).createSvgTag() as SVGTextElement
 

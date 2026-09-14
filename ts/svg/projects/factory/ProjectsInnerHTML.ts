@@ -35,7 +35,7 @@ export class ProjectsInnerHTMLContent
         content.style.fontSize = "54px"
         content.style.lineHeight = "2"
         content.style.fontStyle = "italic"
-        content.style.color = "rgba(51, 81, 142, 0.75)"
+        content.style.color = "rgba(51, 81, 142, 1)"
         content.style.textAlign = "center"
         content.style.textShadow = "15px 15px 0 rgba(6, 10, 18, 1)";
         content.textContent = projectText
@@ -84,7 +84,7 @@ export class ProjectsInnerHTMLContent
 
         const defs = new SVGFactory(container, "defs").createSvgTag();
 
-        const OFFSET = 100;
+        const OFFSET = 200;
 
         const outerPoints = DeconstructPath.getPathParts(outerPath);
         const innerPoints = DeconstructPath.getPathParts(innerPath);

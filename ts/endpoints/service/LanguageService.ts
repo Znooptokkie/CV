@@ -3,7 +3,7 @@ import { Fetch } from "../utils/Fetch.js";
 
 export class LanguageService
 {
-    private static readonly filteredItems: Array<string> = ["MicroPython", "HTML", "CSS"]
+    private static readonly filteredItems: Array<string> = ["MicroPython", "HTML", "CSS", "JavaScript"]
 
     public static async filterItems(): Promise<LanguageInterface[]>
     {

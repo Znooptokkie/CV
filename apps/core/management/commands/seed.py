@@ -63,9 +63,10 @@ class Command(BaseCommand):
             language_objs = {}
             languages = [
                 {"name": "Python", "svg_url": "python"},
+                {"name": "TypeScript", "svg_url": "typescript"},
+                {"name": "Docker", "svg_url": "docker"},
                 {"name": "MicroPython", "svg_url": "python"},
                 {"name": "JavaScript", "svg_url": "javascript"},
-                {"name": "TypeScript", "svg_url": "typescript"},
                 {"name": "PHP", "svg_url": "php"},
                 {"name": "Java", "svg_url": "java"},
                 {"name": "HTML", "svg_url": "html5"},
