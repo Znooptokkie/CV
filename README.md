@@ -205,27 +205,17 @@ cd /var/www/django_website
 git pull origin master
 ```
 
-3. Activeer de Virtual Environment:
-```bash
-source django_venv/bin/activate
-```
-
-4. Installeer dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-5. Compileer SASS & TypeScript:
+3. Compileer SASS & TypeScript:
 ```bash
 npm run build # Command staat in package.json
 ```
 
-6. Update static files
+4. Update static files
 ```bash
 python manage.py collectstatic --noinput
 ```
 
-7. Herstart Gunicorn & Nginx
+5. Herstart Gunicorn & Nginx
 ```bash
 systemctl restart gunicorn
 systemctl reload nginx
@@ -233,12 +223,22 @@ systemctl reload nginx
 
 ## VPS Optioneel
 
-1. Update static files en verwijder bestaande files:
+* Activeer de Virtual Environment:
+```bash
+source django_venv/bin/activate
+```
+
+* Installeer dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+* Update static files en verwijder bestaande files:
 ```bash
 python manage.py collectstatic --clear --noinput
 ```
 
-2. Seed de database opnieuw:
+* Seed de database opnieuw:
 > [!WARNING]
 > Dit verwijdert de database!
 ```bash
