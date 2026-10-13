@@ -64,11 +64,11 @@ class Command(BaseCommand):
             languages = [
                 {"name": "Python", "svg_url": "python"},
                 {"name": "TypeScript", "svg_url": "typescript"},
+                {"name": "PHP", "svg_url": "php"},
+                {"name": "Java", "svg_url": "java"},
                 {"name": "Docker", "svg_url": "docker"},
                 {"name": "MicroPython", "svg_url": "python"},
                 {"name": "JavaScript", "svg_url": "javascript"},
-                {"name": "PHP", "svg_url": "php"},
-                {"name": "Java", "svg_url": "java"},
                 {"name": "HTML", "svg_url": "html5"},
                 {"name": "CSS", "svg_url": "css3"},
                 {"name": "SASS", "svg_url": "sass"},

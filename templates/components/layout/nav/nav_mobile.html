@@ -12,5 +12,8 @@
         <li>
             <a href="{% url 'over_mij' %}" class="{% if request.resolver_match.url_name == 'over_mij' %}active{% endif %}">Over Mij</a>
         </li>
+        <li>
+            <a href="{% url 'leetcode' %}" class="{% if request.resolver_match.url_name == 'leetcode' %}active{% endif %}">Leetcode</a>
+        </li>
     </ul>
 </nav>

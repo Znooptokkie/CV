@@ -2,7 +2,7 @@ asgiref==3.11.0
 async-timeout==5.0.1
 certifi==2026.1.4
 charset-normalizer==3.4.4
-Django==5.0.14
+Django==5.2.18
 django-environ==0.12.0
 djangorestframework==3.16.1
 gunicorn==21.2.0

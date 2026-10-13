@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="icon" href="{% static 'images/logo_cv.svg' %}" type="image/svg+xml">
     <script type="module" src="{% static 'js/dist/main.js' %}" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-holi-theme.min.css">
 </head>
+
 <body data-page="{% block page %}{% endblock %}" data-project_name="{% block project_name %}{% endblock %}">
 
     <div id="page-loader">
@@ -28,5 +30,6 @@
         {% endblock %}
     </main>
     {% include "components/layout/footer.html" %}
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

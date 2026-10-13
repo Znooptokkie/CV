@@ -1,5 +1,7 @@
 from django.urls import path
 
+from apps.core.custom_views.leetcode_view import leetcode
+
 from .views import (
     index,
     komt_binnenkort,
@@ -16,5 +18,6 @@ urlpatterns = [
     path("projecten/<str:name>", project_detail, name="project_detail"),
     path("over-mij/", over_mij, name="over_mij"),
     path("komt-binnenkort/", komt_binnenkort, name="komt_binnenkort"),
+    path("leetcode/", leetcode, name="leetcode")
 ]
 
