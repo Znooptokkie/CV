@@ -3,14 +3,15 @@ from django.utils.html import format_html
 
 from apps.core.models.leetcode import (
     Leetcode,
-    ProgrammingLanguage,
+    LeetcodeAlgorithm,
+    LeetcodeControlStructure,
+    LeetcodeDataStructure,
     LeetcodeFunction,
     LeetcodeMethod,
     LeetcodeOperator,
-    LeetcodeDataStructure,
-    LeetcodeControlStructure,
-    LeetcodeAlgorithm,
+    ProgrammingLanguage,
 )
+
 
 @admin.register(ProgrammingLanguage)
 class ProgrammingLanguageAdmin(admin.ModelAdmin):

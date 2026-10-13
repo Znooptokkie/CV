@@ -1,5 +1,7 @@
 from django.urls import path
 
+from apps.core.custom_views.leetcode_view import leetcode
+
 from .views import (
     index,
     komt_binnenkort,
@@ -8,10 +10,6 @@ from .views import (
     project_detail,
     projecten,
 )
-
-from apps.core.custom_views.leetcode_view import (
-    leetcode
-) 
 
 urlpatterns = [
     path("", index, name="index"),
