@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% block title %}Leetcode Problemen{% endblock %}
+
+<!-- Code Highligting with Prism.js -->
+{% block extra_js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Python -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <!-- JavaScript & TypeScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+    <!-- PHP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup-templating.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <h1 class="section-title">Leetcode <span class="green-name">Problemen</span></h1>
+{% for problem in leetcode %}
+    <div class="problem-container">
+        <h2><span class="green-link">{{ problem.problem_number }}.</span> {{ problem.problem_name }}</h2>
+        <div class="problem-info">
+            <div class="problem-info-details">
+                <div>
+                    <p class="first-part-info">Language:</p>
+                    <p class="sec-part-info">{{ problem.get_language_display }}</p>
+                </div>
+                <div>
+                    <p class="first-part-info">Rating:</p>
+                    <p class="sec-part-info">
+                        {{ problem.rating }}
+                    </p>
+                </div>
+                <div>
+                    <p class="first-part-info">Difficulty:</p>
+                    <p class="sec-part-info
+                        {% if problem.get_difficulty_display ==  'Hard' %}
+                            difficulty-red
+                        {% elif problem.get_difficulty_display == 'Medium'  %}
+                            difficulty-orange
+                        {% else %}
+                            difficulty-green
+                        {% endif %}
+                    ">
+                        {{ problem.get_difficulty_display }}
+                    </p>
+                </div>
+            </div>
+            <div class="problem-usage">
+                <div class="problem-usage-runtime">
+                    <div>
+                        <p class="first-part-usage">Runtime ms:</p>
+                        <p class="sec-part-usage">{{ problem.runtime_ms }}</p>
+                    </div>
+                    <div>
+                        <p class="first-part-usage">Runtime Percentage:</p>
+                        <p class="sec-part-usage
+                            {% if problem.runtime_perc < 50.00 %}
+                                rating-red
+                            {% elif problem.runtime_perc <= 85.00 %}
+                                rating-orange
+                            {% else %}
+                                rating-green
+                            {% endif%}
+                        ">
+                            {{ problem.runtime_perc }}%
+                        </p>
+                    </div>
+                </div>
+                <div class="problem-usage-memory">
+                    <div>
+                        <p class="first-part-usage">Memory MB:</p>
+                        <p class="sec-part-usage">{{ problem.memory_mb }}</p>
+                    </div>
+                    <div>
+                        <p class="first-part-usage">Memory Percentage:</p>
+                        <p class="sec-part-usage
+                            {% if problem.memory_perc < 50.00 %}
+                                rating-red
+                            {% elif problem.memory_perc <= 85.00 %}
+                                rating-orange
+                            {% else %}
+                                rating-green
+                            {% endif%}
+                        ">
+                            {{ problem.memory_perc }}%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leetcode-techniek-container">
+            <div class="leetcode-technieken">
+                {% if problem.used_functions.all %}
+                <div>
+                    <p>Functions</p>
+                    <ul>
+                        {% for used_function in problem.used_functions.all %}
+                        <li>
+                            {{ used_function.name }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% if problem.used_methods.all %}
+                <div>
+                    <p>Methods</p>
+                    <ul>
+                        {% for used_method in problem.used_methods.all %}
+                        <li>
+                            {{ used_method.name }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% if problem.used_operators.all %}
+                <div>
+                    <p>Operators</p>
+                    <ul>
+                        {% for used_operator in problem.used_operators.all %}
+                        <li>
+                            {{ used_operator.name }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% if problem.used_data_structures.all %}
+                <div>
+                    <p>Data Structures</p>
+                    <ul>
+                        {% for used_data_structure in problem.used_data_structures.all %}
+                        <li>
+                            {{ used_data_structure.name }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% if problem.used_control_structures.all %}
+                <div>
+                    <p>Control Structures</p>
+                    <ul>
+                        {% for used_control_structure in problem.used_control_structures.all %}
+                        <li>
+                            {{ used_control_structure.name }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% if problem.used_algorithms.all %}
+                <div>
+                    <p>Algorithms</p>
+                    <ul>
+                        {% for used_algorithm in problem.used_algorithms.all %}
+                        <li>
+                            {{ used_algorithm.name }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            <div class="leetcode-container">
+                <a
+                    href="{{ problem.problem_url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="leetcode-link"
+                >
+                    Leetcode
+                    <svg
+                        class="link-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M14 3h7v7"/>
+                        <path d="M10 14 21 3"/>
+                        <path d="M21 14v7H3V3h7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div>
+            <pre><code class="language-{{ problem.language }}">{{ problem.code }}</code></pre>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

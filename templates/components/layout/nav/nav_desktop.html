@@ -22,6 +22,12 @@
                     Over Mij
                 </a>
             </li>
+            <li>
+                <a href="{% url 'leetcode' %}"
+                   class="{% if request.resolver_match.url_name == 'leetcode' %}active{% endif %}">
+                    Leetcode
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
